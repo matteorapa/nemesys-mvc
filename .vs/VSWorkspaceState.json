@@ -1,7 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\mvc"
+    "\\mvc",
+    "\\mvc\\bin",
+    "\\mvc\\Controllers",
+    "\\mvc\\Models",
+    "\\mvc\\Properties",
+    "\\mvc\\Views",
+    "\\mvc\\wwwroot",
+    "\\mvc\\wwwroot\\css"
   ],
+  "SelectedNode": "\\mvc.sln",
   "PreviewInSolutionExplorer": false
 }
