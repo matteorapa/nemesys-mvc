@@ -9,8 +9,12 @@ namespace mvc.Models
     {
         public int Id { get; set; }
         public DateTime DateOfReport { get; set; }
-        public string Location { get; set; }
+        public string HazardLocation { get; set; }
         public DateTime HazardDate { get; set; }
+        public string HazardType { get; set; }
+        public string HazardDescription { get; set; }
+        public string ReporterEmail { get; set; }
+        public int ReporterPhone { get; set; }
         public string ImageUrl { get; set; }
         public int Upvotes { get; set; }
     }
