@@ -7,7 +7,7 @@ namespace mvc.Models
 {
     public class Report
     {
-        public int Id { get; set; }
+        public int ReportId { get; set; }
         public DateTime DateOfReport { get; set; }
         public string HazardLocation { get; set; }
         public DateTime HazardDate { get; set; }
@@ -17,5 +17,8 @@ namespace mvc.Models
         public int ReporterPhone { get; set; }
         public string ImageUrl { get; set; }
         public int Upvotes { get; set; }
+
+        //One-to-Many relationship with User - EF Core Conventions
+        public User User { get; set; } //Reference Property
     }
 }

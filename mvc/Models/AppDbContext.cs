@@ -13,6 +13,14 @@ namespace mvc.Models
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().Property(u => u.IsInvestigator).HasDefaultValue(0);
+
+        }
+
         public DbSet<Report> Reports { get; set; }
+        public DbSet<Investigation> Investigations { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
