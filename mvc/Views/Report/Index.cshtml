@@ -1,0 +1,18 @@
+﻿@model mvc.ViewModels.ReportRegisterViewModel
+
+<h1>NEMESYS</h1>
+<h2>Showing @Model.TotalReports reports</h2>
+<div class="row">
+    @foreach (var report in Model.Reports)
+    {
+        <div class="card" style="width: 18rem;padding:20px; margin:20px;">
+            <img class="card-img-top" src="@report.ImageUrl" alt="Image for @report.HazardLocation" />
+            <div class="card-body">
+                <h3 class="card-title">@report.HazardLocation</h3>
+                <p class="small">@report.DateOfReport.ToShortDateString()</p>
+                <a href="#" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+    }
+</div>
+

@@ -10,6 +10,7 @@ namespace mvc.Models
     {
         IEnumerable<Report> GetAllReports();
         Report GetReportById(int reportId);
+        //Report CreateReport();
         //Report EditReportById(int reportId);
         //Report DeleteReportById(int reportId);
 

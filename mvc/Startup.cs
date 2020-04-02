@@ -15,21 +15,29 @@ namespace mvc
 {
     public class Startup
     {
+        private readonly IWebHostEnvironment _env;
         public IConfiguration _configuration { get; }
 
-        public Startup(IConfiguration configuration)
+        //Requeting injection of a IWebHostEnvironment object (Provides information about the web hosting environment an application is running in).
+        public Startup(IWebHostEnvironment env, IConfiguration configuration)
         {
+            //Setting this to a private var for use in ConfigureServices
+            _env = env;
             _configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            
+            services.AddTransient<IReportRepository, ReportRepository>();
+            services.AddTransient<IInvestigationRepository, InvestigationRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,8 +54,8 @@ namespace mvc
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            app.UseStatusCodePages();
             app.UseStaticFiles();
-
             app.UseRouting();
 
             app.UseAuthorization();

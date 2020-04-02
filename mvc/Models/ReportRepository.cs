@@ -21,7 +21,7 @@ namespace mvc.Models
 
         public Report GetReportById(int reportId)
         {
-            return _appDbContext.Reports.FirstOrDefault(p => p.ReportId == reportId);
+            return _appDbContext.Reports.FirstOrDefault(r => r.ReportId == reportId);
         }
     }
 }
