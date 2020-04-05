@@ -17,6 +17,7 @@ namespace mvc.Controllers
             _reportRepository = reportRepository;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             ViewBag.Title = "Report Register";
@@ -27,5 +28,17 @@ namespace mvc.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var rep = _reportRepository.GetReportById(id);
+            if (rep == null)
+                return NotFound();
+            else
+                return View(rep);
+        }
+
+
     }
 }

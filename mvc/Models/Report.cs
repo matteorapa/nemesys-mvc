@@ -8,8 +8,8 @@ namespace mvc.Models
     public class Report
     {
         public int ReportId { get; set; }
-        public DateTime DateOfReport { get; set; }
         public string HazardLocation { get; set; }
+        public DateTime DateOfReport { get; set; }
         public DateTime HazardDate { get; set; }
         public string HazardType { get; set; }
         public string HazardDescription { get; set; }

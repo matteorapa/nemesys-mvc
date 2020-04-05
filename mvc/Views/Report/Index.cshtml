@@ -1,8 +1,9 @@
 ﻿@model mvc.ViewModels.ReportRegisterViewModel
 
-<h1>NEMESYS</h1>
-<h2>Showing @Model.TotalReports reports</h2>
+<h2> @Model.TotalReports reports found on NEMESYS</h2>
+<h4> Why did the coffee file a police report? – Because it was mugged. </h4>
 <div class="row">
+
     @foreach (var report in Model.Reports)
     {
         <div class="card" style="width: 18rem;padding:20px; margin:20px;">
@@ -10,9 +11,21 @@
             <div class="card-body">
                 <h3 class="card-title">@report.HazardLocation</h3>
                 <p class="small">@report.DateOfReport.ToShortDateString()</p>
-                <a href="#" class="btn btn-primary">Details</a>
+
+                <div class="card text-white bg-primary mb-3" style="width: 10rem;">
+                    <div class="card-body">
+                        <p class="card-text">Upvotes: @report.Upvotes</p>
+                    </div>
+                </div>
+                <p> </p>
+                <a asp-controller="Report" asp-action="Details" asp-route-id="@report.ReportId" class="btn btn-primary">Details</a>
+                <button type="button" class="btn btn-success">Upvote</button>
+
             </div>
+
         </div>
     }
 </div>
+
+<a asp-controller="Report" asp-action="Index" class="btn btn-primary">Create Report</a>
 

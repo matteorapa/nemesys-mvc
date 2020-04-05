@@ -1,0 +1,13 @@
+﻿@Model Report
+
+<h1>@Model.HazardLocation</h1>
+<div class="card" style="width: 90%;padding:20px; margin:20px;">
+    <img class="card-img-top" src="@Model.ImageUrl" alt="Image for @Model.HazardLocation" />
+    <div class="card-body">
+        <h3 class="card-title">@Model.HazardLocation</h3>
+        <p class="card-text">@Model.HazardDescription</p>
+        <p class="small">@Model.HazardDate.ToShortDateString()</p>
+        <p class="small">Number of Upvotes: @Model.Upvotes</p>
+        <a asp-controller="Report" asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+    </div>
+</div>

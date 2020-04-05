@@ -23,6 +23,7 @@ namespace mvc
                 try
                 {
                     var context = services.GetRequiredService<AppDbContext>();
+                    InitialDistributor.Inject(context);
                 }
                 catch (Exception ex)
                 {

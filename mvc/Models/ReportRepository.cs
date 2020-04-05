@@ -23,5 +23,11 @@ namespace mvc.Models
         {
             return _appDbContext.Reports.FirstOrDefault(r => r.ReportId == reportId);
         }
+
+        public void CreateReport(Report rep)
+        {
+            _appDbContext.Reports.Add(rep);
+            _appDbContext.SaveChanges();
+        }
     }
 }
