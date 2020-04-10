@@ -1,0 +1,45 @@
+﻿@model Report
+
+<h2>Create New Report</h2>
+<form asp-action="Create" method="post" role="form" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="HazardLocation" class="col-md-2">Location of Hazard</label>
+        <div class="col-md-5">
+            <input asp-for="HazardLocation" class="form-control" />
+            <span asp-validation-for="HazardLocation" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="HazardDate" class="col-md-3">Date Hazard Was Spotted</label>
+        <div class="col-md-5">
+            <input asp-for="HazardDate" class="form-control" />
+            <span asp-validation-for="HazardDate" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="HazardType" class="col-md-2">Type of Hazard</label>
+        <div class="col-md-5">
+            <input asp-for="HazardType" class="form-control" />
+            <span asp-validation-for="HazardType" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="HazardDescription" class="col-md-2">Description</label>
+        <div class="col-md-5">
+            <textarea asp-for="HazardDescription" class="form-control"></textarea>
+            <span asp-validation-for="HazardDescription" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageUrl" class="col-md-3">Insert Image</label>
+        <div class="col-md-5">
+            <input type="file" asp-for="ImageUrl" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-5">
+            <input type="submit" class="btn btn-primary" value="Submit Report" />
+            <a asp-controller="Report" asp-action="Index" class="btn btn-outline-secondary">Back to Reports</a>
+        </div>
+    </div>
+</form>
