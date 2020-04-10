@@ -8,6 +8,9 @@
         <p class="card-text">@Model.HazardDescription</p>
         <p class="small">@Model.HazardDate.ToShortDateString()</p>
         <p class="small">Number of Upvotes: @Model.Upvotes</p>
+
         <a asp-controller="Report" asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+
+        <a asp-controller="Investigation" asp-action="Details" asp-route-id="@Model.ReportId" class="btn btn-primary">Read Investigation Report</a>
     </div>
 </div>

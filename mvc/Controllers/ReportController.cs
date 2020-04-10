@@ -39,6 +39,11 @@ namespace mvc.Controllers
                 return View(rep);
         }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
 
     }
 }

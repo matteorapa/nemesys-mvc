@@ -2,8 +2,8 @@
 
 <h2> @Model.TotalReports reports found on NEMESYS</h2>
 <h4> Why did the coffee file a police report? – Because it was mugged. </h4>
-<div class="row">
 
+<div class="row">
     @foreach (var report in Model.Reports)
     {
         <div class="card" style="width: 18rem;padding:20px; margin:20px;">
@@ -27,5 +27,5 @@
     }
 </div>
 
-<a asp-controller="Report" asp-action="Index" class="btn btn-primary">Create Report</a>
+<a asp-controller="Report" asp-action="Create" class="btn btn-primary">Create Report</a>
 
