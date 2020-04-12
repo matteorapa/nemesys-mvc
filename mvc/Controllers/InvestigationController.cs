@@ -17,19 +17,31 @@ namespace mvc.Controllers
             _investigationRepository = investigationRepository;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
-        }
+        }       
 
-        public IActionResult Details(int ReportId)
+        [HttpGet]
+        public IActionResult Details(int id)
         {
-            var inv = _investigationRepository.GetInvestigationById(ReportId);
-            
+            var inv = _investigationRepository.GetInvestigationById(id);
+
             if (inv == null)
-                return NotFound();
+            {
+                var model = new NewInvestigationViewModel();
+                model.ReportId = id;
+                return View("Views/Investigation/Index.cshtml", model);
+            }
             else
                 return View(inv);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            return View();
         }
     }
 }

@@ -1,7 +1,5 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-}
+﻿@Model mvc.ViewModels.NewInvestigationViewModel
 
-<h1>Index</h1>
+<h1>No investigations found for this report.</h1>
+<a asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.ReportId" class="btn btn-primary">Create Investigation Report</a>
 
