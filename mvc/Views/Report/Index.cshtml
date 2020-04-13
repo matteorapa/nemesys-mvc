@@ -6,23 +6,22 @@
 <div class="row">
     @foreach (var report in Model.Reports)
     {
-        <div class="card" style="width: 18rem;padding:20px; margin:20px;">
+        <div class="card" style="width: 23rem;padding:20px; margin:20px;">
             <img class="card-img-top" src="@report.ImageUrl" alt="Image for @report.HazardLocation" />
             <div class="card-body">
                 <h3 class="card-title">@report.HazardLocation</h3>
                 <p class="small">@report.DateOfReport.ToShortDateString()</p>
 
-                <div class="card text-white bg-primary mb-3" style="width: 10rem;">
+                <div class="card text-white bg-dark mb-3 " style="width: 17rem;">
                     <div class="card-body">
                         <p class="card-text">Upvotes: @report.Upvotes</p>
                     </div>
                 </div>
                 <p> </p>
-                <a asp-controller="Investigation" asp-action="Details" asp-route-id="@report.ReportId" class="btn btn-primary">Investigation</a>
-                <button type="button" class="btn btn-success">Upvote</button>
-                <p> </p>
-                <a asp-controller="Report" asp-action="Details" asp-route-id="@report.ReportId" class="btn btn-primary">Details</a>
-
+                    <button type="button" class="btn btn-success">Upvote</button>
+                    <a asp-controller="Report" asp-action="Details" asp-route-id="@report.ReportId" class="btn btn-primary">Details</a>
+                    <a asp-controller="Investigation" asp-action="Edit" asp-route-id="@report.ReportId" class="btn btn-primary">Investigation</a>
+                
             </div>
 
         </div>
