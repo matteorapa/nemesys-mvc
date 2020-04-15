@@ -1,5 +1,22 @@
-﻿@Model mvc.ViewModels.NewInvestigationViewModel
+﻿@model mvc.ViewModels.InvestigationListViewModel
 
-<h1>No investigations found for this report.</h1>
-<a asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.ReportId" class="btn btn-primary">Create Investigation Report</a>
+<span> @Model.TotalInvestigations investigations found on NEMESYS</span>
 
+<div>
+    @foreach (var investigation in Model.Investigations)
+    {
+    <div class="container" style="border: 1px solid gray;">
+
+        <h4>Investigation</h4><hr>
+        <p>@investigation.InvDescription</p>
+        <br><br>
+        <h5>Investigator Details</h5>
+
+        <a asp-controller="Investigation" asp-action="Edit" asp-route-id="@investigation.ReportId" class="btn btn-primary">Edit</a>
+        <a asp-controller="Investigation" asp-action="Details" asp-route-id="@investigation.InvestigationId" class="btn btn-primary">Details</a>
+
+
+
+    </div>
+    }
+</div>

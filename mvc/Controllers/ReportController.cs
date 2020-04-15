@@ -85,6 +85,14 @@ namespace mvc.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult Edit()
+        {
+
+            return RedirectToAction("Index");
+        }
+
+
 
     }
 }

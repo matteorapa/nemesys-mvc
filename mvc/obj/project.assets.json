@@ -8491,19 +8491,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mikesciclunacalleja\\.nuget\\packages\\": {}
+    "C:\\Users\\Mireille\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "\\\\Mac\\Home\\Desktop\\nemesys-mvc\\mvc\\mvc.csproj",
+      "projectUniqueName": "C:\\Users\\Mireille\\Desktop\\mvc\\nemesys-mvc\\mvc\\mvc.csproj",
       "projectName": "mvc",
-      "projectPath": "\\\\Mac\\Home\\Desktop\\nemesys-mvc\\mvc\\mvc.csproj",
-      "packagesPath": "C:\\Users\\mikesciclunacalleja\\.nuget\\packages\\",
-      "outputPath": "\\\\Mac\\Home\\Desktop\\nemesys-mvc\\mvc\\obj\\",
+      "projectPath": "C:\\Users\\Mireille\\Desktop\\mvc\\nemesys-mvc\\mvc\\mvc.csproj",
+      "packagesPath": "C:\\Users\\Mireille\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Mireille\\Desktop\\mvc\\nemesys-mvc\\mvc\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mikesciclunacalleja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Mireille\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8584,7 +8584,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
       }
     }
   },

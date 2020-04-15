@@ -7,7 +7,7 @@
 
 
 <h1>Investigation</h1>
-<form asp-action="Create" method="post" role="form" enctype="multipart/form-data">
+<form asp-action="Edit" method="post" role="form" enctype="multipart/form-data">
     <div class="form-group">
         <label asp-for="DateOfAction" class="col-md-2">Date of Action</label>
         <div class="col-md-5">
@@ -39,7 +39,7 @@
     <div class="form-group">
         <div class="col-md-5">
             <input type="submit" class="btn btn-primary" value="Submit Investigation" />
-            <a asp-controller="Report" asp-action="Index" class="btn btn-outline-secondary">Back to Reports</a>
+            <a asp-controller="Investigation" asp-action="Index" class="btn btn-outline-secondary">Back to Investigations</a>
         </div>
     </div>
 </form>

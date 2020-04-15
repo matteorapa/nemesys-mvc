@@ -8,9 +8,10 @@ namespace mvc.Models
     public interface IInvestigationRepository
     {
         Investigation GetInvestigationById(int reportId);
-        
-        //Investigation AddInvestigation(int reportId); 
-        //Investigation EditInvestigation(int reportId);
+        IEnumerable<Investigation> GetAllInvestigations();
+
+        void CreateInvestigation(Investigation investigation); 
+        Investigation EditInvestigation(int reportId);
 
     }
 }
