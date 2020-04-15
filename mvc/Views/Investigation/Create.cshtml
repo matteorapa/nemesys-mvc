@@ -1,13 +1,8 @@
-﻿
-@{
-    ViewData["Title"] = "Edit";
-}
-
-@model mvc.ViewModels.EditInvestigation
+﻿@model mvc.ViewModels.EditInvestigation
 
 
 <h1>Investigation</h1>
-<form asp-action="Edit" method="post" role="form" enctype="multipart/form-data">
+<form asp-action="Create" method="post" role="form" enctype="multipart/form-data">
     <div class="form-group">
         <label asp-for="DateOfAction" class="col-md-2">Date of Action</label>
         <div class="col-md-5">

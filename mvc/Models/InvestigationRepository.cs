@@ -21,6 +21,12 @@ namespace mvc.Models
             return _appDbContext.Investigations.FirstOrDefault(i => i.InvestigationId == investigationId);
         }
 
+        public Investigation GetInvestigationByReportId(int reportId)
+        {
+
+            return _appDbContext.Investigations.FirstOrDefault(i => i.ReportId == reportId);
+        }
+
 
         public IEnumerable<Investigation> GetAllInvestigations()
         {
@@ -36,11 +42,20 @@ namespace mvc.Models
         }
 
 
-        public Investigation EditInvestigation(int reportId)
+        public void EditInvestigation(int reportId)
         {
-            //todo
+            var rec =  _appDbContext.Investigations.FirstOrDefault(r => r.ReportId == reportId);
+            if (rec != null)
+            {
+                // Make changes on entity
+                rec.InvestigatorEmail = "";
+                rec.InvestigatorPhone = 21;
+                rec.InvDescription = "";
 
-            return _appDbContext.Investigations.FirstOrDefault(r => r.ReportId == reportId);
+                _appDbContext.Investigations.Update(rec);
+
+                _appDbContext.SaveChanges();
+            }
         }
     }
 }

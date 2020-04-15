@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace mvc.ViewModels
         [Required(ErrorMessage = "Please enter investigator's phone number")]
         public int InvestigatorPhone { get; set; }
 
-        [Required(ErrorMessage = "Please enter a brief investigation descritpion")]
+        [Required(ErrorMessage = "Please enter a brief investigation description")]
         [StringLength(100, MinimumLength = 1)]
         public string InvDescription { get; set; }
     }

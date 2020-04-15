@@ -1,0 +1,5 @@
+﻿@model mvc.ViewModels.NewInvestigationViewModel
+
+<h1>No investigations found for this report.</h1>
+<a asp-controller="Investigation" asp-action="Create" asp-route-id="@Model.ReportId" class="btn btn-primary">Create Investigation Report</a>
+

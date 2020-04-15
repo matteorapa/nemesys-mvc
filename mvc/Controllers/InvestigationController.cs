@@ -35,41 +35,60 @@ namespace mvc.Controllers
 
 
         [HttpPost]
-        public IActionResult Create([Bind("DateOfAction", "InvestigatorEmail", "InvestigatorPhone", "InvDescription")] ValidateInvestigation vInvestigation, int id)
+        public IActionResult Create([Bind("DateOfAction", "InvestigatorEmail", "InvestigatorPhone", "InvDescription")] EditInvestigation vInvestigation, int id)
         {
-
-            Investigation i = new Investigation()
+            if (ModelState.IsValid)
             {
-                DateOfAction = vInvestigation.DateOfAction,
-                InvestigatorEmail = vInvestigation.InvestigatorEmail,
-                InvestigatorPhone = vInvestigation.InvestigatorPhone,
-                InvDescription = vInvestigation.InvDescription,
-                ReportId = id,
-            };
+                Investigation i = new Investigation()
+                {
+                    DateOfAction = vInvestigation.DateOfAction,
+                    InvestigatorEmail = vInvestigation.InvestigatorEmail,
+                    InvestigatorPhone = vInvestigation.InvestigatorPhone,
+                    InvDescription = vInvestigation.InvDescription,
+                    ReportId = id,
+                };
 
-            _investigationRepository.CreateInvestigation(i);
-            return RedirectToAction("Index");
-            
-        }
+                _investigationRepository.CreateInvestigation(i);
 
-       
+                return RedirectToAction("Index");
+            }
+
+            else
+            {
+                return this.View(vInvestigation);
+            }
+
+        }       
 
         [HttpGet]
         public IActionResult Details(int id)
         {
-            var inv = _investigationRepository.GetInvestigationById(id);
+            var inv = _investigationRepository.GetInvestigationByReportId(id);
 
             if (inv == null)
             {
                 var model = new NewInvestigationViewModel();
                 model.ReportId = id;
-                return View("Views/Investigation/Details.cshtml", model);
+                return View("Views/Investigation/NoInvestigation.cshtml", model);
             }
             else
                 return View(inv);
         }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var inv = _investigationRepository.GetInvestigationByReportId(id);
 
-        [HttpPost]
+            EditInvestigation editInv = new EditInvestigation();
+            editInv.DateOfAction = inv.DateOfAction;
+            editInv.InvDescription = inv.InvDescription;
+            editInv.InvestigatorEmail = inv.InvestigatorEmail;
+            editInv.InvestigatorPhone = inv.InvestigatorPhone;
+
+            return View("Views/Investigation/Create.cshtml", editInv);
+        }
+
+        [HttpPut]
         public IActionResult Edit([Bind("DateOfAction", "InvestigatorEmail", "InvestigatorPhone", "InvDescription")] EditInvestigation vInvestigation, int id)
         {
             //todo

@@ -844,7 +844,6 @@ C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester
 \\Mac\Home\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\Create.cshtml.g.cs
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\mvc.csprojAssemblyReference.cache
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\Create.cshtml.g.cs
-C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Investigation\Edit.cshtml.g.cs
 \\Mac\Home\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Investigation\Edit.cshtml.g.cs
 C:\Users\Mireille\Desktop\mvc\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Mireille\Desktop\mvc\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\libman.json
@@ -1266,3 +1265,5 @@ C:\Users\Mireille\Desktop\mvc\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.dll
 C:\Users\Mireille\Desktop\mvc\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.pdb
 C:\Users\Mireille\Desktop\mvc\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Mireille\Desktop\mvc\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Investigation\Create.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Investigation\NoInvestigation.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Investigation\Create.cshtml.g.cs

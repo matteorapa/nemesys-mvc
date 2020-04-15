@@ -1,11 +1,21 @@
-﻿
+﻿@Model Investigation
 
 <h1>Details</h1>
 <div class="card">
-    
 
-        <a asp-controller="Investigation" asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+    <div class="container" style="border: 1px solid gray;">
+
+        <h4>Investigation</h4><hr>
+        <p>@Model.InvDescription</p>
+        <br><br>
+        <h5>Investigator Details</h5>
+
+        <a asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.ReportId" class="btn btn-primary">Edit</a>
+        <a asp-controller="Investigation" asp-action="Details" asp-route-id="@Model.InvestigationId" class="btn btn-primary">Details</a>
+
     </div>
+    <a asp-controller="Investigation" asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+</div>
 </div>
 
 

@@ -7,11 +7,12 @@ namespace mvc.Models
 {
     public interface IInvestigationRepository
     {
-        Investigation GetInvestigationById(int reportId);
+        Investigation GetInvestigationById(int investgationId);
+        Investigation GetInvestigationByReportId(int reportId);
         IEnumerable<Investigation> GetAllInvestigations();
 
         void CreateInvestigation(Investigation investigation); 
-        Investigation EditInvestigation(int reportId);
+        void EditInvestigation(int reportId);
 
     }
 }
