@@ -1,16 +1,24 @@
-﻿@Model Report
+﻿
 
-<h1>@Model.HazardLocation</h1>
-<div class="card" style="width: 90%;padding:20px; margin:20px;">
-    <img class="card-img-top" src="@Model.ImageUrl" alt="Image for @Model.HazardLocation" />
-    <div class="card-body">
-        <h3 class="card-title">@Model.HazardLocation</h3>
-        <p class="card-text">@Model.HazardDescription</p>
-        <p class="small">@Model.HazardDate.ToShortDateString()</p>
-        <p class="small">Number of Upvotes: @Model.Upvotes</p>
 
-        <a asp-controller="Report" asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+    <div class="focused">
+        <h1>@Model.HazardLocation</h1>
+        <img class="card-img-top" src="@Model.ImageUrl" alt="Image for @Model.HazardLocation" />
+        <div class="card-body">
+            
+            <p class="card-text">@Model.HazardDescription</p>
+            <p class="small">@Model.HazardDate.ToShortDateString()</p>
+            <p class="small">Number of Upvotes: @Model.Upvotes</p>
 
-        <a asp-controller="Investigation" asp-action="Details" asp-route-id="@Model.ReportId" class="btn btn-primary">Read Investigation Report</a>
+            <div class="actions-row">
+                <form asp-controller="Report" asp-action="Index" method="get">
+                    <button class="btn btn-light"><i class="far fa-hand-point-left grad-text"></i> Back</button>
+                </form>
+                <form asp-controller="Investigation" asp-action="Details" method="get">
+                    <button class="red-button">Read Investigation Report</button>
+                </form>
+               
+            </div>
+
+        </div>
     </div>
-</div>

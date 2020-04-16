@@ -2,7 +2,25 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to NEMESYS</h1>
-    <p>The Near Miss Exposure and Reporting System.</p>
-</div>
+    <div class="text-center">
+        <section class="h-container">
+            
+              
+                <div>
+                    <h1 class="display-4">NEMESYS</h1>
+                    <p>The Near Miss Exposure and Reporting System.</p>
+                    <form asp-controller="Report" asp-action="Create" method="get">
+                        <button class="red-button">Create Report</button>
+                    </form>
+                    
+                </div>
+
+        </section>
+
+        <section>
+            <hr>
+            <p class="grad-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+  
+        </section>
+
+    </div>
