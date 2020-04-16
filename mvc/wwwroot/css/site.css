@@ -69,3 +69,77 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.red-button {
+    background: linear-gradient(to right, #24c6dc, #514a9d);
+    color: white;
+    font-weight: 700;
+    padding: 12px;
+    font-size: 16px;
+    text-shadow: 0px 1px 2px rgb(30,30,30);
+    border-radius: 2px;
+    border: 1.4px solid rgb(30,30,30);
+    max-width: 350px;
+    width: 100%;
+}
+
+
+.grad-text {
+    background: linear-gradient(to right, #24c6dc, #514a9d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+
+
+
+.report-img {
+    height: 240px !important;
+    object-position: center !important;
+    object-fit: cover !important;
+}
+
+.no-margin {
+    margin: unset !important;
+}
+
+
+
+.h-container {
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.side-options {
+    width: 20vw;
+}
+
+.focused{
+    width: 80%;
+    margin: 0 auto;
+    padding: 12px;
+}
+
+.report-card{
+    margin-bottom: 12px;
+}
+
+.upvotes{
+    padding: 3px;
+}
+
+.actions-row{
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-content:space-between;
+
+}
+
+
+
+
+
