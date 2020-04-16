@@ -1267,3 +1267,4 @@ C:\Users\Mireille\Desktop\mvc\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\appsetting
 C:\Users\Mireille\Desktop\mvc\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Investigation\Create.cshtml.g.cs
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Investigation\NoInvestigation.cshtml.g.cs
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Investigation\Create.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Investigation\Edit.cshtml.g.cs

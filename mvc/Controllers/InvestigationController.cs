@@ -85,7 +85,7 @@ namespace mvc.Controllers
             editInv.InvestigatorEmail = inv.InvestigatorEmail;
             editInv.InvestigatorPhone = inv.InvestigatorPhone;
 
-            return View("Views/Investigation/Create.cshtml", editInv);
+            return View(editInv);
         }
 
         [HttpPut]
