@@ -92,6 +92,22 @@ namespace mvc.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public IActionResult Search(string search)
+        {   
+            var model = new ReportRegisterViewModel();
+
+            //clean search input ...
+            ViewBag.Title = "Results for " + search;
+            
+            
+            model.Reports = _reportRepository.GetAllReports().Where(x =>  search.Contains(x.HazardLocation));
+            model.TotalReports = model.Reports.Count();
+
+            return View(model);
+        }
+
+
 
 
     }

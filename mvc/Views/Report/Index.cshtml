@@ -1,18 +1,21 @@
 ﻿@model mvc.ViewModels.ReportRegisterViewModel
 
 
+
 <div class="row">
     <aside class="side-options">
         <div class="container">
             <small class="text-muted">@Model.TotalReports reports found</small>
             <hr>
 
-            
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Search</label>
-                <input class="form-control" type="search" asp-controller="Report" asp-action="Search" placeholder="Search for a report" />
+            <form asp-controller="Report" asp-action="Search" method="get" role="form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Search</label>
+                    <input name="search" class="form-control" type="search" asp-controller="Report" asp-action="Search" placeholder="Search for a report" />
+                    <small asp-validation-for="Search" class="text-danger"></small>
+                </div>
+            </form>
 
-            </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Sort Reports</label>
                     <select class="form-control" id="exampleFormControlSelect1">
