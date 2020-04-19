@@ -101,7 +101,7 @@ namespace mvc.Controllers
             ViewBag.Title = "Results for " + search;
             
             
-            model.Reports = _reportRepository.GetAllReports().Where(x =>  search.Contains(x.HazardLocation));
+            model.Reports = _reportRepository.GetAllReports().Where(x => x.HazardLocation.Contains(search, StringComparison.OrdinalIgnoreCase));
             model.TotalReports = model.Reports.Count();
 
             return View(model);
