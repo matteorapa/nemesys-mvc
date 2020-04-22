@@ -19,6 +19,6 @@ namespace mvc.Models
         public int Upvotes { get; set; }
 
         //One-to-Many relationship with User - EF Core Conventions
-        public User User { get; set; } //Reference Property
+        //public User User { get; set; } //Reference Property
     }
 }

@@ -1,0 +1,66 @@
+﻿@model mvc.ViewModels.EditReport
+
+<div class="focused">
+
+    <form asp-action="Edit" method="post" role="form" enctype="multipart/form-data">
+        <h1>Edit Report</h1><hr>
+        <div class="form-group">
+            <label asp-for="HazardLocation">Location of Hazard</label>
+
+            <input asp-for="HazardLocation" class="form-control" />
+            <span asp-validation-for="HazardLocation" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+
+            <div class="jumbotron">
+                <small>Google maps here</small>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="HazardDate">Date Hazard Was Spotted</label>
+
+                    <input asp-for="HazardDate" class="form-control" />
+                    <span asp-validation-for="HazardDate" class="text-danger"></span>
+
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="HazardType">Type of Hazard</label>
+
+                    <input asp-for="HazardType" class="form-control" />
+                    <span asp-validation-for="HazardType" class="text-danger"></span>
+
+                </div>
+            </div>
+        </div>
+               
+
+        <div class="form-group">
+            <label asp-for="HazardDescription">Description</label>
+
+            <textarea asp-for="HazardDescription" class="form-control"></textarea>
+            <span asp-validation-for="HazardDescription" class="text-danger"></span>
+
+        </div>
+        <div class="form-group">
+
+            <div class="custom-file">
+                <input type="file" asp-for="Image" class="custom-file-input" id="customFile">
+                <label asp-for="Image" class="custom-file-label">Choose file</label>
+            </div>
+
+        </div>
+        <div class="actions-row">
+            <a asp-controller="Report" asp-action="Index" class="btn btn-light">Back to Reports</a>
+            <input type="submit" class="red-button" value="Edit Report" />
+
+        </div>
+    </form>
+
+</div>

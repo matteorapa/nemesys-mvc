@@ -85,11 +85,59 @@ namespace mvc.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var rep = _reportRepository.GetReportById(id);
+
+            EditReport editRep = new EditReport();
+            editRep.HazardLocation = rep.HazardLocation;
+            editRep.HazardDate = rep.HazardDate;
+            editRep.HazardType = rep.HazardType;
+            editRep.HazardDescription = rep.HazardDescription;
+            editRep.ImageUrl = rep.ImageUrl;
+
+            return View(editRep);
+        }
+
         [HttpPost]
-        public IActionResult Edit()
+        public IActionResult Edit([Bind("HazardLocation", "HazardDate", "HazardType", "HazardDescription", "Image")] EditReport thisReport, int id)
         {
 
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                string fileName = "";
+                if (thisReport.Image != null)
+                {
+                    var img = thisReport.Image;
+                    var extension = "." + img.FileName.Split('.')[img.FileName.Split('.').Length - 1];
+
+                    fileName = Guid.NewGuid().ToString() + extension;
+                    var path = Directory.GetCurrentDirectory() + "\\wwwroot\\images\\reports\\" + fileName;
+                    using (var bits = new FileStream(path, FileMode.Create))
+                    {
+                        thisReport.Image.CopyTo(bits);
+                    }
+                }
+
+                Report report = new Report()
+                {
+                    HazardLocation = thisReport.HazardLocation,
+                    HazardDescription = thisReport.HazardDescription,
+                    HazardDate = thisReport.HazardDate,
+                    DateOfReport = DateTime.Now,
+                    HazardType = thisReport.HazardType,
+                    ImageUrl = "/images/reports/" + fileName,
+                    Upvotes = 0,
+                };
+
+                _reportRepository.EditReportById(id, report);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return this.View(thisReport);
+            }
         }
 
         [HttpGet]

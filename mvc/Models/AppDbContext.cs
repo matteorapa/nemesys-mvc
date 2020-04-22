@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace mvc.Models
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -15,12 +16,11 @@ namespace mvc.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().Property(u => u.IsInvestigator).HasDefaultValue(0);
-
+            base.OnModelCreating(modelBuilder);
+            //modelBuilder.Entity<User>().Property(u => u.IsInvestigator).HasDefaultValue(0);
         }
 
         public DbSet<Report> Reports { get; set; }
         public DbSet<Investigation> Investigations { get; set; }
-        public DbSet<User> Users { get; set; }
     }
 }

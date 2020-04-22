@@ -11,9 +11,8 @@ namespace mvc.Models
         IEnumerable<Report> GetAllReports();
         Report GetReportById(int reportId);
         void CreateReport(Report report);
-        //Report EditReportById(int reportId);
-        //Report DeleteReportById(int reportId);
-        //Test 23
+        
+        void EditReportById(int reportId, Report r);
 
     }
 }

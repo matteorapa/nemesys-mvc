@@ -24,6 +24,25 @@ namespace mvc.Models
             return _appDbContext.Reports.FirstOrDefault(r => r.ReportId == reportId);
         }
 
+        public void EditReportById(int reportId, Report rep)
+        {
+            var rec = _appDbContext.Reports.FirstOrDefault(r => r.ReportId == reportId);
+           
+            if (rec != null)
+            {
+                // Make changes on entity
+                rec.HazardDescription = rep.HazardDescription;
+                rec.HazardDate = rep.HazardDate;
+                rec.HazardType = rep.HazardType;
+                rec.HazardDescription = rep.HazardDescription;
+                rec.ImageUrl = rep.ImageUrl;
+
+                _appDbContext.Reports.Update(rec);
+
+                _appDbContext.SaveChanges();
+            }
+        }
+
         public void CreateReport(Report rep)
         {
             _appDbContext.Reports.Add(rep);
