@@ -43,7 +43,7 @@ namespace mvc.Controllers
                 }
             }
 
-            ModelState.AddModelError("", "User name or password not correct");
+            ModelState.AddModelError("", "Username or password not correct");
             return View(loginViewModel);
         }
 
@@ -59,14 +59,17 @@ namespace mvc.Controllers
             {
                 var user = new IdentityUser()
                 {
-                    UserName = registerViewModel.UserName
+                    UserName = registerViewModel.Username,
+                    PhoneNumber = registerViewModel.PhoneNumber,
+                    Email = registerViewModel.Email
                 };
 
                 var result = await _userManager.CreateAsync(user, registerViewModel.Password);
-
+                
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    await _userManager.AddToRoleAsync(user, "Reporter");
+                    return RedirectToAction("Login", "Account");
                 }
 
                 //If registration errors exist, show the first error one on the list

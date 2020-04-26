@@ -20,8 +20,8 @@ namespace mvc.ViewModels
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [Display(Name = "Username")]
+        public string Username { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -29,7 +29,17 @@ namespace mvc.ViewModels
 
         [Required(ErrorMessage = "Please confirm your password")]
         [DataType(DataType.Password)]
+        [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "Confirm password doesn't match. please type it in carefully.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress, ErrorMessage = "E-mail is not valid")]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Phone Number")]
+        [RegularExpression("([0-9]+)", ErrorMessage = "Please enter valid Number")]
+        public string PhoneNumber { get; set; }
     }
 }
