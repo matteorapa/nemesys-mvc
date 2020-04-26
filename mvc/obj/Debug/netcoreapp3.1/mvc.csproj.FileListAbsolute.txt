@@ -1263,7 +1263,6 @@ C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Investigation\Create.cshtml.g.cs
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Investigation\Edit.cshtml.g.cs
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\appsettings.Development.json
-C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\libman.json
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\mvc.exe
@@ -1288,8 +1287,6 @@ C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Micro
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.CookiePolicy.dll
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cors.dll
-C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cryptography.Internal.dll
-C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.Abstractions.dll
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.dll
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.Extensions.dll
@@ -1368,8 +1365,6 @@ C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Micro
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Hosting.Abstractions.dll
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Hosting.dll
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Http.dll
-C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Identity.Core.dll
-C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Localization.Abstractions.dll
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Localization.dll
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Logging.Configuration.dll
@@ -1693,3 +1688,12 @@ C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\mvc.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\mvc.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\Edit.cshtml.g.cs
+C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\Edit.cshtml.g.cs
+C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs

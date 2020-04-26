@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -27,6 +30,31 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Investigation" asp-action="Index">Investigations</a>
                         </li>
+
+                        @if (!SignInManager.IsSignedIn(User))
+                        {
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+                                </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <form asp-action="Logout" asp-controller="Account" id="logoutForm" method="post" class="float-right">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link">Welcome @User.Identity.Name</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+                                    </li>
+                                </ul>
+                            </form>
+                        }
                     </ul>
                 </div>
             </div>

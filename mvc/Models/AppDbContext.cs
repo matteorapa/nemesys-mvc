@@ -24,3 +24,5 @@ namespace mvc.Models
         public DbSet<Investigation> Investigations { get; set; }
     }
 }
+
+

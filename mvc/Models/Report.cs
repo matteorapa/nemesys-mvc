@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ namespace mvc.Models
 {
     public class Report
     {
+        public IdentityUser User { get; set; }
         public int ReportId { get; set; }
         public string HazardLocation { get; set; }
         public DateTime DateOfReport { get; set; }
