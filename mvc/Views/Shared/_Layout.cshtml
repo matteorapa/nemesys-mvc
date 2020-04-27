@@ -44,16 +44,14 @@
                         }
                         else
                         {
-                            <form asp-action="Logout" asp-controller="Account" id="logoutForm" method="post" class="float-right">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
                                         <a class="nav-link">Welcome @User.Identity.Name</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+                                        <a class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
                                     </li>
                                 </ul>
-                            </form>
                         }
                     </ul>
                 </div>

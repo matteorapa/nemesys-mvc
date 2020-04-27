@@ -6,15 +6,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using mvc.Models;
 using mvc.ViewModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace mvc.Controllers
 {
     public class ReportController : Controller
     {
         private readonly IReportRepository _reportRepository;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public ReportController(IReportRepository reportRepository)
+        public ReportController(IReportRepository reportRepository, UserManager<IdentityUser> userManager)
         {
+            _userManager = userManager;
             _reportRepository = reportRepository;
         }
 
@@ -30,6 +36,7 @@ namespace mvc.Controllers
             return View(model);
         }
 
+
         [HttpGet]
         public IActionResult Details(int id)
         {
@@ -40,14 +47,17 @@ namespace mvc.Controllers
                 return View(rep);
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
+
+        [Authorize]
         [HttpPost]
-        public IActionResult Create([Bind("HazardLocation", "HazardDate", "HazardType", "HazardDescription", "Image")] EditReport newReport){
+        public async Task<IActionResult> Create([Bind("HazardLocation", "HazardDate", "HazardType", "HazardDescription", "Image")] EditReport newReport){
             
             if (ModelState.IsValid)
             {
@@ -65,14 +75,20 @@ namespace mvc.Controllers
                     }
                 }
 
+                var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                IdentityUser idenUser = await _userManager.FindByIdAsync(currentUser);
+                
                 Report report = new Report()
                 {
+                    User = idenUser,
                     HazardLocation = newReport.HazardLocation,
                     HazardDescription = newReport.HazardDescription,
                     HazardDate = newReport.HazardDate,
                     DateOfReport = DateTime.Now,
                     HazardType = newReport.HazardType,
                     ImageUrl = "/images/reports/" + fileName,
+                    ReporterEmail = idenUser.Email,
+                    ReporterPhone = idenUser.PhoneNumber,
                     Upvotes = 0,
                 };
 
@@ -85,21 +101,33 @@ namespace mvc.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             var rep = _reportRepository.GetReportById(id);
 
-            EditReport editRep = new EditReport();
-            editRep.HazardLocation = rep.HazardLocation;
-            editRep.HazardDate = rep.HazardDate;
-            editRep.HazardType = rep.HazardType;
-            editRep.HazardDescription = rep.HazardDescription;
-            editRep.ImageUrl = rep.ImageUrl;
+            var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            IdentityUser idenUser = await _userManager.FindByIdAsync(currentUser);
 
-            return View(editRep);
+            if (rep.User == idenUser)
+            {
+                EditReport editRep = new EditReport();
+                editRep.HazardLocation = rep.HazardLocation;
+                editRep.HazardDate = rep.HazardDate;
+                editRep.HazardType = rep.HazardType;
+                editRep.HazardDescription = rep.HazardDescription;
+                editRep.ImageUrl = rep.ImageUrl;
+
+                return View(editRep);
+            }
+            else
+            {
+                return View("Views/Report/Error.cshtml");
+            }
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Edit([Bind("HazardLocation", "HazardDate", "HazardType", "HazardDescription", "Image")] EditReport thisReport, int id)
         {

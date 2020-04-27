@@ -16,7 +16,7 @@ namespace mvc.Models
         public string HazardType { get; set; }
         public string HazardDescription { get; set; }
         public string ReporterEmail { get; set; }
-        public int ReporterPhone { get; set; }
+        public string ReporterPhone { get; set; }
         public string ImageUrl { get; set; }
         public int Upvotes { get; set; }
 

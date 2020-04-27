@@ -1699,3 +1699,4 @@ C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\View
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\Error.cshtml.g.cs

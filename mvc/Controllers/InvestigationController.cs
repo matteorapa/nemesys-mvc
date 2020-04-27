@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using mvc.Models;
 using mvc.ViewModels;
@@ -17,6 +18,7 @@ namespace mvc.Controllers
             _investigationRepository = investigationRepository;
         }
 
+        [Authorize(Roles = "Investigator")]
         [HttpGet]
         public IActionResult Index()
         {
@@ -27,13 +29,14 @@ namespace mvc.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Investigator")]
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-
+        [Authorize(Roles = "Investigator")]
         [HttpPost]
         public IActionResult Create([Bind("DateOfAction", "InvestigatorEmail", "InvestigatorPhone", "InvDescription")] EditInvestigation vInvestigation, int id)
         {
@@ -74,6 +77,8 @@ namespace mvc.Controllers
             else
                 return View(inv);
         }
+
+        [Authorize(Roles = "Investigator")]
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -88,6 +93,7 @@ namespace mvc.Controllers
             return View(editInv);
         }
 
+        [Authorize(Roles = "Investigator")]
         [HttpPut]
         public IActionResult Edit([Bind("DateOfAction", "InvestigatorEmail", "InvestigatorPhone", "InvDescription")] EditInvestigation vInvestigation, int id)
         {
