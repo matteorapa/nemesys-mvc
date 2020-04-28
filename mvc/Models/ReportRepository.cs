@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,6 +18,11 @@ namespace mvc.Models
         public IEnumerable<Report> GetAllReports()
         {
             return _appDbContext.Reports;
+        }
+
+        public IEnumerable<Report> GetUserReports(IdentityUser user)
+        {
+            return _appDbContext.Reports.Where(r => r.User == user);
         }
 
         public Report GetReportById(int reportId)

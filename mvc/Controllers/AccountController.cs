@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using mvc.ViewModels;
 using Microsoft.Extensions.Logging;
 using mvc.Models;
+using System.Security.Claims;
 
 namespace mvc.Controllers
 {
@@ -65,7 +66,7 @@ namespace mvc.Controllers
                 };
 
                 var result = await _userManager.CreateAsync(user, registerViewModel.Password);
-                
+
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, "Reporter");
@@ -77,6 +78,27 @@ namespace mvc.Controllers
             }
 
             return View(registerViewModel);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Promote()
+        {
+            var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            IdentityUser idenUser = await _userManager.FindByIdAsync(currentUser);
+
+            var userRole = await _userManager.GetRolesAsync(idenUser);
+
+            if (userRole.Contains("Reporter"))
+            {
+                await _userManager.RemoveFromRoleAsync(idenUser, "Reporter");
+                await _userManager.AddToRoleAsync(idenUser, "Investigator");
+
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View("Views/Report/Error.cshtml"); //TO CHANGE
+            }
         }
 
         [HttpPost]

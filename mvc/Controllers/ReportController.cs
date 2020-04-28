@@ -36,7 +36,23 @@ namespace mvc.Controllers
             return View(model);
         }
 
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> UserIndex()
+        {
+            var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            IdentityUser idenUser = await _userManager.FindByIdAsync(currentUser);
 
+            ViewBag.Title = "Report Register";
+
+            var model = new ReportRegisterViewModel();
+            model.Reports = _reportRepository.GetUserReports(idenUser).OrderByDescending(r => r.DateOfReport);
+            model.TotalReports = model.Reports.Count();
+
+            return View("Views/Report/Index.cshtml", model);
+        }
+
+        [Authorize]
         [HttpGet]
         public IActionResult Details(int id)
         {
@@ -47,7 +63,7 @@ namespace mvc.Controllers
                 return View(rep);
         }
 
-        [Authorize]
+        [Authorize(Roles ="Reporter")]
         [HttpGet]
         public IActionResult Create()
         {
