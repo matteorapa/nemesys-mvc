@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -41,5 +42,12 @@ namespace mvc.ViewModels
         [Display(Name = "Phone Number")]
         [RegularExpression("([0-9]+)", ErrorMessage = "Please enter valid Number")]
         public string PhoneNumber { get; set; }
+    }
+
+
+    public class ManageViewModel {
+        public int TotalAccounts { get; set; }
+        public IEnumerable<IdentityUser> Investigators { get; set; }
+        public IEnumerable<IdentityUser> Reporters { get; set; }
     }
 }

@@ -1,0 +1,38 @@
+﻿@model ManageViewModel
+
+
+<h3>Invesitgators</h3>
+<hr>
+@foreach (var account in Model.Investigators)
+{
+    <div class="user-row">
+
+        <div>
+            <span><strong>@account.UserName</strong></span>
+            <small>@account.Email</small>
+        </div>
+
+        <a asp-controller="Account" asp-action="Demote" asp-route-id="@account.Id" class="btn btn-outline-danger">Demote to Reporter</a>
+
+
+    </div>
+
+}
+<br>
+<h3>Reporters</h3>
+<hr>
+@foreach (var account in Model.Reporters)
+{
+    <div class="user-row">
+
+        <div>
+            <span><strong>@account.UserName<strong></span>
+            <small>@account.Email</small>
+        </div>
+        <a asp-controller="Account" asp-action="Promote" asp-route-id="@account.Id" class="btn btn-outline-success">Promote to Investigator</a>
+
+
+    </div>
+
+}
+

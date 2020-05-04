@@ -145,6 +145,16 @@ body {
     object-position:center;
 }
 
+.user-row {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #514a9d;
+    padding: 12px;
+    background-color: rgb(250,250,255);
+    margin-bottom: 12px;
+}
 
 
 

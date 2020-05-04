@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using mvc.ViewModels;
-using Microsoft.Extensions.Logging;
-using mvc.Models;
-using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace mvc.Controllers
 {
@@ -80,30 +78,83 @@ namespace mvc.Controllers
             return View(registerViewModel);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Promote()
-        {
-            var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            IdentityUser idenUser = await _userManager.FindByIdAsync(currentUser);
 
-            var userRole = await _userManager.GetRolesAsync(idenUser);
+        [Authorize(Roles = "Investigator")]
+        [HttpPut]
+        public async void Promote(string id)
+        {
+
+            IdentityUser currentUser = await _userManager.FindByIdAsync(id);
+            var userRole = await _userManager.GetRolesAsync(currentUser);
 
             if (userRole.Contains("Reporter"))
             {
-                await _userManager.RemoveFromRoleAsync(idenUser, "Reporter");
-                await _userManager.AddToRoleAsync(idenUser, "Investigator");
+                //promote
+                await _userManager.RemoveFromRoleAsync(currentUser, "Reporter");
+                await _userManager.AddToRoleAsync(currentUser, "Investigator");
+                RedirectToAction("Views/Account/ManageAccounts.cshtml");
 
-                return RedirectToAction("Index", "Home");
             }
             else
             {
-                return View("Views/Report/Error.cshtml"); //TO CHANGE
+                //prevent promoting a investigator
+                RedirectToAction("Views/Account/Error.cshtml");
             }
+
+
+        
+        }
+
+        [Authorize(Roles = "Investigator")]
+        [HttpPut]
+        public async void Demote(string id)
+        {
+           
+            IdentityUser currentUser = await _userManager.FindByIdAsync(id);
+            var userRole = await _userManager.GetRolesAsync(currentUser);
+
+            if (userRole.Contains("Investigator"))
+            {
+                //demote
+                await _userManager.RemoveFromRoleAsync(currentUser, "Investigator");
+                await _userManager.AddToRoleAsync(currentUser, "Reporter");
+
+                //check if demoting self
+
+                
+                //if (loggedUser.GetUserId() == id) {
+                   // Redirect("Views/Home/Index");
+                //}
+
+            }
+            else
+            {
+                //prevent demoting a reporter
+                RedirectToAction("Views/Account/Error.cshtml");
+            }
+        }
+
+
+        [Authorize(Roles = "Investigator")]
+        [HttpGet]
+        public async Task<IActionResult> ManageAccounts()
+        {
+           
+            ViewBag.Title = "Manage Accounts";
+            var model = new ManageViewModel();
+
+            model.Investigators = await _userManager.GetUsersInRoleAsync("Investigator");
+            model.Reporters = await _userManager.GetUsersInRoleAsync("Reporter");
+            model.TotalAccounts = _userManager.Users.Count();
+        
+            return View("Views/Account/ManageAccounts.cshtml", model);
+
         }
 
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
+         
             await _signinManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
 

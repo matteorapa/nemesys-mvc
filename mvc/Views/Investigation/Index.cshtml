@@ -5,18 +5,20 @@
 <div>
     @foreach (var investigation in Model.Investigations)
     {
-    <div class="container" style="border: 1px solid gray;">
+        <div class="container" style="border: 1px solid gray;">
 
-        <h4>Investigation</h4><hr>
-        <p>@investigation.InvDescription</p>
-        <br><br>
-        <h5>Investigator Details</h5>
+            <h4>Investigation</h4><hr>
+            <p>@investigation.InvDescription</p>
+            <br><br>
+            <h5>Investigator Details</h5>
 
-        <a asp-controller="Investigation" asp-action="Edit" asp-route-id="@investigation.ReportId" class="btn btn-primary">Edit</a>
-        <a asp-controller="Investigation" asp-action="Details" asp-route-id="@investigation.InvestigationId" class="btn btn-primary">Details</a>
+            <a asp-controller="Investigation" asp-action="Edit" asp-route-id="@investigation.ReportId" class="btn btn-primary">Edit</a>
+            <a asp-controller="Investigation" asp-action="Details" asp-route-id="@investigation.InvestigationId" class="btn btn-primary">Details</a>
 
 
 
-    </div>
+        </div>
     }
+
+    <a asp-controller="Account" asp-action="ManageAccounts" class="btn btn-secondary">Manage Accounts</a>
 </div>

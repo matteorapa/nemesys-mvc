@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using mvc.Models;
 using mvc.ViewModels;
@@ -100,6 +101,23 @@ namespace mvc.Controllers
             //todo
             return RedirectToAction("Index");
         }
+
+       
+
+        [Authorize(Roles = "Investigator")]
+        [HttpGet]
+        public IActionResult Users(IdentityUser u)
+        {
+            ViewBag.Title = "All Investigations";
+            var model = new InvestigationListViewModel();
+            model.Investigations = _investigationRepository.GetAllInvestigations();
+            model.TotalInvestigations = model.Investigations.Count();
+            return View(model);
+            //get list of users
+
+            return RedirectToAction("Index");
+        }
+
 
     }
 }
