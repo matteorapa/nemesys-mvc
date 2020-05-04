@@ -49,7 +49,10 @@
                             <a class="nav-link">Welcome @User.Identity.Name</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
+                            <form asp-controller="Account" asp-action="Logout" id="logout" method="post">
+                                <a href="javascript:{}" class="nav-link" onclick="document.getElementById('logout').submit();">Logout</a>
+                            </form>
+                            <!---https://stackoverflow.com/questions/10039968/submit-form-using-a-tag-->
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Report" asp-action="UserIndex">My Reports</a>

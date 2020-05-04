@@ -17,6 +17,7 @@ namespace mvc.Models
         public string HazardDescription { get; set; }
         public string ReporterEmail { get; set; }
         public string ReporterPhone { get; set; }
+        public string ReportStatus { get; set; }
         public string ImageUrl { get; set; }
         public int Upvotes { get; set; }
 

@@ -10,7 +10,7 @@ namespace mvc.Models
         public int InvestigationId { get; set; } //Primary Key
         public DateTime DateOfAction { get; set; }
         public string InvestigatorEmail { get; set; }
-        public int InvestigatorPhone { get; set; }
+        public string InvestigatorPhone { get; set; }
         public string InvDescription{ get; set; }
 
         //One-to-One relationship with Report - EF Core Conventions

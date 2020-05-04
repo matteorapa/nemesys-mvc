@@ -67,7 +67,7 @@ namespace mvc.Controllers
 
                 if (result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(user, "Reporter");
+                    await _userManager.AddToRoleAsync(user, "Investigator");
                     return RedirectToAction("Login", "Account");
                 }
 
@@ -80,8 +80,8 @@ namespace mvc.Controllers
 
 
         [Authorize(Roles = "Investigator")]
-        [HttpPut]
-        public async void Promote(string id)
+        [HttpPost]
+        public async Task<IActionResult> Promote(string id)
         {
 
             IdentityUser currentUser = await _userManager.FindByIdAsync(id);
@@ -92,13 +92,14 @@ namespace mvc.Controllers
                 //promote
                 await _userManager.RemoveFromRoleAsync(currentUser, "Reporter");
                 await _userManager.AddToRoleAsync(currentUser, "Investigator");
-                RedirectToAction("Views/Account/ManageAccounts.cshtml");
+
+                return RedirectToAction("ManageAccounts");
 
             }
             else
             {
                 //prevent promoting a investigator
-                RedirectToAction("Views/Account/Error.cshtml");
+                return View("Views/Shared/Error.cshtml");
             }
 
 
@@ -106,8 +107,8 @@ namespace mvc.Controllers
         }
 
         [Authorize(Roles = "Investigator")]
-        [HttpPut]
-        public async void Demote(string id)
+        [HttpPost]
+        public async Task<IActionResult> Demote(string id)
         {
            
             IdentityUser currentUser = await _userManager.FindByIdAsync(id);
@@ -118,19 +119,19 @@ namespace mvc.Controllers
                 //demote
                 await _userManager.RemoveFromRoleAsync(currentUser, "Investigator");
                 await _userManager.AddToRoleAsync(currentUser, "Reporter");
-
+                return RedirectToAction("ManageAccounts");
                 //check if demoting self
 
-                
+
                 //if (loggedUser.GetUserId() == id) {
-                   // Redirect("Views/Home/Index");
+                // Redirect("Views/Home/Index");
                 //}
 
             }
             else
             {
                 //prevent demoting a reporter
-                RedirectToAction("Views/Account/Error.cshtml");
+                return View("Views/Shared/Error.cshtml");
             }
         }
 
@@ -153,11 +154,9 @@ namespace mvc.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Logout()
-        {
-         
+        {         
             await _signinManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
-
         }
 
 

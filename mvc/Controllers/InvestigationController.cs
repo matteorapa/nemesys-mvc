@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -13,10 +14,14 @@ namespace mvc.Controllers
     public class InvestigationController : Controller
     {
         private readonly IInvestigationRepository _investigationRepository;
+        private readonly IReportRepository _reportRepository;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public InvestigationController(IInvestigationRepository investigationRepository)
+        public InvestigationController(IInvestigationRepository investigationRepository, IReportRepository reportRepository, UserManager<IdentityUser> userManager)
         {
+            _userManager = userManager;
             _investigationRepository = investigationRepository;
+            _reportRepository = reportRepository;
         }
 
         [Authorize(Roles = "Investigator")]
@@ -39,18 +44,25 @@ namespace mvc.Controllers
 
         [Authorize(Roles = "Investigator")]
         [HttpPost]
-        public IActionResult Create([Bind("DateOfAction", "InvestigatorEmail", "InvestigatorPhone", "InvDescription")] EditInvestigation vInvestigation, int id)
-        {
+        public async Task <IActionResult> Create([Bind("DateOfAction", "ReportStatus", "InvDescription")] EditInvestigation vInvestigation, int id)
+        { 
+            var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            IdentityUser user = await _userManager.FindByIdAsync(currentUser);
             if (ModelState.IsValid)
             {
                 Investigation i = new Investigation()
                 {
                     DateOfAction = vInvestigation.DateOfAction,
-                    InvestigatorEmail = vInvestigation.InvestigatorEmail,
-                    InvestigatorPhone = vInvestigation.InvestigatorPhone,
+                    InvestigatorEmail = await _userManager.GetEmailAsync(user),
+                    InvestigatorPhone = await _userManager.GetPhoneNumberAsync(user),
                     InvDescription = vInvestigation.InvDescription,
-                    ReportId = id,
+                    ReportId = id                    
                 };
+
+                var report = _reportRepository.GetReportById(id);
+                report.ReportStatus = vInvestigation.ReportStatus;
+
+                _reportRepository.EditReportById(id, report);
 
                 _investigationRepository.CreateInvestigation(i);
 
@@ -84,22 +96,49 @@ namespace mvc.Controllers
         public IActionResult Edit(int id)
         {
             var inv = _investigationRepository.GetInvestigationByReportId(id);
+            var rep = _reportRepository.GetReportById(id);
+
 
             EditInvestigation editInv = new EditInvestigation();
             editInv.DateOfAction = inv.DateOfAction;
             editInv.InvDescription = inv.InvDescription;
-            editInv.InvestigatorEmail = inv.InvestigatorEmail;
-            editInv.InvestigatorPhone = inv.InvestigatorPhone;
+            editInv.ReportStatus = rep.ReportStatus;
 
             return View(editInv);
         }
 
         [Authorize(Roles = "Investigator")]
-        [HttpPut]
-        public IActionResult Edit([Bind("DateOfAction", "InvestigatorEmail", "InvestigatorPhone", "InvDescription")] EditInvestigation vInvestigation, int id)
+        [HttpPost]
+        public async Task <IActionResult> Edit([Bind("DateOfAction", "InvDescription", "ReportStatus")] EditInvestigation vInvestigation, int id)
         {
-            //todo
-            return RedirectToAction("Index");
+            var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            IdentityUser user = await _userManager.FindByIdAsync(currentUser);
+
+            if (ModelState.IsValid)
+            {
+                Investigation i = new Investigation()
+                {
+                    DateOfAction = vInvestigation.DateOfAction,
+                    InvestigatorEmail = await _userManager.GetEmailAsync(user),
+                    InvestigatorPhone = await _userManager.GetPhoneNumberAsync(user),
+                    InvDescription = vInvestigation.InvDescription,
+                    ReportId = id
+                };
+
+                var report = _reportRepository.GetReportById(id);
+                report.ReportStatus = vInvestigation.ReportStatus;
+
+                _reportRepository.EditReportById(id, report);
+
+                _investigationRepository.EditInvestigation(id, i);
+
+                return RedirectToAction("Index");
+            }
+
+            else
+            {
+                return this.View(vInvestigation);
+            }
         }
 
        

@@ -42,6 +42,7 @@ namespace mvc.Models
                 rec.HazardType = rep.HazardType;
                 rec.HazardDescription = rep.HazardDescription;
                 rec.ImageUrl = rep.ImageUrl;
+                rec.ReportStatus = rep.ReportStatus;
 
                 _appDbContext.Reports.Update(rec);
 

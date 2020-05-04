@@ -12,7 +12,7 @@ namespace mvc.Models
         IEnumerable<Investigation> GetAllInvestigations();
 
         void CreateInvestigation(Investigation investigation); 
-        void EditInvestigation(int reportId);
+        void EditInvestigation(int reportId, Investigation investigation);
 
     }
 }

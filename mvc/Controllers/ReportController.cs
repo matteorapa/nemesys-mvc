@@ -63,7 +63,7 @@ namespace mvc.Controllers
                 return View(rep);
         }
 
-        [Authorize(Roles ="Reporter")]
+        [Authorize]
         [HttpGet]
         public IActionResult Create()
         {
@@ -105,6 +105,7 @@ namespace mvc.Controllers
                     ImageUrl = "/images/reports/" + fileName,
                     ReporterEmail = idenUser.Email,
                     ReporterPhone = idenUser.PhoneNumber,
+                    ReportStatus = "Open",
                     Upvotes = 0,
                 };
 

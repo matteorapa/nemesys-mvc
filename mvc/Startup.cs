@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http;
+using System.Web.Http.Cors;
 using mvc.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -63,6 +65,13 @@ namespace mvc
                 options.SlidingExpiration = true;
             });
 
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
@@ -86,6 +95,7 @@ namespace mvc
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseCors();
                         
             app.UseAuthentication();
             app.UseAuthorization();

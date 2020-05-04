@@ -14,7 +14,6 @@ namespace mvc.Models
             _appDbContext = appDbContext;
         }
 
-
         public Investigation GetInvestigationById(int investigationId)
         {
  
@@ -42,15 +41,15 @@ namespace mvc.Models
         }
 
 
-        public void EditInvestigation(int reportId)
+        public void EditInvestigation(int reportId, Investigation inv)
         {
-            var rec =  _appDbContext.Investigations.FirstOrDefault(r => r.ReportId == reportId);
+            var rec =  _appDbContext.Investigations.FirstOrDefault(i => i.ReportId == reportId);
             if (rec != null)
             {
                 // Make changes on entity
-                rec.InvestigatorEmail = "";
-                rec.InvestigatorPhone = 21;
-                rec.InvDescription = "";
+                rec.DateOfAction = inv.DateOfAction;
+                rec.InvDescription = inv.InvDescription;
+
 
                 _appDbContext.Investigations.Update(rec);
 

@@ -1,21 +1,22 @@
 ﻿@model ManageViewModel
 
 
-<h3>Invesitgators</h3>
+<h3>Investigators</h3>
 <hr>
 @foreach (var account in Model.Investigators)
 {
-    <div class="user-row">
+<div class="user-row">
 
-        <div>
-            <span><strong>@account.UserName</strong></span>
-            <small>@account.Email</small>
-        </div>
-
-        <a asp-controller="Account" asp-action="Demote" asp-route-id="@account.Id" class="btn btn-outline-danger">Demote to Reporter</a>
-
-
+    <div>
+        <span><strong>@account.UserName</strong></span>
+        <small>@account.Email</small>
     </div>
+
+    <form asp-controller="Account" asp-action="Demote" asp-route-id="@account.Id" id="demote" method="post">
+        <a href="javascript:{}" class="btn btn-outline-danger" onclick="document.getElementById('demote').submit();">Demote to Reporter</a>
+    </form>
+    <!---<a asp-controller="Account" asp-action="Demote" asp-route-id="@account.Id" method="put" class="btn btn-outline-danger">Demote to Reporter</a>-->    
+</div>
 
 }
 <br>
@@ -23,16 +24,18 @@
 <hr>
 @foreach (var account in Model.Reporters)
 {
-    <div class="user-row">
+<div class="user-row">
 
-        <div>
-            <span><strong>@account.UserName<strong></span>
-            <small>@account.Email</small>
-        </div>
-        <a asp-controller="Account" asp-action="Promote" asp-route-id="@account.Id" class="btn btn-outline-success">Promote to Investigator</a>
-
-
+    <div>
+        <span><strong>@account.UserName<strong></span>
+        <small>@account.Email</small>
     </div>
+    <form asp-controller="Account" asp-action="Promote" asp-route-id="@account.Id" id="promote" method="post">
+        <a href="javascript:{}" class="btn btn-outline-success" onclick="document.getElementById('promote').submit();">Promote to Investigator</a>
+    </form>
+
+    <!---<a asp- asp-controller="Account" asp-action="Promote" asp-route-id="@account.Id" method="put" class="btn btn-outline-success">Promote to Investigator</a>-->
+</div>
 
 }
 
