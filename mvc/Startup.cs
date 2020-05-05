@@ -35,8 +35,9 @@ namespace mvc
             
             services.AddTransient<IReportRepository, ReportRepository>();
             services.AddTransient<IInvestigationRepository, InvestigationRepository>();
+            services.AddTransient<IUpvoteRepository, UpvoteRepository>();
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 //Password policy
                 options.Password.RequireDigit = true;

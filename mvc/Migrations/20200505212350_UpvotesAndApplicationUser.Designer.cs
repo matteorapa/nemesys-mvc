@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mvc.Models;
 
 namespace mvc.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200505212350_UpvotesAndApplicationUser")]
+    partial class UpvotesAndApplicationUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -289,7 +291,7 @@ namespace mvc.Migrations
                     b.Property<string>("ReporterPhone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UpvoteCount")
+                    b.Property<int>("Upvotes")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -309,7 +311,7 @@ namespace mvc.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ReportId")
+                    b.Property<int?>("ReportId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -407,10 +409,8 @@ namespace mvc.Migrations
             modelBuilder.Entity("mvc.Models.Upvote", b =>
                 {
                     b.HasOne("mvc.Models.Report", "Report")
-                        .WithMany("Upvotes")
-                        .HasForeignKey("ReportId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("ReportId");
 
                     b.HasOne("mvc.Models.ApplicationUser", "User")
                         .WithOne("Upvote")

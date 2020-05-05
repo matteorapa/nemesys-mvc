@@ -10,7 +10,7 @@ namespace mvc.Models
     public interface IReportRepository
     {
         IEnumerable<Report> GetAllReports();
-        IEnumerable<Report> GetUserReports(IdentityUser user);
+        IEnumerable<Report> GetUserReports(ApplicationUser user);
         Report GetReportById(int reportId);
         void CreateReport(Report report);
         

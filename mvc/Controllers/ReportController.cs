@@ -16,12 +16,14 @@ namespace mvc.Controllers
     public class ReportController : Controller
     {
         private readonly IReportRepository _reportRepository;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly IUpvoteRepository _upvoteRepository;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ReportController(IReportRepository reportRepository, UserManager<IdentityUser> userManager)
+        public ReportController(IReportRepository reportRepository, IUpvoteRepository upvoteRepository, UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
             _reportRepository = reportRepository;
+            _upvoteRepository = upvoteRepository;
         }
 
         [HttpGet]
@@ -41,7 +43,7 @@ namespace mvc.Controllers
         public async Task<IActionResult> UserIndex()
         {
             var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            IdentityUser idenUser = await _userManager.FindByIdAsync(currentUser);
+            ApplicationUser idenUser = await _userManager.FindByIdAsync(currentUser);
 
             ViewBag.Title = "Report Register";
 
@@ -92,7 +94,7 @@ namespace mvc.Controllers
                 }
 
                 var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                IdentityUser idenUser = await _userManager.FindByIdAsync(currentUser);
+                ApplicationUser idenUser = await _userManager.FindByIdAsync(currentUser);
                 
                 Report report = new Report()
                 {
@@ -105,8 +107,8 @@ namespace mvc.Controllers
                     ImageUrl = "/images/reports/" + fileName,
                     ReporterEmail = idenUser.Email,
                     ReporterPhone = idenUser.PhoneNumber,
-                    ReportStatus = "Open",
-                    Upvotes = 0,
+                    UpvoteCount = 0,
+                    ReportStatus = "Open"
                 };
 
                 _reportRepository.CreateReport(report);
@@ -125,7 +127,7 @@ namespace mvc.Controllers
             var rep = _reportRepository.GetReportById(id);
 
             var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            IdentityUser idenUser = await _userManager.FindByIdAsync(currentUser);
+            ApplicationUser idenUser = await _userManager.FindByIdAsync(currentUser);
 
             if (rep.User == idenUser)
             {
@@ -172,8 +174,7 @@ namespace mvc.Controllers
                     HazardDate = thisReport.HazardDate,
                     DateOfReport = DateTime.Now,
                     HazardType = thisReport.HazardType,
-                    ImageUrl = "/images/reports/" + fileName,
-                    Upvotes = 0,
+                    ImageUrl = "/images/reports/" + fileName
                 };
 
                 _reportRepository.EditReportById(id, report);
@@ -198,6 +199,44 @@ namespace mvc.Controllers
             model.TotalReports = model.Reports.Count();
 
             return View(model);
+        }
+
+        public async Task<IActionResult> Upvote(int id)
+        {
+            var r = _reportRepository.GetReportById(id);
+
+            var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            ApplicationUser idenUser = await _userManager.FindByIdAsync(currentUser);
+
+            var existingU = _upvoteRepository.GetUserUpvote(idenUser);
+
+            if (existingU == null)
+            {
+                Upvote u = new Upvote()
+                {
+                    //UserId = r.User.Id,
+                    //ReportId = r.ReportId,
+                    Report = r,
+                    User = idenUser
+                };
+
+                _upvoteRepository.CreateUpvote(u);
+
+                Report report = new Report()
+                {
+                    UpvoteCount = r.UpvoteCount++
+                };
+
+                _reportRepository.EditReportById(r.ReportId, report);
+
+                return RedirectToAction("Index");
+            }
+
+            else
+            {
+                return Content("<script>alert('You already upvoted for this report!');</script>");
+            }
+
         }
 
 

@@ -8,7 +8,7 @@ namespace mvc.Models
 {
     public class Report
     {
-        public IdentityUser User { get; set; }
+        public ApplicationUser User { get; set; }
         public int ReportId { get; set; }
         public string HazardLocation { get; set; }
         public DateTime DateOfReport { get; set; }
@@ -19,9 +19,9 @@ namespace mvc.Models
         public string ReporterPhone { get; set; }
         public string ReportStatus { get; set; }
         public string ImageUrl { get; set; }
-        public int Upvotes { get; set; }
+        public int UpvoteCount { get; set; }
 
-        //One-to-Many relationship with User - EF Core Conventions
-        //public User User { get; set; } //Reference Property
+        //One-to-Many (Report to Upvotes) relationship with Report - EF Core Convention 4   
+        public ICollection<Upvote> Upvotes { get; set; }
     }
 }

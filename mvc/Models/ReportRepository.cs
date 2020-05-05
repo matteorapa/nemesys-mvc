@@ -20,7 +20,7 @@ namespace mvc.Models
             return _appDbContext.Reports;
         }
 
-        public IEnumerable<Report> GetUserReports(IdentityUser user)
+        public IEnumerable<Report> GetUserReports(ApplicationUser user)
         {
             return _appDbContext.Reports.Where(r => r.User == user);
         }

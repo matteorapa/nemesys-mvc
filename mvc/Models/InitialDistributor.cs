@@ -71,8 +71,8 @@ namespace mvc.Models
                         HazardDescription = "19 year old went aboard with Corona Cerveza.",
                         ReporterEmail = "covid19@gov.mt",
                         ReporterPhone = "111",
-                        Upvotes = 0,
                         HazardType = "Infected Patient",
+                        UpvoteCount = 0,
                         ImageUrl = "/images/corona.png"
 
                     }

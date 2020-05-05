@@ -15,9 +15,9 @@ namespace mvc.Controllers
     {
         private readonly IInvestigationRepository _investigationRepository;
         private readonly IReportRepository _reportRepository;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public InvestigationController(IInvestigationRepository investigationRepository, IReportRepository reportRepository, UserManager<IdentityUser> userManager)
+        public InvestigationController(IInvestigationRepository investigationRepository, IReportRepository reportRepository, UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
             _investigationRepository = investigationRepository;
@@ -47,7 +47,7 @@ namespace mvc.Controllers
         public async Task <IActionResult> Create([Bind("DateOfAction", "ReportStatus", "InvDescription")] EditInvestigation vInvestigation, int id)
         { 
             var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            IdentityUser user = await _userManager.FindByIdAsync(currentUser);
+            ApplicationUser user = await _userManager.FindByIdAsync(currentUser);
             //todo get selected user from dropdown and set it as user
 
             if (ModelState.IsValid)
@@ -115,7 +115,7 @@ namespace mvc.Controllers
         public async Task <IActionResult> Edit([Bind("DateOfAction", "InvDescription", "ReportStatus")] EditInvestigation vInvestigation, int id)
         {
             var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            IdentityUser user = await _userManager.FindByIdAsync(currentUser);
+            ApplicationUser user = await _userManager.FindByIdAsync(currentUser);
 
             if (ModelState.IsValid)
             {
@@ -148,7 +148,7 @@ namespace mvc.Controllers
 
         [Authorize(Roles = "Investigator")]
         [HttpGet]
-        public IActionResult Users(IdentityUser u)
+        public IActionResult Users(ApplicationUser u)
         {
             ViewBag.Title = "All Investigations";
             var model = new InvestigationListViewModel();

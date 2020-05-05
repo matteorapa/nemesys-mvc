@@ -13,9 +13,9 @@
     </div>
 
     <form asp-controller="Account" asp-action="Demote" asp-route-id="@account.Id" id="demote" method="post">
-        <a href="javascript:{}" class="btn btn-outline-danger" onclick="document.getElementById('demote').submit();">Demote to Reporter</a>
+        <a class="btn btn-outline-danger" asp-controller="Account" asp-action="Demote" asp-route-id="@account.Id">Demote to Reporter</a>
     </form>
-    <!---<a asp-controller="Account" asp-action="Demote" asp-route-id="@account.Id" method="put" class="btn btn-outline-danger">Demote to Reporter</a>-->    
+    <!--- <a asp-controller="Account" asp-action="Demote" asp-route-id="@account.Id" method="post" class="btn btn-outline-danger">Demote to Reporter</a> -->
 </div>
 
 }
@@ -30,9 +30,14 @@
         <span><strong>@account.UserName<strong></span>
         <small>@account.Email</small>
     </div>
+
     <form asp-controller="Account" asp-action="Promote" asp-route-id="@account.Id" id="promote" method="post">
-        <a href="javascript:{}" class="btn btn-outline-success" onclick="document.getElementById('promote').submit();">Promote to Investigator</a>
+        <a class="btn btn-outline-success" asp-controller="Account" asp-action="Promote" asp-route-id="@account.Id">Promote to Investigator</a>
     </form>
+
+    <!---<form asp-controller="Account" asp-action="Promote" asp-route-id="@account.Id" id="promote" method="post">
+        <a href="javascript:{}" class="btn btn-outline-success" onclick="document.getElementById('promote').submit();">Promote to Investigator</a>
+    </form>-->
 
     <!---<a asp- asp-controller="Account" asp-action="Promote" asp-route-id="@account.Id" method="put" class="btn btn-outline-success">Promote to Investigator</a>-->
 </div>

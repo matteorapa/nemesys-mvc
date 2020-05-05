@@ -8,7 +8,7 @@
             
             <p class="card-text">@Model.HazardDescription</p>
             <p class="small">@Model.HazardDate.ToShortDateString()</p>
-            <p class="small">Number of Upvotes: @Model.Upvotes</p>
+            <p class="small">Number of Upvotes: @Model.UpvoteCount</p>
 
             <div class="actions-row">
                 <form asp-controller="Report" asp-action="Index" method="get">

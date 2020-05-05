@@ -11,7 +11,7 @@ namespace mvc.Models
         public int InvestigationId { get; set; } //Primary Key
         public DateTime DateOfAction { get; set; }
 
-        public IdentityUser User { get; set; }
+        public ApplicationUser User { get; set; }
 
 
         public string InvestigatorEmail { get; set; }

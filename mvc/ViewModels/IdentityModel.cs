@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using mvc.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -47,7 +48,7 @@ namespace mvc.ViewModels
 
     public class ManageViewModel {
         public int TotalAccounts { get; set; }
-        public IEnumerable<IdentityUser> Investigators { get; set; }
-        public IEnumerable<IdentityUser> Reporters { get; set; }
+        public IEnumerable<ApplicationUser> Investigators { get; set; }
+        public IEnumerable<ApplicationUser> Reporters { get; set; }
     }
 }

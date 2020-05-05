@@ -22,6 +22,7 @@ namespace mvc.Models
 
         public DbSet<Report> Reports { get; set; }
         public DbSet<Investigation> Investigations { get; set; }
+        public DbSet<Upvote> Upvotes { get; set; }
     }
 }
 

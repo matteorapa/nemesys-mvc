@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using mvc.ViewModels;
+using mvc.Models;
 using Microsoft.AspNetCore.Authorization;
 
 
@@ -11,10 +12,10 @@ namespace mvc.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly SignInManager<IdentityUser> _signinManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signinManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signinManager = signInManager;
             _userManager = userManager;
@@ -56,7 +57,7 @@ namespace mvc.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser()
+                var user = new ApplicationUser()
                 {
                     UserName = registerViewModel.Username,
                     PhoneNumber = registerViewModel.PhoneNumber,
@@ -67,7 +68,7 @@ namespace mvc.Controllers
 
                 if (result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(user, "Reporter");
+                    await _userManager.AddToRoleAsync(user, "Investigator");
                     return RedirectToAction("Login", "Account");
                 }
 
@@ -80,11 +81,12 @@ namespace mvc.Controllers
 
 
         [Authorize(Roles = "Investigator")]
-        [HttpPost]
+        //[HttpPost]
         public async Task<IActionResult> Promote(string id)
         {
+            ApplicationUser myUser = await _userManager.GetUserAsync(User);
 
-            IdentityUser currentUser = await _userManager.FindByIdAsync(id);
+            ApplicationUser currentUser = await _userManager.FindByIdAsync(id);
             var userRole = await _userManager.GetRolesAsync(currentUser);
 
             if (userRole.Contains("Reporter"))
@@ -93,6 +95,8 @@ namespace mvc.Controllers
                 await _userManager.RemoveFromRoleAsync(currentUser, "Reporter");
                 await _userManager.AddToRoleAsync(currentUser, "Investigator");
 
+                if (myUser == currentUser)
+                    await Logout();
                 return RedirectToAction("ManageAccounts");
 
             }
@@ -107,11 +111,12 @@ namespace mvc.Controllers
         }
 
         [Authorize(Roles = "Investigator")]
-        [HttpPost]
+        //[HttpPost]
         public async Task<IActionResult> Demote(string id)
         {
-           
-            IdentityUser currentUser = await _userManager.FindByIdAsync(id);
+            ApplicationUser myUser = await _userManager.GetUserAsync(User);
+
+            ApplicationUser currentUser = await _userManager.FindByIdAsync(id);
             var userRole = await _userManager.GetRolesAsync(currentUser);
 
             if (userRole.Contains("Investigator"))
@@ -119,14 +124,10 @@ namespace mvc.Controllers
                 //demote
                 await _userManager.RemoveFromRoleAsync(currentUser, "Investigator");
                 await _userManager.AddToRoleAsync(currentUser, "Reporter");
+
+                if (myUser == currentUser)
+                    await Logout(); 
                 return RedirectToAction("ManageAccounts");
-                //check if demoting self
-
-
-                //if (loggedUser.GetUserId() == id) {
-                // Redirect("Views/Home/Index");
-                //}
-
             }
             else
             {
