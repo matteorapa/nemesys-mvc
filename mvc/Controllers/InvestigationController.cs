@@ -48,6 +48,8 @@ namespace mvc.Controllers
         { 
             var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             IdentityUser user = await _userManager.FindByIdAsync(currentUser);
+            //todo get selected user from dropdown and set it as user
+
             if (ModelState.IsValid)
             {
                 Investigation i = new Investigation()
@@ -55,6 +57,7 @@ namespace mvc.Controllers
                     DateOfAction = vInvestigation.DateOfAction,
                     InvestigatorEmail = await _userManager.GetEmailAsync(user),
                     InvestigatorPhone = await _userManager.GetPhoneNumberAsync(user),
+                    User = user,
                     InvDescription = vInvestigation.InvDescription,
                     ReportId = id                    
                 };

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,10 @@ namespace mvc.Models
     {
         public int InvestigationId { get; set; } //Primary Key
         public DateTime DateOfAction { get; set; }
+
+        public IdentityUser User { get; set; }
+
+
         public string InvestigatorEmail { get; set; }
         public string InvestigatorPhone { get; set; }
         public string InvDescription{ get; set; }

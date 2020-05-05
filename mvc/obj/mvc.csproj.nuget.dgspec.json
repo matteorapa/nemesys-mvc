@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell\\Documents\\B.Sc IT (Hons.) Computing and Business\\Year Two\\Semester 2\\CIS2055\\Assignment\\mvc\\mvc.csproj": {}
+    "C:\\Users\\Mireille\\Desktop\\web\\nemesys-mvc\\mvc\\mvc.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell\\Documents\\B.Sc IT (Hons.) Computing and Business\\Year Two\\Semester 2\\CIS2055\\Assignment\\mvc\\mvc.csproj": {
+    "C:\\Users\\Mireille\\Desktop\\web\\nemesys-mvc\\mvc\\mvc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell\\Documents\\B.Sc IT (Hons.) Computing and Business\\Year Two\\Semester 2\\CIS2055\\Assignment\\mvc\\mvc.csproj",
+        "projectUniqueName": "C:\\Users\\Mireille\\Desktop\\web\\nemesys-mvc\\mvc\\mvc.csproj",
         "projectName": "mvc",
-        "projectPath": "C:\\Users\\Dell\\Documents\\B.Sc IT (Hons.) Computing and Business\\Year Two\\Semester 2\\CIS2055\\Assignment\\mvc\\mvc.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell\\Documents\\B.Sc IT (Hons.) Computing and Business\\Year Two\\Semester 2\\CIS2055\\Assignment\\mvc\\obj\\",
+        "projectPath": "C:\\Users\\Mireille\\Desktop\\web\\nemesys-mvc\\mvc\\mvc.csproj",
+        "packagesPath": "C:\\Users\\Mireille\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mireille\\Desktop\\web\\nemesys-mvc\\mvc\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mireille\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
