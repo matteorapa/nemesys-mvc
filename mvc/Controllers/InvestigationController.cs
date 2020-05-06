@@ -96,36 +96,35 @@ namespace mvc.Controllers
 
         [Authorize(Roles = "Investigator")]
         [HttpGet]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             var inv = _investigationRepository.GetInvestigationByReportId(id);
             var rep = _reportRepository.GetReportById(id);
 
-
-            EditInvestigation editInv = new EditInvestigation();
-            editInv.DateOfAction = inv.DateOfAction;
-            editInv.InvDescription = inv.InvDescription;
-            editInv.ReportStatus = rep.ReportStatus;
-
-            return View(editInv);
+            var EditInv = new EditInvestigation();
+            EditInv.DateOfAction = inv.DateOfAction;
+            EditInv.InvDescription = inv.InvDescription;
+            EditInv.ReportStatus = rep.ReportStatus;
+            EditInv.Investigators = await _userManager.GetUsersInRoleAsync("Investigator");
+            return View(EditInv);
         }
+
 
         [Authorize(Roles = "Investigator")]
         [HttpPost]
-        public async Task <IActionResult> Edit([Bind("DateOfAction", "InvDescription", "ReportStatus")] EditInvestigation vInvestigation, int id)
+        public async Task <IActionResult> Edit([Bind("DateOfAction", "InvDescription", "ReportStatus", "SelectedInvestigator")] EditInvestigation vInvestigation, int id)
         {
-            var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            ApplicationUser user = await _userManager.FindByIdAsync(currentUser);
-
+            ApplicationUser user = await _userManager.FindByIdAsync(vInvestigation.SelectedInvestigator);
             if (ModelState.IsValid)
             {
                 Investigation i = new Investigation()
                 {
                     DateOfAction = vInvestigation.DateOfAction,
-                    InvestigatorEmail = await _userManager.GetEmailAsync(user),
-                    InvestigatorPhone = await _userManager.GetPhoneNumberAsync(user),
+                    InvestigatorEmail = user.Email,
+                    InvestigatorPhone = user.PhoneNumber,
                     InvDescription = vInvestigation.InvDescription,
-                    ReportId = id
+                    ReportId = id,
+                    User = user
                 };
 
                 var report = _reportRepository.GetReportById(id);
@@ -134,6 +133,8 @@ namespace mvc.Controllers
                 _reportRepository.EditReportById(id, report);
 
                 _investigationRepository.EditInvestigation(id, i);
+
+                //send email to new investigator
 
                 return RedirectToAction("Index");
             }
@@ -157,7 +158,6 @@ namespace mvc.Controllers
             return View(model);
             //get list of users
 
-            return RedirectToAction("Index");
         }
 
 
