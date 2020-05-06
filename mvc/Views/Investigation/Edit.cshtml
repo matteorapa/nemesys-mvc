@@ -1,44 +1,38 @@
-﻿@model mvc.ViewModels.EditInvestigation
+﻿@model mvc.ViewModels.EditInvestigationViewModel
 
 
-<h1>Investigation</h1>
-<form asp-action="Edit" method="post" role="form" enctype="multipart/form-data">
-    <div class="form-group">
-        <label asp-for="DateOfAction" class="col-md-2">Date of Action</label>
-        <div class="col-md-5">
+
+    <form asp-action="Edit" method="post" role="form" enctype="multipart/form-data" class="light-form-lg">
+        <h2>Edit Investigation</h2>
+        <div class="form-group">
+            <label asp-for="DateOfAction">Date of Action</label>
             <input asp-for="DateOfAction" class="form-control" />
             <span asp-validation-for="DateOfAction" class="text-danger"></span>
+
         </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="ReportStatus" class="col-md-3">Status of Report</label>
-        <div class="col-md-5">
+        <div class="form-group">
+            <label asp-for="ReportStatus">Status of Report</label>
             <textarea asp-for="ReportStatus" class="form-control"></textarea>
             <span asp-validation-for="ReportStatus" class="text-danger"></span>
+
         </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="InvDescription" class="col-md-3">Investigaton Description</label>
-        <div class="col-md-5">
+        <div class="form-group">
+            <label asp-for="InvDescription">Investigaton Description</label>
             <textarea asp-for="InvDescription" class="form-control"></textarea>
             <span asp-validation-for="InvDescription" class="text-danger"></span>
+
         </div>
-    </div>
 
-    <div class="form-group">
-        <select class="form-control" id="selectInvestigator" asp-for="SelectedInvestigator" asp-items="@(new SelectList(Model.Investigators,"Id","UserName"))">
-
-            <option>Please select one</option>
-
-        </select>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-5">
-            <input type="submit" class="btn btn-primary" value="Edit Investigation" />
-            <a asp-controller="Investigation" asp-action="Index" class="btn btn-outline-secondary">Back to Investigations</a>
+        <div class="form-group">
+            <label asp-for="InvDescription">Investigator</label>
+            <select class="form-control" id="selectInvestigator" asp-for="SelectedInvestigator" asp-items="@(new SelectList(Model.Investigators,"Id","UserName"))"></select>
         </div>
-    </div>
-</form>
+
+        <div class="form-group text-center">
+            <a asp-controller="Investigation" asp-action="Index" class="btn btn-light">Back to Investigations</a>
+            <input type="submit" class="red-button" value="Save changes" />
+
+        </div>
+    </form>
 
 

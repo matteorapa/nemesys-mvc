@@ -1,46 +1,42 @@
 ﻿@model RegisterViewModel
 
-<h2>Already have an account? Why don't you <a asp-action="Login" asp-controller="Account">login</a></h2>
-<form asp-action="Register" asp-controller="Account" method="post">
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="Username" class="col-md-2"></label>
-        <div class="col-md-10">
+
+    <form asp-action="Register" asp-controller="Account" method="post" class="light-form">
+        <h2>Create an Account</h2>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Username"></label>
             <input asp-for="Username" class="form-control" />
             <span asp-validation-for="Username" class="text-danger"></span>
+
         </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Password" class="col-md-2"></label>
-        <div class="col-md-10">
+        <div class="form-group">
+            <label asp-for="Password"></label>
             <input asp-for="Password" class="form-control" />
             <span asp-validation-for="Password" class="text-danger"></span>
+
         </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="ConfirmPassword" class="col-md-2"></label>
-        <div class="col-md-10">
+        <div class="form-group">
+            <label asp-for="ConfirmPassword" ></label>
             <input asp-for="ConfirmPassword" class="form-control" />
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
         </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Email" class="col-md-2"></label>
-        <div class="col-md-10">
+        <div class="form-group">
+            <label asp-for="Email"></label>
             <input asp-for="Email" class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
+
         </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="PhoneNumber" class="col-md-2"></label>
-        <div class="col-md-10">
+        <div class="form-group">
+            <label asp-for="PhoneNumber"></label>
             <input asp-for="PhoneNumber" class="form-control" />
             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
         </div>
-    </div>
-    <div class="form-group">
-        <div class="offset-2 col-md-10">
-            <input type="submit" class="btn btn-primary" value="Register" />
+        <div class="form-group text-center">
+
+            <input type="submit" class="red-button" value="Register" /><br />
+            <small>Already have an account? Why don't you <a asp-action="Login" asp-controller="Account">login.</a></small>
         </div>
-    </div>
-</form>
+    </form>

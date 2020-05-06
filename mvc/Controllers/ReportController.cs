@@ -239,6 +239,16 @@ namespace mvc.Controllers
 
         }
 
+        [Authorize]
+        [HttpGet]
+        public IActionResult HallOfFame()
+        {
+            ViewBag.Title = "Hall of Fame";
+
+
+            return View();
+        }
+
 
 
 

@@ -90,6 +90,22 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
+.light-form {
+    border: 1px solid rgb(232 240 254);
+    border-radius: 2px;
+    padding: 64px;
+    width: 60%;
+    margin: 64px auto;
+}
+
+.light-form-lg {
+    border: 1px solid rgb(232 240 254);
+    border-radius: 2px;
+    padding: 64px;
+    width: 100%;
+    margin: 64px auto;
+}
+
 
 
 

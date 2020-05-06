@@ -30,6 +30,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Investigation" asp-action="Index">Investigations</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Report" asp-action="HallOfFame">Hall of Fame</a>
+                        </li>
 
                         @if (!SignInManager.IsSignedIn(User))
                         {
@@ -44,20 +47,20 @@
                         }
                         else
                         {
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link">Welcome @User.Identity.Name</a>
-                        </li>
-                        <li class="nav-item">
-                            <form asp-controller="Account" asp-action="Logout" id="logout" method="post">
-                                <a href="javascript:{}" class="nav-link" onclick="document.getElementById('logout').submit();">Logout</a>
-                            </form>
-                            <!---https://stackoverflow.com/questions/10039968/submit-form-using-a-tag-->
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Report" asp-action="UserIndex">My Reports</a>
-                        </li>
-                    </ul>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link">Welcome @User.Identity.Name</a>
+                                </li>
+                                <li class="nav-item">
+                                    <form asp-controller="Account" asp-action="Logout" id="logout" method="post">
+                                        <a href="javascript:{}" class="nav-link" onclick="document.getElementById('logout').submit();">Logout</a>
+                                    </form>
+                                    <!---https://stackoverflow.com/questions/10039968/submit-form-using-a-tag-->
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Report" asp-action="UserIndex">My Reports</a>
+                                </li>
+                            </ul>
                         }
                     </ul>
                 </div>

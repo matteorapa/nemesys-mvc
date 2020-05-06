@@ -1,22 +1,23 @@
-﻿@Model Investigation
+﻿<div class="focused">
+    <h1>@Model.InvDescription</h1><hr /><br />
+   
+    <div class="card-body">
 
-<h1>Details</h1>
-<div class="card">
+        <p class="card-text">@Model.HazardDescription</p>
+        
+        
 
-    <div class="container" style="border: 1px solid gray;">
+        <div class="actions-row">
+            <a asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.ReportId" class="btn btn-primary">Edit</a>
+            <a asp-controller="Investigation" asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
 
-        <h4>Investigation</h4><hr>
-        <p>@Model.InvDescription</p>
-        <br><br>
-        <h5>Investigator Details</h5>
-
-        <a asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.ReportId" class="btn btn-primary">Edit</a>
-        <a asp-controller="Investigation" asp-action="Details" asp-route-id="@Model.InvestigationId" class="btn btn-primary">Details</a>
+        </div>
 
     </div>
-    <a asp-controller="Investigation" asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
 </div>
-</div>
+
+
+
 
 
 
