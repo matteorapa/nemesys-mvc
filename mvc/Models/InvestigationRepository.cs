@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace mvc.Models
 {
@@ -16,20 +18,20 @@ namespace mvc.Models
 
         public Investigation GetInvestigationById(int investigationId)
         {
- 
-            return _appDbContext.Investigations.FirstOrDefault(i => i.InvestigationId == investigationId);
+
+            return _appDbContext.Investigations.Include(i => i.Report).FirstOrDefault(i => i.InvestigationId == investigationId);
         }
 
         public Investigation GetInvestigationByReportId(int reportId)
         {
 
-            return _appDbContext.Investigations.FirstOrDefault(i => i.ReportId == reportId);
+            return _appDbContext.Investigations.Include(i => i.Report).FirstOrDefault(i => i.ReportId == reportId);
         }
 
 
         public IEnumerable<Investigation> GetAllInvestigations()
         {
-            return _appDbContext.Investigations;
+            return _appDbContext.Investigations.Include(i => i.Report);
         }
 
 

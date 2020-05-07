@@ -28,17 +28,18 @@
                 <div class="card report-card">
                     
                     <div class="card-body">
-                        <h4 class="card-title">@investigation.InvDescription</h4><hr />
-                        <small class="text-muted">Investigation started on @investigation.DateOfAction.ToShortDateString()</small><br /><br />
+                        <h4 class="card-title">Investigation <strong>@investigation.InvDescription</strong> for report concerning  <strong>@investigation.Report.HazardLocation</strong></h4><hr />
+                        <small class="text-muted">Investigation started on @investigation.DateOfAction.ToShortDateString()</small><br />
+                        <small class="text-muted">Report created on @investigation.Report.DateOfReport.ToShortDateString()</small><br /><br />
 
-                                                                                                                                  <div class="actions-row">
+                        <div class="actions-row">
 
-                                                                                                                                      <a asp-controller="Investigation" asp-action="Details" asp-route-id="@investigation.InvestigationId" class="btn btn-link">Details</a>
-                                                                                                                                      <a asp-controller="Investigation" asp-action="Edit" asp-route-id="@investigation.ReportId" class="btn btn-link">Edit</a>
-                                                                                                                                      <a asp-controller="Report" asp-action="Details" asp-route-id="@investigation.ReportId" class="btn btn-outline-primary btn-block">View original report</a>
+                            <a asp-controller="Investigation" asp-action="Details" asp-route-id="@investigation.InvestigationId" class="btn btn-link">Details</a>
+                            <a asp-controller="Investigation" asp-action="Edit" asp-route-id="@investigation.ReportId" class="btn btn-link">Edit</a>
+                            <a asp-controller="Report" asp-action="Details" asp-route-id="@investigation.ReportId" class="btn btn-outline-primary btn-block">View original report</a>
 
-                                                                                                                                  </div>
-                        
+                        </div>
+
 
                     </div>
 

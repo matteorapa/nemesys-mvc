@@ -11,7 +11,7 @@ namespace mvc.Models
         
         public int UpvoteId { get; set; }
 
-        //One-to-One relationship with User - EF Core Conventions
+        //One-to-Many (User to Upvotes) relationship with User - EF Core Convention 4
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
 

@@ -20,9 +20,9 @@ namespace mvc.Models
             return _appDbContext.Upvotes;
         }
 
-        public Upvote GetUserUpvote(ApplicationUser user)
+        public Upvote GetUserUpvote(ApplicationUser user, Report rep)
         {
-            return _appDbContext.Upvotes.FirstOrDefault(u => u.User == user);
+            return _appDbContext.Upvotes.FirstOrDefault(u => u.User == user && u.Report == rep);
         }
 
         public int GetUpvoteCount(int reportId)

@@ -9,7 +9,7 @@ namespace mvc.Models
     public interface IUpvoteRepository
     {
         IEnumerable<Upvote> GetAllUpvotes();
-        Upvote GetUserUpvote(ApplicationUser user);
+        Upvote GetUserUpvote(ApplicationUser user, Report report);
 
         int GetUpvoteCount(int reportId);
 

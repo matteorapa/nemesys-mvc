@@ -2147,3 +2147,4 @@ C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.pdb
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.csprojAssemblyReference.cache
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\HallOfFame.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\HallOfFame.cshtml.g.cs

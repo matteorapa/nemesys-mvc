@@ -8,6 +8,7 @@ namespace mvc.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public Upvote Upvote { get; set; }
+        //One-to-Many (User to Upvotes) relationship with Upvote - EF Core Convention 4   
+        public ICollection<Upvote> Upvotes { get; set; }
     }
 }

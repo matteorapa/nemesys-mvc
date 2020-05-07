@@ -208,7 +208,7 @@ namespace mvc.Controllers
             var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             ApplicationUser idenUser = await _userManager.FindByIdAsync(currentUser);
 
-            var existingU = _upvoteRepository.GetUserUpvote(idenUser);
+            var existingU = _upvoteRepository.GetUserUpvote(idenUser, r);
 
             if (existingU == null)
             {
