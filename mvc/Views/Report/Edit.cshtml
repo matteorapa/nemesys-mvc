@@ -33,8 +33,14 @@
                 <div class="form-group">
                     <label asp-for="HazardType">Type of Hazard</label>
 
-                    <input asp-for="HazardType" class="form-control" />
-                    <span asp-validation-for="HazardType" class="text-danger"></span>
+                    <div class="form-group">
+                        <select class="form-control" id="HazardType" asp-for="HazardType">
+                            <option value="Unsafe Act">Unsafe Act</option>
+                            <option value="Unfit Condition">Unfit Condition</option>
+                            <option value="Equipment Issue">Equipment Issue</option>
+                            <option value="Structural Concern">Structural Concern</option>
+                        </select>
+                    </div>
 
                 </div>
             </div>

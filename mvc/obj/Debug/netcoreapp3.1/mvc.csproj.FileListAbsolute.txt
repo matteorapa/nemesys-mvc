@@ -434,8 +434,6 @@ C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester
 \\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
 \\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.CookiePolicy.dll
 \\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cors.dll
-\\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cryptography.Internal.dll
-\\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 \\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.Abstractions.dll
 \\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.dll
 \\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.Extensions.dll
@@ -514,8 +512,6 @@ C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester
 \\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Hosting.Abstractions.dll
 \\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Hosting.dll
 \\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Http.dll
-\\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Identity.Core.dll
-\\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Identity.Stores.dll
 \\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Localization.Abstractions.dll
 \\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Localization.dll
 \\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Logging.Configuration.dll
@@ -2148,3 +2144,22 @@ C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.pdb
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.csprojAssemblyReference.cache
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\HallOfFame.cshtml.g.cs
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\HallOfFame.cshtml.g.cs
+\\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\System.Web.Cors.dll
+\\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+\\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+\\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\System.Web.Http.Cors.dll
+\\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+\\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+\\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+\\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+\\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+\\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+\\Mac\Home\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+\\Mac\Home\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\ManageAccounts.cshtml.g.cs
+\\Mac\Home\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+\\Mac\Home\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Investigation\Create.cshtml.g.cs
+\\Mac\Home\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Investigation\NoInvestigation.cshtml.g.cs
+\\Mac\Home\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\Edit.cshtml.g.cs
+\\Mac\Home\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\Error.cshtml.g.cs
+\\Mac\Home\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\HallOfFame.cshtml.g.cs
+\\Mac\Home\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\Search.cshtml.g.cs
