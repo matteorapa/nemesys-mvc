@@ -19,7 +19,17 @@ namespace mvc.Models
         //    return result;
         //}
 
-
+        public static void InjectRoles(RoleManager<IdentityRole> roleManager)
+        {
+            if (!roleManager.Roles.Any())
+            {
+                string[] roles = new string[] { "Reporter", "Investigator", "Admin" };
+                foreach (string role in roles)
+                {
+                    roleManager.CreateAsync(new IdentityRole(role)).Wait();
+                }
+            }
+        }
         public static void Inject(AppDbContext context)
         {
 
@@ -36,32 +46,56 @@ namespace mvc.Models
                     roleStore.CreateAsync(newRole);
                 }
             }
+        }
+
+        public static void InjectUsers(UserManager<ApplicationUser> userManager)
+        {
+            if (!userManager.Users.Any())
+            {
+                var admin = new ApplicationUser()
+                {
+                    Email = "admin@nomail.com",
+                    UserName = "admin@nomail.com",
+                    EmailConfirmed = true,
+                    PhoneNumberConfirmed = true,
+                    SecurityStamp = Guid.NewGuid().ToString("D") //to track important profile updates (e.g. password change)
+                };
+
+                //Add to store
+                IdentityResult result = userManager.CreateAsync(admin, "3c4Z8e7^9W_?pfhQpK").Result;
+                if (result.Succeeded)
+                {
+                    //Add to role
+                    userManager.AddToRoleAsync(admin, "Admin").Wait();
+                }
 
 
-            //var user = new IdentityUser
-            //{
-            //    UserName = "Administrator",
-            //    Email = "admin@nemesys.com",
-            //    PhoneNumber = "21000000",
-            //    EmailConfirmed = true,
-            //    PhoneNumberConfirmed = true,
-            //};
+                var inv = new ApplicationUser()
+                {
+                    Email = "investigator@nomail.com",
+                    UserName = "investigator@nomail.com",
+                    EmailConfirmed = true,
+                    PhoneNumberConfirmed = true,
+                    SecurityStamp = Guid.NewGuid().ToString("D") //to track important profile updates (e.g. password change)
+                };
 
-            //if (!context.Users.Any(u => u.UserName == user.UserName))
-            //{
-            //    var password = new PasswordHasher<IdentityUser>();
-            //    var hashed = password.HashPassword(user, "secret");
-            //    user.PasswordHash = hashed;
+                //Add to store
+                result = userManager.CreateAsync(inv, "VxGEwxGJ9x!qA#+3@c").Result;
+                if (result.Succeeded)
+                {
+                    //Add to role
+                    userManager.AddToRoleAsync(inv, "Investigator").Wait();
+                }
+            }
+        }
 
-            //    var userStore = new UserStore<IdentityUser>(context);
-            //    var result = userStore.CreateAsync(user);
 
-            //}
-
-            //AssignRoles(serviceProvider, user.Email, roles);
-                       
+        public static void InjectData(UserManager<ApplicationUser> userManager, AppDbContext context)
+        {
             if (!context.Reports.Any())
             {
+                var user = userManager.GetUsersInRoleAsync("Investigator").Result.FirstOrDefault();
+
                 context.AddRange(
                     new Report()
                     {
@@ -73,12 +107,13 @@ namespace mvc.Models
                         ReporterPhone = "111",
                         HazardType = "Infected Patient",
                         UpvoteCount = 0,
-                        ImageUrl = "/images/corona.png"
+                        ImageUrl = "/images/corona.png",
+                        User = user
 
                     }
                 );
 
-                context.SaveChangesAsync();
+                context.SaveChanges();
             }
         }
     }

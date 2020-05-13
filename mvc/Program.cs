@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Identity;
 
 namespace mvc
 {
@@ -23,7 +24,13 @@ namespace mvc
                 try
                 {
                     var context = services.GetRequiredService<AppDbContext>();
-                    InitialDistributor.Inject(context);
+                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+
+                    InitialDistributor.InjectRoles(roleManager);
+                    InitialDistributor.InjectUsers(userManager);
+                    InitialDistributor.InjectData(userManager, context);
+
                 }
                 catch (Exception ex)
                 {

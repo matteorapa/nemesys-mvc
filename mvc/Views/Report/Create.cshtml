@@ -56,7 +56,8 @@
 
                 <div class="custom-file">
                     <input type="file" asp-for="Image" class="custom-file-input" id="customFile">
-                    <label asp-for="Image" class="custom-file-label">Choose file</label>
+                    <label asp-for="Image" class="custom-file-label"></label>
+                    <span asp-validation-for="Image" class="text-danger"></span>
                 </div>
 
             </div>

@@ -399,13 +399,6 @@ C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\Index.cshtml.g.cs
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\Details.cshtml.g.cs
-C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNet.Identity.Core.dll
-C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNet.Identity.Owin.dll
-C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Microsoft.Owin.dll
-C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Microsoft.Owin.Security.dll
-C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Microsoft.Owin.Security.Cookies.dll
-C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Microsoft.Owin.Security.OAuth.dll
-C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Owin.dll
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Investigation\Index.cshtml.g.cs
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Investigation\Details.cshtml.g.cs
 \\Mac\Home\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\appsettings.Development.json

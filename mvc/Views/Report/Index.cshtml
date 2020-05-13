@@ -1,5 +1,8 @@
 ﻿@model mvc.ViewModels.ReportRegisterViewModel
 
+@using  Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+
 
 
 <div class="row">
@@ -16,57 +19,65 @@
                 </div>
             </form>
 
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Sort Reports</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>Recent</option>
-                        <option>Closed</option>
-                        <option>On-going investigation</option>
-                        <option>Not yet investigated</option>
-                    </select>
-                </div>
-            
-                <form asp-controller="Report" asp-action="Create" method="get">
-                    <button class="red-button">Create Report</button>
-                </form>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Sort Reports</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Recent</option>
+                    <option>Closed</option>
+                    <option>On-going investigation</option>
+                    <option>Not yet investigated</option>
+                </select>
+            </div>
+
+            <form asp-controller="Report" asp-action="Create" method="get">
+                <button class="red-button">Create Report</button>
+            </form>
         </div>
     </aside>
-    
-     
-        <div class="col">
-            @foreach (var report in Model.Reports)
-            {
-                <div class="card report-card">
-                    <div>
-                        <img class="card-img" src="@report.ImageUrl" alt="Image for @report.HazardLocation" />
-                        </div>
-
-                            <div class="card-body">
-                                <h3 class="card-title">@report.HazardLocation</h3>
-                                <small class="text-muted">@report.DateOfReport.ToShortDateString()</small>
-
-                                <small class="upvotes"> Upvotes @report.UpvoteCount</small>
-
-                                <div class="actions-row">
-
-                                    <a asp-controller="Report" asp-action="Upvote" asp-route-id="@report.ReportId"><button class="btn btn-light btn-block btn-sm"><i class="far fa-hand-point-up grad-text"></i> Upvote</button></a>
-
-                                    <!---<button asp-controller="Report" asp-action="Upvote" asp-route-id="@report.ReportId" type="button" class="btn btn-light btn-block btn-sm"><i class="far fa-hand-point-up grad-text"></i> Upvote</button>-->
-
-                                    <a asp-controller="Report" asp-action="Details" asp-route-id="@report.ReportId" class="btn btn-link btn-sm">Details</a>
-
-                                    <a asp-controller="Report" asp-action="Edit" asp-route-id="@report.ReportId" class="btn btn-link btn-sm">Edit</a>
-                                    <a asp-controller="Investigation" asp-action="Details" asp-route-id="@report.ReportId" class="btn btn-outline-primary btn-sm">Investigation</a>
 
 
-                                </div>
+    <div class="col">
+        @foreach (var report in Model.Reports)
+        {
+            <div class="card report-card">
+                <div>
+                    <img class="card-img" src="@report.ImageUrl" alt="Image for @report.HazardLocation" />
+                </div>
 
-                            </div>
+                <div class="card-body">
+                    <h3 class="card-title">@report.HazardLocation</h3>
+                    <small class="text-muted">@report.DateOfReport.ToShortDateString()</small>
 
-                        </div>
+                    <small class="upvotes"> Upvotes @report.UpvoteCount</small>
+
+                    <div class="actions-row">
+
+                        <a asp-controller="Report" asp-action="Upvote" asp-route-id="@report.ReportId"><button class="btn btn-light btn-block btn-sm"><i class="far fa-hand-point-up grad-text"></i> Upvote</button></a>
+
+                        <!---<button asp-controller="Report" asp-action="Upvote" asp-route-id="@report.ReportId" type="button" class="btn btn-light btn-block btn-sm"><i class="far fa-hand-point-up grad-text"></i> Upvote</button>-->
+
+                        <a asp-controller="Report" asp-action="Details" asp-route-id="@report.ReportId" class="btn btn-link btn-sm">Details</a>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (UserManager.GetUserAsync(User).Result == report.User)
+                            {
+                                <a asp-controller="Report" asp-action="Edit" asp-route-id="@report.ReportId" class="btn btn-link btn-sm">Edit</a>
+                            }
+
                         }
-                    </div>
-   </div>
 
-    
+                        <a asp-controller="Investigation" asp-action="Details" asp-route-id="@report.ReportId" class="btn btn-outline-primary btn-sm">Investigation</a>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+
+
 

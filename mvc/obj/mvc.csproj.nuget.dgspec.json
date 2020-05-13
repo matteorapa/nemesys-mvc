@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "\\\\Mac\\Home\\Desktop\\nemesys-mvc\\mvc\\mvc.csproj": {}
+    "C:\\Users\\Dell\\Documents\\B.Sc IT (Hons.) Computing and Business\\Year Two\\Semester 2\\CIS2055\\Assignment\\mvc\\mvc.csproj": {}
   },
   "projects": {
-    "\\\\Mac\\Home\\Desktop\\nemesys-mvc\\mvc\\mvc.csproj": {
+    "C:\\Users\\Dell\\Documents\\B.Sc IT (Hons.) Computing and Business\\Year Two\\Semester 2\\CIS2055\\Assignment\\mvc\\mvc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "\\\\Mac\\Home\\Desktop\\nemesys-mvc\\mvc\\mvc.csproj",
+        "projectUniqueName": "C:\\Users\\Dell\\Documents\\B.Sc IT (Hons.) Computing and Business\\Year Two\\Semester 2\\CIS2055\\Assignment\\mvc\\mvc.csproj",
         "projectName": "mvc",
-        "projectPath": "\\\\Mac\\Home\\Desktop\\nemesys-mvc\\mvc\\mvc.csproj",
-        "packagesPath": "C:\\Users\\mikesciclunacalleja\\.nuget\\packages\\",
-        "outputPath": "\\\\Mac\\Home\\Desktop\\nemesys-mvc\\mvc\\obj\\",
+        "projectPath": "C:\\Users\\Dell\\Documents\\B.Sc IT (Hons.) Computing and Business\\Year Two\\Semester 2\\CIS2055\\Assignment\\mvc\\mvc.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell\\Documents\\B.Sc IT (Hons.) Computing and Business\\Year Two\\Semester 2\\CIS2055\\Assignment\\mvc\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\mikesciclunacalleja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,14 +41,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Microsoft.AspNet.Identity.Core": {
-              "target": "Package",
-              "version": "[2.2.3, )"
-            },
-            "Microsoft.AspNet.Identity.Owin": {
-              "target": "Package",
-              "version": "[2.2.3, )"
-            },
             "Microsoft.AspNet.WebApi.Cors": {
               "target": "Package",
               "version": "[5.2.7, )"
@@ -103,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

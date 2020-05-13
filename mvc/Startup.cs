@@ -32,7 +32,7 @@ namespace mvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+
             services.AddTransient<IReportRepository, ReportRepository>();
             services.AddTransient<IInvestigationRepository, InvestigationRepository>();
             services.AddTransient<IUpvoteRepository, UpvoteRepository>();
@@ -49,22 +49,31 @@ namespace mvc
 
                 //Lockout settings
                 options.Lockout.MaxFailedAccessAttempts = 5;
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
                 options.Lockout.AllowedForNewUsers = true;
 
                 //User settings
-                //options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._@+";
+                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-._@+";
+                options.User.RequireUniqueEmail = true;
 
-              
+
             }).AddEntityFrameworkStores<AppDbContext>();
 
             services.ConfigureApplicationCookie(options =>
             {
                 //Cookie settings
                 options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
                 options.SlidingExpiration = true;
+                options.LoginPath = "/Account/Login";
+                options.AccessDeniedPath = "/Account/Login";
             });
+
+            //services.AddAuthentication().AddCookie(options =>
+            //{
+            //    options.LoginPath = "/Account/Login";
+            //    options.AccessDeniedPath = "/Account/Login";
+            //});
 
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
@@ -96,10 +105,11 @@ namespace mvc
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseCors();
-                        
+
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {

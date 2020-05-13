@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-               
+
 
         <div class="form-group">
             <label asp-for="HazardDescription">Description</label>
@@ -54,11 +54,17 @@
             <span asp-validation-for="HazardDescription" class="text-danger"></span>
 
         </div>
+
+        <div class="form-group">
+            <img src="@Model.ImageUrl" class="col-md-2" />
+        </div>
+
         <div class="form-group">
 
             <div class="custom-file">
                 <input type="file" asp-for="Image" class="custom-file-input" id="customFile">
-                <label asp-for="Image" class="custom-file-label">Choose file</label>
+                <label asp-for="Image" class="custom-file-label"></label>
+                <span asp-validation-for="Image" class="text-danger"></span>
             </div>
 
         </div>
