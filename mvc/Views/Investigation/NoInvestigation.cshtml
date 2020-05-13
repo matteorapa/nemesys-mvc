@@ -2,7 +2,14 @@
 
     <div class="light-form-lg">
         <h1>No investigations found for this report.</h1><hr /><br />
-        <button asp-controller="Investigation" asp-action="Create" asp-route-id="@Model.ReportId" class="red-button">Create Investigation for Report</button>
+        
+
+        <form asp-controller="Investigation" asp-action="Create" asp-route-id="@Model.ReportId" method="get">
+            
+            <a asp-controller="Report" asp-action="Index" class="btn btn-light btn-sm">Back</a>
+            <button class="red-button">Create Investigation for Report</button>
+        </form>
+
     </div>
         
 

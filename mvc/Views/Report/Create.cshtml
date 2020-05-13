@@ -1,8 +1,6 @@
 ﻿@model mvc.ViewModels.EditReport
 
-    <div class="focused">
-        
-        <form asp-action="Create" method="post" role="form" enctype="multipart/form-data">
+        <form asp-action="Create" method="post" role="form" enctype="multipart/form-data" class="light-form-lg">
             <h1>Create New Report</h1><hr>
             <div class="form-group">
                 <label asp-for="HazardLocation">Location of Hazard</label>
@@ -63,10 +61,9 @@
 
             </div>
             <div class="actions-row">
-                <a asp-controller="Report" asp-action="Index" class="btn btn-light">Back to Reports</a>
+                <a asp-controller="Report" asp-action="Index" class="btn btn-light btn-sm">Back to Reports</a>
                 <input type="submit" class="red-button" value="Create Report" />
 
             </div>
         </form>
 
-    </div>

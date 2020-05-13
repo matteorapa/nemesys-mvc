@@ -1,21 +1,25 @@
-﻿<div class="focused">
-    <h1>@Model.InvDescription</h1><hr /><br />
-   
-                                        <div class="card-body">
+﻿
+    
+
+    <div class="light-form-lg">
+        <h2>@Model.InvDescription</h2><hr /><br />
+
+        <div class="card-body">
+
+            <p class="card-text">@Model.Report.HazardLocation</p>
 
 
-                                            <p class="card-text">@Model.Report.HazardLocation</p>
+            <p class="card-text">@Model.Report.HazardLocation</p>
+
+            
+                <a asp-controller="Investigation" asp-action="Index" class="btn btn-light btn-sm">Back to investigations</a>
+                <form asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.ReportId" method="get">
+                    <button type="submit" class="red-button">Edit Investigation</button>
+                </form>
 
 
-
-                                            <div class="actions-row">
-                                                <a asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.ReportId" class="btn btn-primary">Edit</a>
-                                                <a asp-controller="Investigation" asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
-
-                                            </div>
-
-                                        </div>
-</div>
+        </div>
+    </div>
 
 
 

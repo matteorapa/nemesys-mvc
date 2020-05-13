@@ -3,7 +3,7 @@
 
 
     <form asp-action="Edit" method="post" role="form" enctype="multipart/form-data" class="light-form-lg">
-        <h2>Edit Investigation</h2>
+        <h2>Edit Investigation</h2><hr /><br />
         <div class="form-group">
             <label asp-for="DateOfAction">Date of Action</label>
             <input asp-for="DateOfAction" class="form-control" />
@@ -29,7 +29,7 @@
         </div>
 
         <div class="form-group text-center">
-            <a asp-controller="Investigation" asp-action="Index" class="btn btn-light">Back to Investigations</a>
+            <a asp-controller="Investigation" asp-action="Index" class="btn btn-light btn-sm">Back to Investigations</a>
             <input type="submit" class="red-button" value="Save changes" />
 
         </div>
