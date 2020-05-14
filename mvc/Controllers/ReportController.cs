@@ -148,7 +148,7 @@ namespace mvc.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult Edit([Bind("HazardLocation", "HazardDate", "HazardType", "HazardDescription", "Image")] EditReport thisReport, int id)
+        public IActionResult Edit([Bind("HazardLocation", "HazardDate", "HazardType", "HazardDescription", "ImageUrl", "Image")] EditReport thisReport, int id)
         {
 
             if (ModelState.IsValid)
@@ -176,7 +176,7 @@ namespace mvc.Controllers
                     HazardDate = thisReport.HazardDate,
                     DateOfReport = DateTime.Now,
                     HazardType = thisReport.HazardType,
-                    ImageUrl = "/images/reports/" + fileName
+                    ImageUrl = thisReport.ImageUrl
                 };
 
                 _reportRepository.EditReportById(id, report);

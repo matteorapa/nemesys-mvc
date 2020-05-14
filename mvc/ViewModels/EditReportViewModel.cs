@@ -27,9 +27,8 @@ namespace mvc.ViewModels
 
         public string ImageUrl { get; set; }
         [Display(Name = "Featured Image")]
-        //Custom DataAnnotation - max 3MB allowed (refer to MaxFileSizeAttribute.cs)
-        [Required(ErrorMessage = "Please upload an image within your report.")]
-        [MaxFileSize(3 * 1024 * 1024, ErrorMessage = "Maximum allowed file size is {0} bytes")]
+        //Custom DataAnnotation - max 10MB allowed (refer to MaxFileSizeAttribute.cs)
+        [MaxFileSize(10 * 1024 * 1024, ErrorMessage = "Maximum allowed file size is {0} bytes")]
         [AllowExtensions(Extensions = "png,jpg", ErrorMessage = "Please select only supported Files .png | .jpg")]
         public IFormFile Image { get; set; } 
     }

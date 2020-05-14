@@ -1,8 +1,13 @@
-﻿@model mvc.ViewModels.EditReport
+﻿@model EditReport
 
 <div class="focused">
 
     <form asp-action="Edit" method="post" role="form" enctype="multipart/form-data">
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <input asp-for="ImageUrl" type="hidden" class="form-control" />
+
         <h1>Edit Report</h1><hr>
         <div class="form-group">
             <label asp-for="HazardLocation">Location of Hazard</label>
@@ -59,15 +64,32 @@
             <img src="@Model.ImageUrl" class="col-md-2" />
         </div>
 
-        <div class="form-group">
+        <!---<div class="form-group">
 
-            <div class="custom-file">
-                <input type="file" asp-for="Image" class="custom-file-input" id="customFile">
-                <label asp-for="Image" class="custom-file-label"></label>
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-
+        <div class="custom-file">
+            <input type="file" asp-for="Image" class="custom-file-input" id="customFile">
+            <label asp-for="Image" class="custom-file-label"></label>
+            <span asp-validation-for="Image" class="text-danger"></span>
         </div>
+    </div>
+
+
+            <div class="form-group">
+            <label asp-for="Image" class="col-md-2"></label>
+
+            <div class="col-md-5">
+                <input type="file" asp-for="Image" class="form-control" />
+            </div>
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>-->
+        <div class="form-group">
+            <label asp-for="Image" class="custom-file-label"></label>
+            <div class="col-md-5">
+                <input type="file" asp-for="Image" class="form-control" />
+            </div>
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+
         <div class="actions-row">
             <a asp-controller="Report" asp-action="Index" class="btn btn-light btn-sm">Back to Reports</a>
             <input type="submit" class="red-button" value="Save Changes" />
