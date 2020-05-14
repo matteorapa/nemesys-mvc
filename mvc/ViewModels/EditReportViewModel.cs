@@ -26,7 +26,6 @@ namespace mvc.ViewModels
         public string HazardDescription { get; set; }
 
         public string ImageUrl { get; set; }
-
         [Display(Name = "Featured Image")]
         //Custom DataAnnotation - max 3MB allowed (refer to MaxFileSizeAttribute.cs)
         [Required(ErrorMessage = "Please upload an image within your report.")]

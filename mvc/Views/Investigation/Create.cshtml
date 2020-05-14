@@ -12,10 +12,15 @@
         </div>
         <div class="form-group">
             <label asp-for="ReportStatus" class="col-md-3">Status of Report</label>
-          
-                <textarea asp-for="ReportStatus" class="form-control"></textarea>
-                <span asp-validation-for="ReportStatus" class="text-danger"></span>
-          
+
+            <div class="form-group">
+                <select class="form-control" id="ReportStatus" asp-for="ReportStatus">
+                    <option value="In Investigation">In Investigation</option>
+                    <option value="Closed">Closed</option>
+                    <option value="No Action Required">No Action Required</option>
+                </select>
+            </div>
+
         </div>
         <div class="form-group">
             <label asp-for="InvDescription" class="col-md-3">Investigaton Description</label>

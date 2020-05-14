@@ -165,6 +165,8 @@ namespace mvc.Controllers
                     {
                         thisReport.Image.CopyTo(bits);
                     }
+
+                    thisReport.ImageUrl = "/images/reports/" + fileName;
                 }
 
                 Report report = new Report()
