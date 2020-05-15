@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace mvc.Models
 
         public IEnumerable<Upvote> GetAllUpvotes()
         {
-            return _appDbContext.Upvotes;
+            return _appDbContext.Upvotes.Include(u => u.User);
         }
 
         public Upvote GetUserUpvote(ApplicationUser user, Report rep)

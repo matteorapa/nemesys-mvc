@@ -106,7 +106,6 @@ namespace mvc.Models
                         ReporterEmail = "covid19@gov.mt",
                         ReporterPhone = "111",
                         HazardType = "Infected Patient",
-                        UpvoteCount = 0,
                         ImageUrl = "/images/corona.png",
                         User = user
 

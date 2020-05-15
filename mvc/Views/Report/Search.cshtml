@@ -44,7 +44,14 @@
                     <h3 class="card-title">@report.HazardLocation</h3>
                     <small class="text-muted">@report.DateOfReport.ToShortDateString()</small>
 
-                    <small class="upvotes"> Upvotes @report.UpvoteCount</small>
+                    @if (report.Upvotes == null)
+                    {
+                        <small class="upvotes"> Upvotes: 0</small>
+                    }
+                    else
+                    {
+                        <small class="upvotes"> Upvotes: @report.Upvotes.Count()</small>
+                    }
 
                     <div class="actions-row">
 

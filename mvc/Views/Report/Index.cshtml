@@ -48,29 +48,48 @@
                     <h3 class="card-title">@report.HazardLocation</h3>
                     <small class="text-muted">@report.DateOfReport.ToShortDateString()</small>
 
-                    <small class="upvotes"> Upvotes @report.UpvoteCount</small>
+                    @if (report.Upvotes == null){
+                        <small class="upvotes"> Upvotes: 0</small>
+                    }
+                    else{
+                        <small class="upvotes"> Upvotes: @report.Upvotes.Count()</small>
+                    }
 
-                    <div class="actions-row">
+                <div class="actions-row">
 
-                        <a asp-controller="Report" asp-action="Upvote" asp-route-id="@report.ReportId"><button class="btn btn-light btn-block btn-sm"><i class="far fa-hand-point-up grad-text"></i> Upvote</button></a>
-
-                        <!---<button asp-controller="Report" asp-action="Upvote" asp-route-id="@report.ReportId" type="button" class="btn btn-light btn-block btn-sm"><i class="far fa-hand-point-up grad-text"></i> Upvote</button>-->
-
-                        <a asp-controller="Report" asp-action="Details" asp-route-id="@report.ReportId" class="btn btn-link btn-sm">Details</a>
-
-                        @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated) {
+                        var userId = UserManager.GetUserId(User);
+                        bool found = false;
+                        foreach (var upvote in report.Upvotes)
                         {
-                            if (UserManager.GetUserAsync(User).Result == report.User)
+                            if (upvote.UserId == userId)
                             {
-                                <a asp-controller="Report" asp-action="Edit" asp-route-id="@report.ReportId" class="btn btn-link btn-sm">Edit</a>
+                                found = true;
+                                <a asp-controller="Report" asp-action="Downvote" asp-route-id="@report.ReportId"><button class="btn btn-light btn-block btn-sm"><i class="far fa-hand-point-down grad-text"></i> Downvote</button></a>
                             }
-
+                        }
+                        if (found == false)
+                        {
+                        <a asp-controller="Report" asp-action="Upvote" asp-route-id="@report.ReportId"><button class="btn btn-light btn-block btn-sm"><i class="far fa-hand-point-up grad-text"></i> Upvote</button></a>
                         }
 
-                        <a asp-controller="Investigation" asp-action="Details" asp-route-id="@report.ReportId" class="btn btn-outline-primary btn-sm">Investigation</a>
+                    }
+
+                    <a asp-controller="Report" asp-action="Details" asp-route-id="@report.ReportId" class="btn btn-link btn-sm">Details</a>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (UserManager.GetUserAsync(User).Result == report.User)
+                        {
+                            <a asp-controller="Report" asp-action="Edit" asp-route-id="@report.ReportId" class="btn btn-link btn-sm">Edit</a>
+                        }
+
+                    }
+
+                    <a asp-controller="Investigation" asp-action="Details" asp-route-id="@report.ReportId" class="btn btn-outline-primary btn-sm">Investigation</a>
 
 
-                    </div>
+                </div>
 
                 </div>
 

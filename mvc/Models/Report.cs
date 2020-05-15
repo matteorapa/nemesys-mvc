@@ -19,7 +19,6 @@ namespace mvc.Models
         public string ReporterPhone { get; set; }
         public string ReportStatus { get; set; }
         public string ImageUrl { get; set; }
-        public int UpvoteCount { get; set; }
 
         //One-to-Many (Report to Upvotes) relationship with Upvote - EF Core Convention 4   
         public ICollection<Upvote> Upvotes { get; set; }

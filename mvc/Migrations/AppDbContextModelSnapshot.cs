@@ -283,9 +283,6 @@ namespace mvc.Migrations
                     b.Property<string>("ReporterPhone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UpvoteCount")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 

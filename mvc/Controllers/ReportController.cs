@@ -107,7 +107,6 @@ namespace mvc.Controllers
                     ImageUrl = "/images/reports/" + fileName,
                     ReporterEmail = idenUser.Email,
                     ReporterPhone = idenUser.PhoneNumber,
-                    UpvoteCount = 0,
                     ReportStatus = "Open"
                 };
 
@@ -216,29 +215,40 @@ namespace mvc.Controllers
             {
                 Upvote u = new Upvote()
                 {
-                    //UserId = r.User.Id,
-                    //ReportId = r.ReportId,
                     Report = r,
                     User = idenUser
                 };
 
                 _upvoteRepository.CreateUpvote(u);
 
-                Report report = new Report()
-                {
-                    UpvoteCount = r.UpvoteCount++
-                };
-
-                _reportRepository.EditReportById(r.ReportId, report);
-
                 return RedirectToAction("Index");
             }
 
             else
             {
-                return Content("<script>alert('You already upvoted for this report!');</script>");
+                return View("Views/Report/Error.cshtml");
             }
+        }
 
+        public async Task<IActionResult> Downvote(int id)
+        {
+            var r = _reportRepository.GetReportById(id);
+
+            var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            ApplicationUser idenUser = await _userManager.FindByIdAsync(currentUser);
+
+            var existingU = _upvoteRepository.GetUserUpvote(idenUser, r);
+
+            if (existingU != null)
+            {
+
+                _upvoteRepository.DeleteUpvote(existingU);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Views/Report/Error.cshtml");
+            }
         }
 
         [Authorize]

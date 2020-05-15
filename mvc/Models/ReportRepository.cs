@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,22 +18,22 @@ namespace mvc.Models
 
         public IEnumerable<Report> GetAllReports()
         {
-            return _appDbContext.Reports;
+            return _appDbContext.Reports.Include(r => r.Upvotes).ToList();
         }
 
         public IEnumerable<Report> GetUserReports(ApplicationUser user)
         {
-            return _appDbContext.Reports.Where(r => r.User == user);
+            return _appDbContext.Reports.Include(r => r.Upvotes).Where(r => r.User == user).ToList();
         }
 
         public Report GetReportById(int reportId)
         {
-            return _appDbContext.Reports.FirstOrDefault(r => r.ReportId == reportId);
+            return _appDbContext.Reports.Include(r => r.Upvotes).FirstOrDefault(r => r.ReportId == reportId);
         }
 
         public void EditReportById(int reportId, Report rep)
         {
-            var rec = _appDbContext.Reports.FirstOrDefault(r => r.ReportId == reportId);
+            var rec = _appDbContext.Reports.Include(r => r.Upvotes).FirstOrDefault(r => r.ReportId == reportId);
            
             if (rec != null)
             {
