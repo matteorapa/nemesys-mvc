@@ -11,9 +11,19 @@
 
             <div class="form-group">
                 
-                    <div class="jumbotron">
-                        <small>Google maps here</small>
-                     </div>
+                <div>
+                    <script>locusMap()</script>
+                    <label asp-for="HazardType">Maps Location</label><br />
+
+                    <div id="map"></div><br />
+                    <small class="text-muted">Click on the map the location of the hazard.</small>
+
+                    <input asp-for="LatitudeMarker" class="form-control" type="hidden" id="latitude">
+                    <input asp-for="LongitudeMarker" class="form-control" type="hidden" id="longitude">
+                    <span asp-validation-for="LatitudeMarker" class="text-danger"></span>
+
+
+                </div>
          
             </div>
 

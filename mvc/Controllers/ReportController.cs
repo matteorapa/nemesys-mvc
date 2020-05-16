@@ -75,7 +75,7 @@ namespace mvc.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("HazardLocation", "HazardDate", "HazardType", "HazardDescription", "Image")] EditReport newReport){
+        public async Task<IActionResult> Create([Bind("HazardLocation", "HazardDate", "HazardType", "HazardDescription", "Image", "LatitudeMarker", "LongitudeMarker")] EditReport newReport){
             
             if (ModelState.IsValid)
             {
@@ -100,6 +100,8 @@ namespace mvc.Controllers
                 {
                     User = idenUser,
                     HazardLocation = newReport.HazardLocation,
+                    LatitudeMarker = newReport.LatitudeMarker,
+                    LongitudeMarker = newReport.LongitudeMarker,
                     HazardDescription = newReport.HazardDescription,
                     HazardDate = newReport.HazardDate,
                     DateOfReport = DateTime.Now,
@@ -108,6 +110,7 @@ namespace mvc.Controllers
                     ReporterEmail = idenUser.Email,
                     ReporterPhone = idenUser.PhoneNumber,
                     ReportStatus = "Open"
+                    
                 };
 
                 _reportRepository.CreateReport(report);
@@ -136,6 +139,8 @@ namespace mvc.Controllers
                 editRep.HazardType = rep.HazardType;
                 editRep.HazardDescription = rep.HazardDescription;
                 editRep.ImageUrl = rep.ImageUrl;
+                editRep.LatitudeMarker = rep.LatitudeMarker;
+                editRep.LongitudeMarker = rep.LongitudeMarker;
 
                 return View(editRep);
             }
@@ -147,7 +152,7 @@ namespace mvc.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult Edit([Bind("HazardLocation", "HazardDate", "HazardType", "HazardDescription", "ImageUrl", "Image")] EditReport thisReport, int id)
+        public IActionResult Edit([Bind("HazardLocation", "HazardDate", "HazardType", "HazardDescription", "ImageUrl", "Image", "LatitudeMarker", "LongitudeMarker")] EditReport thisReport, int id)
         {
 
             if (ModelState.IsValid)
@@ -171,6 +176,8 @@ namespace mvc.Controllers
                 Report report = new Report()
                 {
                     HazardLocation = thisReport.HazardLocation,
+                    LatitudeMarker = thisReport.LatitudeMarker,
+                    LongitudeMarker = thisReport.LongitudeMarker,
                     HazardDescription = thisReport.HazardDescription,
                     HazardDate = thisReport.HazardDate,
                     DateOfReport = DateTime.Now,

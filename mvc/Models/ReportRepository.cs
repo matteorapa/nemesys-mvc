@@ -44,6 +44,8 @@ namespace mvc.Models
                 rec.HazardDescription = rep.HazardDescription;
                 rec.ImageUrl = rep.ImageUrl;
                 rec.ReportStatus = rep.ReportStatus;
+                rec.LatitudeMarker = rep.LatitudeMarker;
+                rec.LongitudeMarker = rep.LongitudeMarker;
 
                 _appDbContext.Reports.Update(rec);
 

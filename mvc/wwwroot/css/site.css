@@ -7,6 +7,16 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+#map {
+    width: 100% !important;
+    height: 300px;
+}
+
+img {
+    max-width: 100% !important;
+}
+
+
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;

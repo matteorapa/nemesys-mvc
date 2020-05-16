@@ -9,7 +9,15 @@
     <div class="card-body">
 
         <p class="card-text">@Model.HazardDescription</p>
-        <p class="small">@Model.HazardDate.ToShortDateString()</p>
+        <p class="small">@Model.HazardDate.ToShortDateString()</p><br />
+        <div class="form-group">
+            <label>Location of hazard</label>
+            <div id="map"></div>
+            <input class="form-control" type="hidden" id="latitude" value=@Model.LatitudeMarker>
+            <input class="form-control" type="hidden" id="longitude" value=@Model.LongitudeMarker>
+            <script>displayMap()</script>
+           
+        </div>
         <p class="small">Number of Upvotes: @Model.Upvotes.Count()</p>
 
         <div class="actions-row">

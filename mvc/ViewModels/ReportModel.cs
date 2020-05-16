@@ -2,9 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using mvc.ViewModels;
+using mvc.Models;
 
 namespace mvc.ViewModels
 {
@@ -30,6 +28,27 @@ namespace mvc.ViewModels
         //Custom DataAnnotation - max 10MB allowed (refer to MaxFileSizeAttribute.cs)
         [MaxFileSize(10 * 1024 * 1024, ErrorMessage = "Maximum allowed file size is {0} bytes")]
         [AllowExtensions(Extensions = "png,jpg", ErrorMessage = "Please select only supported Files .png | .jpg")]
-        public IFormFile Image { get; set; } 
+        public IFormFile Image { get; set; }
+
+        [Required(ErrorMessage = "Please select the location of the hazard by clicking on the map to create a marker.")]
+        public double LatitudeMarker { get; set; }
+
+        [Required(ErrorMessage = "Please select the location of the hazard by clicking on the map to create a marker.")]
+        public double LongitudeMarker { get; set; }
+
+    }
+
+    public class ValidateSearch
+    {
+
+        [Required(ErrorMessage = "Please type some keywords for search!")]
+        [StringLength(60, MinimumLength = 1)]
+        public string Search { get; set; }
+    }
+
+    public class ReportRegisterViewModel
+    {
+        public int TotalReports { get; set; }
+        public IEnumerable<Report> Reports { get; set; }
     }
 }

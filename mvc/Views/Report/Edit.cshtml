@@ -18,11 +18,12 @@
 
         <div class="form-group">
 
-            <div class="jumbotron">
-                <small>Google maps here</small>
-            </div>
-
-        </div>
+            <div id="map"></div>
+            <input asp-for="LatitudeMarker" class="form-control" type="hidden" id="latitude">
+            <input asp-for="LongitudeMarker" class="form-control" type="hidden" id="longitude">
+            <script>editMap()</script>
+            <span asp-validation-for="LatitudeMarker" class="text-danger"></span>
+        </div>  
 
         <div class="row">
             <div class="col">
@@ -61,39 +62,19 @@
         </div>
 
         <div class="form-group">
-            <img src="@Model.ImageUrl" class="col-md-2" />
+            <img src="@Model.ImageUrl" />
         </div>
 
-        <!---<div class="form-group">
-
-        <div class="custom-file">
-            <input type="file" asp-for="Image" class="custom-file-input" id="customFile">
-            <label asp-for="Image" class="custom-file-label"></label>
-            <span asp-validation-for="Image" class="text-danger"></span>
-        </div>
-    </div>
-
-
-            <div class="form-group">
-            <label asp-for="Image" class="col-md-2"></label>
-
-            <div class="col-md-5">
-                <input type="file" asp-for="Image" class="form-control" />
-            </div>
-            <span asp-validation-for="Image" class="text-danger"></span>
-        </div>-->
+        
         <div class="form-group">
-            <label asp-for="Image" class="custom-file-label"></label>
-            <div class="col-md-5">
-                <input type="file" asp-for="Image" class="form-control" />
-            </div>
+            <label asp-for="Image"></label>
+            <input type="file" asp-for="Image" class="form-control" />
             <span asp-validation-for="Image" class="text-danger"></span>
         </div>
 
-        <div class="actions-row">
+        <div class="text-center">
             <a asp-controller="Report" asp-action="Index" class="btn btn-light btn-sm">Back to Reports</a>
             <input type="submit" class="red-button" value="Save Changes" />
-
         </div>
     </form>
 

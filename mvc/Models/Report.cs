@@ -11,6 +11,9 @@ namespace mvc.Models
         public ApplicationUser User { get; set; }
         public int ReportId { get; set; }
         public string HazardLocation { get; set; }
+
+        public double LatitudeMarker { get; set; }
+        public double LongitudeMarker { get; set; }
         public DateTime DateOfReport { get; set; }
         public DateTime HazardDate { get; set; }
         public string HazardType { get; set; }

@@ -1965,8 +1965,6 @@ C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\refs\WindowsBa
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\mvc.Views.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\mvc.Views.pdb
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\System.Web.Cors.dll
-C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNet.Identity.Core.dll
-C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNet.Identity.Owin.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\System.Web.Http.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\System.Web.Http.Cors.dll
@@ -2004,10 +2002,6 @@ C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.Exte
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
-C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.Owin.dll
-C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.Owin.Security.dll
-C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.Owin.Security.Cookies.dll
-C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.Owin.Security.OAuth.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
@@ -2019,7 +2013,6 @@ C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.Visu
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
-C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Owin.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\System.Composition.Convention.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\System.Composition.Hosting.dll
