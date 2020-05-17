@@ -83,7 +83,7 @@ namespace mvc.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
-            var Investigation = _investigationRepository.GetInvestigationByReportId(id);
+            var Investigation = _investigationRepository.GetInvestigationById(id);
 
             if (Investigation == null)
             {

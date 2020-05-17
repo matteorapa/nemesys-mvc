@@ -1,25 +1,29 @@
-﻿
-    
+﻿@model Investigation
 
-    <div class="light-form-lg">
-        <h2>@Model.InvDescription</h2><hr /><br />
+<div class="light-form-lg">
+    <h2>@Model.InvDescription</h2><hr /><br />
 
-        <div class="card-body">
+                                        <div class="card-body">
 
-            <p class="card-text">@Model.Report.HazardLocation</p>
+                                            <p class="card-text">Investigation for: @Model.Report.HazardLocation</p><br />
 
+                                            <p class="card-text">Report Status: @Model.Report.ReportStatus</p>
 
-            <p class="card-text">@Model.Report.HazardLocation</p>
-
-            
-                <a asp-controller="Investigation" asp-action="Index" class="btn btn-light btn-sm">Back to investigations</a>
-                <form asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.ReportId" method="get">
-                    <button type="submit" class="red-button">Edit Investigation</button>
-                </form>
+                                            <p class="card-text">Current Investigator: @Model.InvestigatorEmail</p>
+                                            <p class="card-text"><small>Investigator's Phone Number: @Model.InvestigatorPhone</small></p>
+                                            <br />
+                                            <p class="card-text"><small>Investigation Description: @Model.InvDescription</small></p>
 
 
-        </div>
-    </div>
+
+                                            <a asp-controller="Investigation" asp-action="Index" class="btn btn-light btn-sm">Back to investigations</a>
+                                            <form asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.ReportId" method="get">
+                                                <button type="submit" class="red-button">Edit Investigation</button>
+                                            </form>
+
+
+                                        </div>
+</div>
 
 
 
