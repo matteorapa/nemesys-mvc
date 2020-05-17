@@ -36,6 +36,7 @@ namespace mvc
             services.AddTransient<IReportRepository, ReportRepository>();
             services.AddTransient<IInvestigationRepository, InvestigationRepository>();
             services.AddTransient<IUpvoteRepository, UpvoteRepository>();
+            services.AddTransient<IApplicationUserRepository, ApplicationUserRepository>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {

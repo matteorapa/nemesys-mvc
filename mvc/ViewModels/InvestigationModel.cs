@@ -52,4 +52,6 @@ namespace mvc.ViewModels
         public int TotalInvestigations { get; set; }
         public IEnumerable<Investigation> Investigations { get; set; }
     }
+
+    
 }

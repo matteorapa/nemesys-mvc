@@ -51,4 +51,11 @@ namespace mvc.ViewModels
         public int TotalReports { get; set; }
         public IEnumerable<Report> Reports { get; set; }
     }
+
+    public class HallFameModel
+    {
+        public int TotalReporters { get; set; }
+        public IEnumerable<ApplicationUser> Reporters { get; set; }
+
+    }
 }

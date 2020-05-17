@@ -68,7 +68,7 @@ namespace mvc.Controllers
 
                 if (result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(user, "Investigator");
+                    await _userManager.AddToRoleAsync(user, "Reporter");
                     return RedirectToAction("Login", "Account");
                 }
 

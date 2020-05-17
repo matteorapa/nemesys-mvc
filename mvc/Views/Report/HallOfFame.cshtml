@@ -1,1 +1,26 @@
-﻿<span>Hall of Fame</span>
+﻿@model HallFameModel
+
+<br>
+<h3>Reporters</h3>
+<br />
+<br />
+<h4>Total number of Reporters: <strong>@Model.TotalReporters</strong></h4>
+<hr>
+
+
+@foreach (var account in Model.Reporters.OrderByDescending(a => a.Reports.Count()))
+{
+    <div class="user-row">
+
+        <div>
+            <span><strong>@account.UserName</strong></span><br />
+            <small>@account.Email</small><br />
+            <small>Total reports submitted by <em>@account.UserName: </em><strong>@account.Reports.Count()</strong></small>
+
+
+        </div>       
+
+    </div>
+
+}
+

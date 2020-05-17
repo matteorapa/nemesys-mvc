@@ -10,5 +10,6 @@ namespace mvc.Models
     {
         //One-to-Many (User to Upvotes) relationship with Upvote - EF Core Convention 4   
         public ICollection<Upvote> Upvotes { get; set; }
+        public ICollection<Report> Reports { get; set; }
     }
 }

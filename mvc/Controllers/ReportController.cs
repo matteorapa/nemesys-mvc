@@ -17,13 +17,16 @@ namespace mvc.Controllers
     {
         private readonly IReportRepository _reportRepository;
         private readonly IUpvoteRepository _upvoteRepository;
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IApplicationUserRepository _applicationUserRepository;
+        private readonly UserManager<ApplicationUser> _userManager; 
 
-        public ReportController(IReportRepository reportRepository, IUpvoteRepository upvoteRepository, UserManager<ApplicationUser> userManager)
+
+        public ReportController(IReportRepository reportRepository, IUpvoteRepository upvoteRepository, IApplicationUserRepository applicationUserRepository, UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
             _reportRepository = reportRepository;
             _upvoteRepository = upvoteRepository;
+            _applicationUserRepository = applicationUserRepository;
         }
 
         [HttpGet]
@@ -258,14 +261,20 @@ namespace mvc.Controllers
             }
         }
 
+
         [Authorize]
         [HttpGet]
-        public IActionResult HallOfFame()
+        public async Task<IActionResult> HallOfFame()
         {
+
             ViewBag.Title = "Hall of Fame";
+            var model = new HallFameModel();
 
+            model.Reporters = _applicationUserRepository.GetAllUsers();
+            model.TotalReporters = _applicationUserRepository.GetAllUsers().Count();
 
-            return View();
+            return View(model);
+
         }
 
 
