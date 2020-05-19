@@ -8,21 +8,35 @@
     <img class="card-img-top" src="@Model.ImageUrl" alt="Image for @Model.HazardLocation" />
     <div class="card-body">
 
-        <p class="card-text">@Model.HazardDescription</p>
-        <p class="small">@Model.HazardDate.ToShortDateString()</p><br />
         <div class="form-group">
-            <label>Location of hazard</label>
+            <div class="row align-items-baseline">
+                <h3 class="m-4">Description: </h3>
+                <h6 class="medium ">@Model.HazardDescription</h6>
+            </div>
+
+            <div class="row  align-items-baseline">
+                <h3 class="m-4">Date of Report: </h3>
+                <h6 class="medium">@Model.HazardDate.ToShortDateString()</h6>
+            </div>
+
+            <div class="row  align-items-baseline">
+                <h3 class="m-4">Type of Hazard: </h3>
+                <h6 class="medium">@Model.HazardType</h6>
+            </div>
+        </div>
+        <div class="form-group">
+            <h3 class="m-4">Location of hazard</h3>
             <div id="map"></div>
             <input class="form-control" type="hidden" id="latitude" value=@Model.LatitudeMarker>
             <input class="form-control" type="hidden" id="longitude" value=@Model.LongitudeMarker>
             <script>displayMap()</script>
            
         </div>
-        <p class="small">Number of Upvotes: @Model.Upvotes.Count()</p>
+        <p class="medium">Number of Upvotes: @Model.Upvotes.Count()</p>
 
         <div class="actions-row">
             <form asp-controller="Report" asp-action="Index" method="get">
-                <button class="btn btn-light btn-sm">Back</button>
+                <button class="red-button">Back</button>
             </form>
             <form asp-controller="Investigation" asp-action="Details" asp-route-id="@Model.ReportId" method="get">
                 <button class="red-button">Read Investigation Report</button>

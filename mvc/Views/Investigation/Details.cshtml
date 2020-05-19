@@ -5,22 +5,37 @@
 
                                         <div class="card-body">
 
-                                            <p class="card-text">Investigation for: @Model.Report.HazardLocation</p><br />
+                                            <div class="row  align-items-baseline">
+                                                <h3 class="m-4">Hazard location: </h3>
+                                                <p class="medium">@Model.Report.HazardLocation</p>
+                                            </div>
 
-                                            <p class="card-text">Report Status: @Model.Report.ReportStatus</p>
+                                            <div class="row  align-items-baseline">
+                                                <h3 class="m-4">Status of Report: </h3>
+                                                <h6 class="medium">@Model.Report.ReportStatus</h6>
+                                            </div>
 
-                                            <p class="card-text">Current Investigator: @Model.InvestigatorEmail</p>
-                                            <p class="card-text"><small>Investigator's Phone Number: @Model.InvestigatorPhone</small></p>
-                                            <br />
-                                            <p class="card-text"><small>Investigation Description: @Model.InvDescription</small></p>
+                                            <div class="row  align-items-baseline">
+                                                <h3 class="m-4">Investigator's email: </h3>
+                                                <h6 class="medium">@Model.InvestigatorEmail</h6>
+                                            </div>
 
+                                            <div class="row  align-items-baseline">
+                                                <h3 class="m-4">Investigator's Phone: </h3>
+                                                <h6 class="medium">@Model.InvestigatorPhone</h6>
+                                            </div>
 
+                                            <div class="row  align-items-baseline">
+                                                <h3 class="m-4">Investigation Description: </h3>
+                                                <h6 class="medium">@Model.InvDescription</h6>
+                                            </div>
 
-                                            <a asp-controller="Investigation" asp-action="Index" class="btn btn-light btn-sm">Back to investigations</a>
-                                            <form asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.ReportId" method="get">
-                                                <button type="submit" class="red-button">Edit Investigation</button>
-                                            </form>
-
+                                            <div class="row">
+                                                <button asp-controller="Investigation" asp-action="Index" class="red-button, flex">Back to investigations</button>
+                                                <form asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.ReportId" method="get">
+                                                    <button type="submit" class="red-button">Edit Investigation</button>
+                                                </form>
+                                            </div>
 
                                         </div>
 </div>
