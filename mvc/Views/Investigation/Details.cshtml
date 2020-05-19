@@ -3,41 +3,41 @@
 <div class="light-form-lg">
     <h2>@Model.InvDescription</h2><hr /><br />
 
-                                        <div class="card-body">
+    <div class="card-body">
 
-                                            <div class="row  align-items-baseline">
-                                                <h3 class="m-4">Hazard location: </h3>
-                                                <p class="medium">@Model.Report.HazardLocation</p>
-                                            </div>
+        <div class="row  align-items-baseline">
+            <h3 class="m-4">Hazard location: </h3>
+            <p class="medium">@Model.Report.HazardLocation</p>
+        </div>
 
-                                            <div class="row  align-items-baseline">
-                                                <h3 class="m-4">Status of Report: </h3>
-                                                <h6 class="medium">@Model.Report.ReportStatus</h6>
-                                            </div>
+        <div class="row  align-items-baseline">
+            <h3 class="m-4">Status of Report: </h3>
+            <h6 class="medium">@Model.Report.ReportStatus</h6>
+        </div>
 
-                                            <div class="row  align-items-baseline">
-                                                <h3 class="m-4">Investigator's email: </h3>
-                                                <h6 class="medium">@Model.InvestigatorEmail</h6>
-                                            </div>
+        <div class="row  align-items-baseline">
+            <h3 class="m-4">Investigator's email: </h3>
+            <h6 class="medium">@Model.InvestigatorEmail</h6>
+        </div>
 
-                                            <div class="row  align-items-baseline">
-                                                <h3 class="m-4">Investigator's Phone: </h3>
-                                                <h6 class="medium">@Model.InvestigatorPhone</h6>
-                                            </div>
+        <div class="row  align-items-baseline">
+            <h3 class="m-4">Investigator's Phone: </h3>
+            <h6 class="medium">@Model.InvestigatorPhone</h6>
+        </div>
 
-                                            <div class="row  align-items-baseline">
-                                                <h3 class="m-4">Investigation Description: </h3>
-                                                <h6 class="medium">@Model.InvDescription</h6>
-                                            </div>
+        <div class="row  align-items-baseline">
+            <h3 class="m-4">Investigation Description: </h3>
+            <h6 class="medium">@Model.InvDescription</h6>
+        </div>
 
-                                            <div class="row">
-                                                <button asp-controller="Investigation" asp-action="Index" class="red-button, flex">Back to investigations</button>
-                                                <form asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.ReportId" method="get">
-                                                    <button type="submit" class="red-button">Edit Investigation</button>
-                                                </form>
-                                            </div>
+        <div class="row">
+            <button asp-controller="Investigation" asp-action="Index" class="red-button, flex">Back to investigations</button>
+            <form asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.ReportId" method="get">
+                <button type="submit" class="red-button">Edit Investigation</button>
+            </form>
+        </div>
 
-                                        </div>
+    </div>
 </div>
 
 

@@ -23,9 +23,14 @@
                 <h3 class="m-4">Type of Hazard: </h3>
                 <h6 class="medium">@Model.HazardType</h6>
             </div>
+
+            <div class="row  align-items-baseline">
+                <h3 class="m-4">Location of Hazard:</h3>
+            </div>
         </div>
+
         <div class="form-group">
-            <h3 class="m-4">Location of hazard</h3>
+
             <div id="map"></div>
             <input class="form-control" type="hidden" id="latitude" value=@Model.LatitudeMarker>
             <input class="form-control" type="hidden" id="longitude" value=@Model.LongitudeMarker>
