@@ -10,12 +10,19 @@
             <span asp-validation-for="DateOfAction" class="text-danger"></span>
 
         </div>
-        <div class="form-group">
-            <label asp-for="ReportStatus">Status of Report</label>
-            <textarea asp-for="ReportStatus" class="form-control"></textarea>
-            <span asp-validation-for="ReportStatus" class="text-danger"></span>
+       
 
-        </div>
+            <div class="form-group">
+                <label asp-for="ReportStatus">Status of Report</label>
+                <select class="form-control" id="ReportStatus" asp-for="ReportStatus">
+                    <option value="No Action Required">No Action Required</option>
+                    <option value="Closed">Closed</option>
+                    <option value="In Investigation">In Investigation</option>
+                </select>
+                <span asp-validation-for="ReportStatus" class="text-danger"></span>
+            </div>
+            
+           
         <div class="form-group">
             <label asp-for="InvDescription">Investigaton Description</label>
             <textarea asp-for="InvDescription" class="form-control"></textarea>
@@ -25,7 +32,9 @@
 
         <div class="form-group">
             <label asp-for="InvDescription">Investigator</label>
-            <select class="form-control" id="selectInvestigator" asp-for="SelectedInvestigator" asp-items="@(new SelectList(Model.Investigators,"Id","UserName"))"></select>
+            
+            
+            <select class="form-control" id="selectInvestigator" value="" asp-for="SelectedInvestigator" asp-items="@(new SelectList(Model.Investigators,"Id","UserName"))"></select>
         </div>
 
         <div class="form-group text-center">

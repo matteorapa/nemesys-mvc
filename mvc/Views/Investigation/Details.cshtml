@@ -1,44 +1,54 @@
 ﻿@model Investigation
 
-<div class="light-form-lg">
-    <h2>@Model.InvDescription</h2><hr /><br />
+    <div class="light-form-lg">
+        @if (Model.Report.ReportStatus == "Closed")
+        {
+            <span type="text" class="badge badge-danger" aria-describedby="investigatorStatus" title="Status of report">@Model.Report.ReportStatus</span>
+        }
+        else if (Model.Report.ReportStatus == "No Action Required")
+        {
+            <span type="text" class="badge badge-secondary" aria-describedby="investigatorStatus" title="Status of report">@Model.Report.ReportStatus</span>
+        }
+        else if (Model.Report.ReportStatus == "In Investigation")
+        {
+            <span type="text" class="badge badge-success" aria-describedby="investigatorStatus" title="Status of report">@Model.Report.ReportStatus</span>
+        }
 
-    <div class="card-body">
+        <h2>Investigation for report <u>@Model.Report.HazardLocation</u></h2>
+        <small class="user-row">Investigation started on @Model.DateOfAction</small><br />
 
-        <div class="row  align-items-baseline">
-            <h3 class="m-4">Hazard location: </h3>
-            <p class="medium">@Model.Report.HazardLocation</p>
+        <div class="card-body">
+
+            <div class="form-group">
+                <label id="InvestigationDesc">Investigation Description</label>
+                <textarea class="form-control"rows="6" readonly aria-describedby="InvestigationDesc">@Model.InvDescription</textarea>
+            </div><br /><hr /><br />
+
+
+
+            <h5>Investigator Contact</h5>
+            <div class="form-group row">
+                <label for="investigatorEmail" class="col-sm-4 col-form-label">Investigator's email:</label>
+                <div class="col-sm-6">
+                    <input type="text" readonly class="form-control-plaintext" aria-describedby="investigatorEmail" value="@Model.InvestigatorEmail">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="investigatorEmail" class="col-sm-4 col-form-label">Investigator's Phone number:</label>
+                <div class="col-sm-6">
+                    <input type="text" readonly class="form-control-plaintext" iaria-describedby="investigatorPhone" value="@Model.InvestigatorPhone">
+                </div>
+            </div><br />
+
+            <div class="form-group text-center">
+                <a asp-controller="Investigation" asp-action="Index" class="btn btn-light btn-sm">Back to investigations</a>
+                <form asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.ReportId" method="get">
+                    <button type="submit" class="red-button">Edit Investigation</button>
+                </form>
+            </div>
+
         </div>
-
-        <div class="row  align-items-baseline">
-            <h3 class="m-4">Status of Report: </h3>
-            <h6 class="medium">@Model.Report.ReportStatus</h6>
-        </div>
-
-        <div class="row  align-items-baseline">
-            <h3 class="m-4">Investigator's email: </h3>
-            <h6 class="medium">@Model.InvestigatorEmail</h6>
-        </div>
-
-        <div class="row  align-items-baseline">
-            <h3 class="m-4">Investigator's Phone: </h3>
-            <h6 class="medium">@Model.InvestigatorPhone</h6>
-        </div>
-
-        <div class="row  align-items-baseline">
-            <h3 class="m-4">Investigation Description: </h3>
-            <h6 class="medium">@Model.InvDescription</h6>
-        </div>
-
-        <div class="row">
-            <button asp-controller="Investigation" asp-action="Index" class="red-button, flex">Back to investigations</button>
-            <form asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.ReportId" method="get">
-                <button type="submit" class="red-button">Edit Investigation</button>
-            </form>
-        </div>
-
     </div>
-</div>
 
 
 

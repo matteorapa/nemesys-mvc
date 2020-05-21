@@ -3,51 +3,42 @@
 
 @model Report
 
-<div class="focused">
-    <h1>@Model.HazardLocation</h1>
-    <img class="card-img-top" src="@Model.ImageUrl" alt="Image for @Model.HazardLocation" />
-    <div class="card-body">
+    <div class="focused">
+        <span type="text" class="badge badge-warning" aria-describedby="investigatorStatus" title="Type of hazard">@Model.HazardType</span>
+        <h2>@Model.HazardLocation</h2>
+        <div class="user-row">
+            <small class="text-muted">Reported on @Model.HazardDate.ToShortDateString()</small>
+            <small class="text-muted"><i class="far fa-hand-point-up grad-text"></i> @Model.Upvotes.Count() Upvotes</small>
+            
+            
+        </div><br />
+        <img class="card-img-top" src="@Model.ImageUrl" alt="Image for @Model.HazardLocation" />
+        <div class="card-body">
 
-        <div class="form-group">
-            <div class="row align-items-baseline">
-                <h3 class="m-4">Description: </h3>
-                <h6 class="medium ">@Model.HazardDescription</h6>
+            <br/><div>
+                <h5 id="ReportDesc">Investigation Description</h5>
+                <p aria-describedby="ReportDesc">@Model.HazardDescription</p>
+            </div><br />
+
+
+            <div>
+                <h5>Location of Hazard</h5>
+                <div id="map"></div>
+                <input class="form-control" type="hidden" id="latitude" value=@Model.LatitudeMarker>
+                <input class="form-control" type="hidden" id="longitude" value=@Model.LongitudeMarker>
+                <script>displayMap()</script>
+            </div><br />
+            
+
+            <div class="actions-row">
+                <form asp-controller="Report" asp-action="Index" method="get">
+                    <button class="btn btn-light btn-sm">Back</button>
+                </form>
+                <form asp-controller="Investigation" asp-action="Details" asp-route-id="@Model.ReportId" method="get">
+                    <button class="red-button">Read Investigation Report</button>
+                </form>
+
             </div>
-
-            <div class="row  align-items-baseline">
-                <h3 class="m-4">Date of Report: </h3>
-                <h6 class="medium">@Model.HazardDate.ToShortDateString()</h6>
-            </div>
-
-            <div class="row  align-items-baseline">
-                <h3 class="m-4">Type of Hazard: </h3>
-                <h6 class="medium">@Model.HazardType</h6>
-            </div>
-
-            <div class="row  align-items-baseline">
-                <h3 class="m-4">Location of Hazard:</h3>
-            </div>
-        </div>
-
-        <div class="form-group">
-
-            <div id="map"></div>
-            <input class="form-control" type="hidden" id="latitude" value=@Model.LatitudeMarker>
-            <input class="form-control" type="hidden" id="longitude" value=@Model.LongitudeMarker>
-            <script>displayMap()</script>
-           
-        </div>
-        <p class="medium">Number of Upvotes: @Model.Upvotes.Count()</p>
-
-        <div class="actions-row">
-            <form asp-controller="Report" asp-action="Index" method="get">
-                <button class="red-button">Back</button>
-            </form>
-            <form asp-controller="Investigation" asp-action="Details" asp-route-id="@Model.ReportId" method="get">
-                <button class="red-button">Read Investigation Report</button>
-            </form>
 
         </div>
-
     </div>
-</div>

@@ -18,13 +18,13 @@ namespace mvc.ViewModels
         public string ReportStatus { get; set; }
 
         [Required(ErrorMessage = "Please enter a brief investigation description")]
-        [StringLength(100, MinimumLength = 1)]
+        [StringLength(2048, MinimumLength = 1)]
         public string InvDescription { get; set; }
         
         public IList<ApplicationUser> Investigators { get; set; }
 
         [Required]
-        public string SelectedInvestigator { get; set; }
+        public ApplicationUser SelectedInvestigator { get; set; }
     }
 
     public class CreateInvestigationViewModel

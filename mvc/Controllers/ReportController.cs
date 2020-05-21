@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using mvc.Models;
 using mvc.ViewModels;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 
@@ -48,7 +46,7 @@ namespace mvc.Controllers
             var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             ApplicationUser idenUser = await _userManager.FindByIdAsync(currentUser);
 
-            ViewBag.Title = "Report Register";
+            ViewBag.Title = "My Reports";
 
             var model = new ReportRegisterViewModel();
             model.Reports = _reportRepository.GetUserReports(idenUser).OrderByDescending(r => r.DateOfReport);
@@ -209,7 +207,7 @@ namespace mvc.Controllers
             model.Reports = _reportRepository.GetAllReports().Where(x => x.HazardLocation.Contains(search, StringComparison.OrdinalIgnoreCase));
             model.TotalReports = model.Reports.Count();
 
-            return View(model);
+            return View("Views/Report/Index.cshtml" , model);
         }
 
         public async Task<IActionResult> Upvote(int id)

@@ -9,6 +9,8 @@ using mvc.Models;
 using mvc.ViewModels;
 using System.Net;
 using System.Net.Mail;
+using System.Collections.Generic;
+using System;
 
 namespace mvc.Controllers
 {
@@ -34,6 +36,38 @@ namespace mvc.Controllers
             model.Investigations = _investigationRepository.GetAllInvestigations();
             model.TotalInvestigations = model.Investigations.Count();
             return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Search(string search)
+        {
+            var model = new InvestigationListViewModel();
+
+            //clean search input ...
+            ViewBag.Title = "Results for " + search;
+
+
+            model.Investigations = _investigationRepository.GetAllInvestigations().Where(x => x.InvDescription.Contains(search, System.StringComparison.OrdinalIgnoreCase));        
+            model.TotalInvestigations = model.Investigations.Count();
+
+       
+
+            return View("Views/Investigation/Index.cshtml", model);
+        }
+
+        [Authorize(Roles = "Investigator")]
+        [HttpGet]
+        public async Task<IActionResult> UserIndex()
+        {
+            var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            ApplicationUser idenUser = await _userManager.FindByIdAsync(currentUser);
+
+            ViewBag.Title = "My Investigations";
+
+            var model = new InvestigationListViewModel();
+            model.Investigations = _investigationRepository.GetUserInvestigations(idenUser).OrderByDescending(i => i.DateOfAction);
+            model.TotalInvestigations = model.Investigations.Count();
+            return View("Views/Report/Index.cshtml", model);
         }
 
         [Authorize(Roles = "Investigator")]
@@ -80,6 +114,7 @@ namespace mvc.Controllers
 
         }
 
+
         [HttpGet]
         public IActionResult Details(int id)
         {
@@ -109,7 +144,11 @@ namespace mvc.Controllers
             Investigation.DateOfAction = inv.DateOfAction;
             Investigation.InvDescription = inv.InvDescription;
             Investigation.ReportStatus = rep.ReportStatus;
-            Investigation.Investigators = await _userManager.GetUsersInRoleAsync("Investigator");
+            Investigation.SelectedInvestigator = inv.User;
+            Investigation.Investigators = await _userManager.GetUsersInRoleAsync("Investigator"); ;
+
+            
+
             return View(Investigation);
         }
 
@@ -119,17 +158,21 @@ namespace mvc.Controllers
         public async Task <IActionResult> Edit([Bind("DateOfAction", "InvDescription", "ReportStatus", "SelectedInvestigator")] EditInvestigationViewModel investigation, int id)
         {
             ApplicationUser user = await _userManager.FindByIdAsync(investigation.SelectedInvestigator);
+           
+
             if (ModelState.IsValid)
             {
                 Investigation i = new Investigation()
                 {
                     DateOfAction = investigation.DateOfAction,
-                    InvestigatorEmail = user.Email,
-                    InvestigatorPhone = user.PhoneNumber,
+                    InvestigatorEmail = investigation.SelectedInvestigator.Email,
+                    InvestigatorPhone = investigation.SelectedInvestigator.PhoneNumber,
                     InvDescription = investigation.InvDescription,
                     ReportId = id,
-                    User = user
+                    User = investigation.SelectedInvestigator
                 };
+
+                Console.WriteLine("Changed investigator to "+ investigation.SelectedInvestigator.UserName);
 
                 var report = _reportRepository.GetReportById(id);
                 report.ReportStatus = investigation.ReportStatus;
@@ -143,8 +186,9 @@ namespace mvc.Controllers
 
                 //do not send email if changed user is currently logged user
                 if (!loggedAccount.Id.Equals(user.Id)) {
-                   
-                    MailAddress to = new MailAddress(user.Email);
+                    {
+
+                        MailAddress to = new MailAddress(user.Email);
                     MailAddress from = new MailAddress("nemesys.mailsystem@gmail.com"); //system email
 
                     MailMessage message = new MailMessage(from, to);

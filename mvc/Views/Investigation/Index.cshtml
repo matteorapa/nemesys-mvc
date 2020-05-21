@@ -1,50 +1,53 @@
 ﻿@model mvc.ViewModels.InvestigationListViewModel
 
-    <div class="row">
-        <aside class="side-options">
-            <div class="container">
-                <small class="text-muted">@Model.TotalInvestigations investigations found</small>
-                <hr>
+@using  Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
 
-                <form asp-controller="Investigation" asp-action="Search" method="get" role="form" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label>Search</label>
-                        <input name="search" class="form-control" type="search" asp-controller="Investigation" asp-action="Search" placeholder="Search for an investigation" />
-                        <small asp-validation-for="Search" class="text-danger"></small>
+<div class="row">
+    <aside class="side-options">
+        <div class="container">
+            <small class="text-muted">@Model.TotalInvestigations investigations found</small>
+            <hr>
+
+            <form asp-controller="Investigation" asp-action="Search" method="get" role="form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Search</label>
+                    <input name="search" class="form-control" type="search" asp-controller="Investigation" asp-action="Search" placeholder="Search for an investigation" />
+                    <small asp-validation-for="Search" class="text-danger"></small>
+                </div>
+            </form>
+
+            <form asp-controller="Investigation" asp-action="UserIndex" method="get">
+                <button class="red-button">My Investigations</button>
+            </form><br />
+            <a asp-controller="Account" asp-action="ManageAccounts" class="btn btn-outline-secondary btn-block">Manage Accounts</a>
+        </div>
+    </aside>
+
+
+    <div class="col">
+        @foreach (var investigation in Model.Investigations)
+        {
+            <div class="card report-card">
+
+                <div class="card-body">
+                    <h4 class="card-title">Investigation <strong>@investigation.InvDescription</strong> for report concerning  <strong>@investigation.Report.HazardLocation</strong></h4><hr />
+                    <small class="text-muted">Investigation started on @investigation.DateOfAction.ToShortDateString()</small><br />
+                    <small class="text-muted">Report created on @investigation.Report.DateOfReport.ToShortDateString()</small><br /><br />
+                    <small class="text-muted">Current Investigator assigned: @investigation.InvestigatorEmail</small><br /><br />
+
+                    <div class="actions-row">
+
+                        <a asp-controller="Investigation" asp-action="Details" asp-route-id="@investigation.InvestigationId" class="btn btn-link">Details</a>
+                        <a asp-controller="Investigation" asp-action="Edit" asp-route-id="@investigation.ReportId" class="btn btn-link">Edit</a>
+                        <a asp-controller="Report" asp-action="Details" asp-route-id="@investigation.ReportId" class="btn btn-outline-primary btn-block">View original report</a>
+
                     </div>
-                </form>
 
-                <form asp-controller="Investigation" asp-action="Create" method="get">
-                    <button class="red-button">My Investigations</button>
-                </form><br />
-                <a asp-controller="Account" asp-action="ManageAccounts" class="btn btn-outline-secondary btn-block">Manage Accounts</a>
-            </div>
-        </aside>
-
-
-        <div class="col">
-            @foreach (var investigation in Model.Investigations)
-            {
-                <div class="card report-card">
-                    
-                    <div class="card-body">
-                        <h4 class="card-title">Investigation <strong>@investigation.InvDescription</strong> for report concerning  <strong>@investigation.Report.HazardLocation</strong></h4><hr />
-                        <small class="text-muted">Investigation started on @investigation.DateOfAction.ToShortDateString()</small><br />
-                        <small class="text-muted">Report created on @investigation.Report.DateOfReport.ToShortDateString()</small><br /><br />
-                        <small class="text-muted">Current Investigator assigned: @investigation.InvestigatorEmail</small><br /><br />
-
-                        <div class="actions-row">
-
-                            <a asp-controller="Investigation" asp-action="Details" asp-route-id="@investigation.InvestigationId" class="btn btn-link">Details</a>
-                            <a asp-controller="Investigation" asp-action="Edit" asp-route-id="@investigation.ReportId" class="btn btn-link">Edit</a>
-                            <a asp-controller="Report" asp-action="Details" asp-route-id="@investigation.ReportId" class="btn btn-outline-primary btn-block">View original report</a>
-
-                        </div>
-
-
-                    </div>
 
                 </div>
-            }
-        </div>
+
+            </div>
+        }
     </div>
+</div>

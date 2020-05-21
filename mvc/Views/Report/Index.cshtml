@@ -10,7 +10,9 @@
         <div class="container">
             <small class="text-muted">@Model.TotalReports reports found</small>
             <hr>
-
+            <form asp-controller="Report" asp-action="UserIndex" method="get">
+                <button class="red-button">My Reports</button>
+            </form><br />
             <form asp-controller="Report" asp-action="Search" method="get" role="form" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Search</label>

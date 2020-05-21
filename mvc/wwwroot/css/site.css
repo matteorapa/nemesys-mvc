@@ -14,6 +14,7 @@ a.navbar-brand {
 
 img {
     max-width: 100% !important;
+    border-radius: 2px;
 }
 
 
@@ -69,8 +70,13 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    /*--theme-color-1: #EB3349;
+    --theme-color-2: #F45C43;
+    */
+    --theme-color-1: #24c6dc;
+    --theme-color-2: #514a9d;
 }
 .footer {
   position: absolute;
@@ -81,7 +87,7 @@ body {
 }
 
 .red-button {
-    background: linear-gradient(to right, #24c6dc, #514a9d);
+    background: linear-gradient(to right, var(--theme-color-1), var(--theme-color-2));
     color: white;
     font-weight: 700;
     padding: 12px;
@@ -93,9 +99,8 @@ body {
     width: 100%;
 }
 
-
 .grad-text {
-    background: linear-gradient(to right, #24c6dc, #514a9d);
+    background: linear-gradient(to right, var(--theme-color-1), var(--theme-color-2));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -117,9 +122,6 @@ body {
 }
 
 
-
-
-
 .report-img {
     height: 240px !important;
     object-position: center !important;
@@ -129,8 +131,6 @@ body {
 .no-margin {
     margin: unset !important;
 }
-
-
 
 .h-container {
     height: 40vh;
@@ -162,7 +162,6 @@ body {
     flex-direction:row;
     justify-content:center;
     align-content:space-between;
-
 }
 
 .card-img{
@@ -176,12 +175,8 @@ body {
     flex-direction: row !important;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #514a9d;
+    border-bottom: 1px solid var(--theme-color-2);
     padding: 12px;
-    background-color: rgb(250,250,255);
     margin-bottom: 12px;
 }
-
-
-
 

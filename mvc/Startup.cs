@@ -86,6 +86,7 @@ namespace mvc
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddMvc();
 
         }
 
@@ -109,6 +110,7 @@ namespace mvc
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseStaticFiles();
 
             app.UseCors();
 
@@ -117,6 +119,9 @@ namespace mvc
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllers();
+                endpoints.MapRazorPages();
             });
         }
     }

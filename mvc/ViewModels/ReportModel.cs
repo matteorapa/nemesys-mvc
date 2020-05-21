@@ -20,7 +20,7 @@ namespace mvc.ViewModels
         public string HazardType { get; set; }
         
         [Required(ErrorMessage = "Please describe the hazard observed in some detail.")]
-        [StringLength(300, MinimumLength = 1)]
+        [StringLength(1024, MinimumLength = 1)]
         public string HazardDescription { get; set; }
 
         public string ImageUrl { get; set; }

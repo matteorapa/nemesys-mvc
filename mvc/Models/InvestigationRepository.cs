@@ -28,6 +28,10 @@ namespace mvc.Models
             return _appDbContext.Investigations.Include(i => i.Report).FirstOrDefault(i => i.ReportId == reportId);
         }
 
+        public IEnumerable<Investigation> GetUserInvestigations(ApplicationUser user)
+        {
+            return _appDbContext.Investigations.Include(i => i.Report).Where(i => i.User == user).ToList();
+        }
 
         public IEnumerable<Investigation> GetAllInvestigations()
         {
@@ -58,5 +62,7 @@ namespace mvc.Models
                 _appDbContext.SaveChanges();
             }
         }
+
+        
     }
 }
