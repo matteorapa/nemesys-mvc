@@ -46,11 +46,8 @@ namespace mvc.Controllers
             //clean search input ...
             ViewBag.Title = "Results for " + search;
 
-
             model.Investigations = _investigationRepository.GetAllInvestigations().Where(x => x.InvDescription.Contains(search, System.StringComparison.OrdinalIgnoreCase));        
             model.TotalInvestigations = model.Investigations.Count();
-
-       
 
             return View("Views/Investigation/Index.cshtml", model);
         }

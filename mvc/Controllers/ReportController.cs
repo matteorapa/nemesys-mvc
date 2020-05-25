@@ -147,7 +147,7 @@ namespace mvc.Controllers
             }
             else
             {
-                return View("Views/Report/Error.cshtml");
+                return LocalRedirect("/Identity/Account/AccessDenied");
             }
         }
 

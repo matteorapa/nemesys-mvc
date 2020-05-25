@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace mvc
 {
@@ -59,15 +60,14 @@ namespace mvc
 
 
             }).AddEntityFrameworkStores<AppDbContext>();
-
             services.ConfigureApplicationCookie(options =>
             {
                 //Cookie settings
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
                 options.SlidingExpiration = true;
-                options.LoginPath = "/Account/Login";
-                options.AccessDeniedPath = "/Account/Login";
+                options.LoginPath = "/Identity/Account/Login";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
             });
 
             //services.AddAuthentication().AddCookie(options =>
@@ -87,6 +87,7 @@ namespace mvc
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddMvc();
+            services.AddRazorPages();
 
         }
 

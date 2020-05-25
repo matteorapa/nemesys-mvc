@@ -1,6 +1,8 @@
 ﻿@model ManageViewModel
 
-
+    <form asp-controller="Account" asp-action="Search" method="get" role="form" enctype="multipart/form-data">
+        <input class="form-control" type="search"  name="search" asp-controller="Account" asp-action="Search" placeholder="Search for reporter">
+    </form>
 <h3>Investigators</h3>
 <hr>
 @foreach (var account in Model.Investigators)
@@ -21,6 +23,7 @@
 }
 <br>
 <h3>Reporters</h3>
+
 <hr>
 @foreach (var account in Model.Reporters)
 {
