@@ -30,7 +30,10 @@ namespace mvc.ViewModels
     public class CreateInvestigationViewModel
     {
         [Required(ErrorMessage = "Please enter date of action.")]
+        
         public DateTime DateOfAction { get; set; }
+
+
 
         [Required(ErrorMessage = "Please enter report status")]
         public string ReportStatus { get; set; }
