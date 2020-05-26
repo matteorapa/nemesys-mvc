@@ -2082,8 +2082,6 @@ C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\runtimes\win-x
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.RazorAssemblyInfo.cache
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.RazorAssemblyInfo.cs
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.AssemblyInfoInputs.cache
@@ -2091,9 +2089,7 @@ C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.AssemblyIn
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.TagHelpers.input.cache
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.TagHelpers.output.cache
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.RazorCoreGenerate.cache
-C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\ManageAccounts.cshtml.g.cs
-C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Investigation\Create.cshtml.g.cs
@@ -2159,3 +2155,7 @@ C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Id
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ExternalLogin.cshtml.g.cs
+C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Google.dll

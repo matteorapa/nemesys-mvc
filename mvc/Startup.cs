@@ -1,9 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Cors;
+
 using mvc.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Authentication;
 
 namespace mvc
 {
@@ -70,11 +66,13 @@ namespace mvc
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
             });
 
-            //services.AddAuthentication().AddCookie(options =>
-            //{
-            //    options.LoginPath = "/Account/Login";
-            //    options.AccessDeniedPath = "/Account/Login";
-            //});
+            services.AddAuthentication().AddGoogle(options =>
+            {
+                IConfigurationSection googleAuthNSection = _configuration.GetSection("Authentication:Google");
+
+                options.ClientId = _configuration["Authentication:Google:ClientId"];
+                options.ClientSecret = _configuration["Authentication:Google:ClientSecret"];
+            });
 
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
