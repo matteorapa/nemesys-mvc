@@ -8,8 +8,8 @@
 
 
     
-       
-<form id="account" method="post" class="light-form">
+<div class="light-form">
+<form id="account" method="post">
     <h2>@ViewData["Title"]</h2>
     <hr />
     <div asp-validation-summary="All" class="text-danger"></div>
@@ -40,38 +40,36 @@
     </div>
     <br/>
     <br/>
-    <section>
-        <h4>Use another service to login</h4>
-        <hr />
-        @{
-            if ((Model.ExternalLogins?.Count ?? 0) == 0)
-            {
+</form>
+<section>
+    <h4>Use another service to login</h4>
+    <hr />
+    @{
+        if ((Model.ExternalLogins?.Count ?? 0) == 0)
+        {
+            <div>
+                <p>
+                    There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                    for details on setting up this ASP.NET application to support logging in via external services.
+                </p>
+            </div>
+        }
+        else
+        {
+            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
                 <div>
                     <p>
-                        There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                        for details on setting up this ASP.NET application to support logging in via external services.
+                        @foreach (var provider in Model.ExternalLogins)
+                        {
+                            <button type="submit" class="btn btn-outline-secondary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="fab fa-google"></i> @provider.DisplayName</button>
+                        }
                     </p>
                 </div>
-            }
-            else
-            {
-                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                    <div>
-                        <p>
-                            @foreach (var provider in Model.ExternalLogins)
-                            {
-                                <button type="submit" class="btn btn-outline-secondary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="fab fa-google"></i> @provider.DisplayName</button>
-                            }
-                        </p>
-                    </div>
-                </form>
-            }
+            </form>
         }
-    </section>
-
-
-
-</form>
+    }
+</section>
+</div>
 
 
 @section Scripts {
