@@ -18,6 +18,31 @@ img {
 }
 
 
+.split {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.denied-img {
+    width: 350px;
+    height: 600px;
+    border-radius: 2px 40px;
+}
+.denied-container {
+    padding: 48px;
+}
+
+.button-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
@@ -97,6 +122,10 @@ body {
     border: 1.4px solid rgb(30,30,30);
     max-width: 350px;
     width: 100%;
+}
+
+.red-button:hover {
+    color: white !important;
 }
 
 .grad-text {

@@ -1,11 +1,7 @@
 ﻿@model HallFameModel
 
-<br>
-<h3>Reporters</h3>
-<br />
-<br />
-<h4>Total number of Reporters: <strong>@Model.TotalReporters</strong></h4>
-<hr>
+<h1>Hall of Fame</h1>
+<small class="text-muted">Total number of Reporters: <strong>@Model.TotalReporters</strong></small><br /><br />
 
 
 @foreach (var account in Model.Reporters.OrderByDescending(a => a.Reports.Count()))
@@ -18,7 +14,7 @@
             <small>Total reports submitted by <em>@account.UserName: </em><strong>@account.Reports.Count()</strong></small>
 
 
-        </div>       
+        </div>
 
     </div>
 

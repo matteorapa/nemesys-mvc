@@ -1,80 +1,78 @@
 ﻿@model mvc.ViewModels.EditReport
 
-        <form asp-action="Create" method="post" role="form" enctype="multipart/form-data" class="light-form-lg">
-            <h1>Create New Report</h1><hr>
-            <div class="form-group">
-                <label asp-for="HazardLocation">Location of Hazard</label>
+    <form asp-action="Create" method="post" role="form" enctype="multipart/form-data" class="light-form-lg">
+        <h1>Create New Report</h1><hr>
+        <div class="form-group">
+            <label asp-for="HazardLocation">Location of Hazard</label>
 
-                <input asp-for="HazardLocation" class="form-control" />
-                <span asp-validation-for="HazardLocation" class="text-danger"></span>
+            <input asp-for="HazardLocation" class="form-control" />
+            <span asp-validation-for="HazardLocation" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+
+            <div>
+                <script>locusMap()</script>
+                <label asp-for="HazardType">Maps Location</label><br />
+
+                <div id="map"></div><br />
+                <small class="text-muted">Click on the map the location of the hazard.</small>
+
+                <input asp-for="LatitudeMarker" class="form-control" type="hidden" id="latitude">
+                <input asp-for="LongitudeMarker" class="form-control" type="hidden" id="longitude">
+                <span asp-validation-for="LatitudeMarker" class="text-danger"></span>
+
+
             </div>
 
-            <div class="form-group">
-                
-                <div>
-                    <script>locusMap()</script>
-                    <label asp-for="HazardType">Maps Location</label><br />
+        </div>
 
-                    <div id="map"></div><br />
-                    <small class="text-muted">Click on the map the location of the hazard.</small>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="HazardDate">Date Hazard Was Spotted</label>
 
-                    <input asp-for="LatitudeMarker" class="form-control" type="hidden" id="latitude">
-                    <input asp-for="LongitudeMarker" class="form-control" type="hidden" id="longitude">
-                    <span asp-validation-for="LatitudeMarker" class="text-danger"></span>
-
+                    <input asp-for="HazardDate" class="form-control" />
+                    <span asp-validation-for="HazardDate" class="text-danger"></span>
 
                 </div>
-         
             </div>
 
-            <div class="row">
-                <div class="col">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="HazardType">Type of Hazard</label>
+
                     <div class="form-group">
-                        <label asp-for="HazardDate">Date Hazard Was Spotted</label>
-
-                        <input asp-for="HazardDate" class="form-control" />
-                        <span asp-validation-for="HazardDate" class="text-danger"></span>
-
+                        <select class="form-control" id="HazardType" asp-for="HazardType">
+                            <option value="Unsafe Act">Unsafe Act</option>
+                            <option value="Unfit Condition">Unfit Condition</option>
+                            <option value="Equipment Issue">Equipment Issue</option>
+                            <option value="Structural Concern">Structural Concern</option>
+                        </select>
                     </div>
-                </div>
 
-                <div class="col">
-                    <div class="form-group">
-                        <label asp-for="HazardType">Type of Hazard</label>
-
-                        <div class="form-group">
-                            <select class="form-control" id="HazardType" asp-for="HazardType">
-                                <option value="Unsafe Act">Unsafe Act</option>
-                                <option value="Unfit Condition">Unfit Condition</option>
-                                <option value="Equipment Issue">Equipment Issue</option>
-                                <option value="Structural Concern">Structural Concern</option>
-                            </select>
-                        </div>
-
-                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="form-group">
-                <label asp-for="HazardDescription">Description</label>
+        <div class="form-group">
+            <label asp-for="HazardDescription">Description</label>
 
-                <textarea asp-for="HazardDescription" class="form-control"></textarea>
-                <span asp-validation-for="HazardDescription" class="text-danger"></span>
+            <textarea asp-for="HazardDescription" class="form-control"></textarea>
+            <span asp-validation-for="HazardDescription" class="text-danger"></span>
 
-            </div>
-            <div class="form-group">
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="Image"></label>
+            <input type="file" asp-for="Image" class="form-control" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
 
-                <div class="custom-file">
-                    <input type="file" asp-for="Image" class="custom-file-input" id="customFile">
-                    <label asp-for="Image" class="custom-file-label"></label>
-                    <span asp-validation-for="Image" class="text-danger"></span>
-                </div>
+        <div class="button-row">
+            <a asp-controller="Report" asp-action="Index" class="red-button">Back to Reports</a>
+            <input type="submit" class="red-button" value="Create Report" />
 
-            </div>
-            <div class="actions-row">
-                <a asp-controller="Report" asp-action="Index" class="btn btn-light btn-sm">Back to Reports</a>
-                <input type="submit" class="red-button" value="Create Report" />
-
-            </div>
-        </form>
+        </div>
+    </form>
 

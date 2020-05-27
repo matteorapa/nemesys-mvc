@@ -4,7 +4,20 @@
     ViewData["Title"] = "Access denied";
 }
 
-<header>
-    <h1 class="text-danger">@ViewData["Title"]</h1>
-    <p class="text-danger">You do not have access to this resource.</p>
-</header>
+<div class="focused">
+    <div class="split">
+        <img src="@Url.Content("/images/access-denied.jpg")" class="denied-img" />
+        <div class="denied-container">
+            <h1>@ViewData["Title"]</h1>
+            <small class="text-muted">You do not have access to this resource.</small><hr /><br />
+            <p>Please try to login with an appropriate account to access this page.</p>
+            <form asp-area="Identity" asp-page="/Account/Login" method="get">
+                <button class="red-button">Login</button>
+            </form>
+            
+        </div>
+        
+
+    </div>
+       
+    </div>

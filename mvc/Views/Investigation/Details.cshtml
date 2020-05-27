@@ -40,8 +40,8 @@
                 </div>
             </div><br />
 
-            <div class="form-group text-center">
-                <a asp-controller="Investigation" asp-action="Index" class="btn btn-light btn-sm">Back to investigations</a>
+            <div class="button-row">
+                <a asp-controller="Investigation" asp-action="Index" class="red-button">Back to investigations</a>
                 <form asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.ReportId" method="get">
                     <button type="submit" class="red-button">Edit Investigation</button>
                 </form>

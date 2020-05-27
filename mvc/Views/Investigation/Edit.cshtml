@@ -37,8 +37,8 @@
             <select class="form-control" id="selectInvestigator" value="" asp-for="SelectedInvestigator" asp-items="@(new SelectList(Model.Investigators,"Id","UserName"))"></select>
         </div>
 
-        <div class="form-group text-center">
-            <a asp-controller="Investigation" asp-action="Index" class="btn btn-light btn-sm">Back to Investigations</a>
+        <div class="button-row">
+            <a asp-controller="Investigation" asp-action="Index" class="red-button">Back to Investigations</a>
             <input type="submit" class="red-button" value="Save changes" />
 
         </div>

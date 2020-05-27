@@ -43,7 +43,7 @@
                                     <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                                    <a class="btn btn-outline-success" asp-area="Identity" asp-page="/Account/Register">Register</a>
                                 </li>
                             </ul>
                         }
@@ -55,13 +55,12 @@
                                 </li>
                                 <li class="nav-item">
                                     <form asp-area="Identity" asp-page="/Account/Logout" id="logout" method="post">
-                                        <input type="submit" class="nav-link" value="Logout" />
+                                        <input type="submit" class="btn btn-outline-danger" value="Logout" />
+                                        
                                     </form>
-                                    <!---https://stackoverflow.com/questions/10039968/submit-form-using-a-tag-->
+                                   
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-controller="Report" asp-action="UserIndex">My Reports</a>
-                                </li>
+                                
                             </ul>
                         }
                     </ul>
