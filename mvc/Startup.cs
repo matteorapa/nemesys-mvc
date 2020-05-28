@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication;
+using Serilog;
 
 namespace mvc
 {
@@ -18,23 +19,24 @@ namespace mvc
         private readonly IWebHostEnvironment _env;
         public IConfiguration _configuration { get; }
 
-        //Requeting injection of a IWebHostEnvironment object (Provides information about the web hosting environment an application is running in).
+        //Requesting injection of an IWebHostEnvironment object
         public Startup(IWebHostEnvironment env, IConfiguration configuration)
         {
-            //Setting this to a private var for use in ConfigureServices
+            //storing the environment and configuration in private variables in the constructor, to be used in Startup file
             _env = env;
             _configuration = configuration;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        //Adding services to the container
         public void ConfigureServices(IServiceCollection services)
         {
-
+            //Adding a single instance per code request. With each request, ASP.NET will create a new instance of the service.
             services.AddTransient<IReportRepository, ReportRepository>();
             services.AddTransient<IInvestigationRepository, InvestigationRepository>();
             services.AddTransient<IUpvoteRepository, UpvoteRepository>();
             services.AddTransient<IApplicationUserRepository, ApplicationUserRepository>();
 
+            //Configuring Identity
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 //Password policy
@@ -56,16 +58,20 @@ namespace mvc
 
 
             }).AddEntityFrameworkStores<AppDbContext>();
+
+            //Configuring cookie settings
             services.ConfigureApplicationCookie(options =>
             {
                 //Cookie settings
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-                options.SlidingExpiration = true;
-                options.LoginPath = "/Identity/Account/Login";
+                options.SlidingExpiration = true; //re issues a cookie (to extend expiry time) if new request is done before expiration
+                options.LoginPath = "/Identity/Account/Login"; //default path when a login with correct credentials is required
+                //default path when access to a page is denied for a user
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
             });
 
+            //Google login configuration
             services.AddAuthentication().AddGoogle(options =>
             {
                 IConfigurationSection googleAuthNSection = _configuration.GetSection("Authentication:Google");
@@ -81,6 +87,7 @@ namespace mvc
                        .AllowAnyHeader();
             }));
 
+            //collection of repos will work on db provided by connection string
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
@@ -89,7 +96,7 @@ namespace mvc
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // Configuring the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -99,12 +106,14 @@ namespace mvc
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+
+            //enabling middleware for request logging (after the components above, such as static files, are loade
+            app.UseSerilogRequestLogging();
             app.UseRouting();
 
             app.UseAuthentication();
@@ -118,6 +127,7 @@ namespace mvc
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                   //default route in endpoints in domain not provided: nemesys.com/Home/Index
 
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();

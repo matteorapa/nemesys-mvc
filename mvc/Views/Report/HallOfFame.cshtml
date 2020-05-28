@@ -11,6 +11,7 @@
         <div>
             <span><strong>@account.UserName</strong></span><br />
             <small>@account.Email</small><br />
+            <!---through eager loading using the ApplicationUserRepository, we are obtaing all reports belonging to each user-->
             <small>Total reports submitted by <em>@account.UserName: </em><strong>@account.Reports.Count()</strong></small>
 
 

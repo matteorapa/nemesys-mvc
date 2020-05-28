@@ -1661,7 +1661,6 @@ C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\staticweba
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.dll
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.pdb
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\Search.cshtml.g.cs
-C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\Search.cshtml.g.cs
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -1677,9 +1676,6 @@ C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\View
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
-C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
-C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
-C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\Error.cshtml.g.cs
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Report\Error.cshtml.g.cs
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\ManageAccounts.cshtml.g.cs
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Account\ManageAccounts.cshtml.g.cs
@@ -1688,8 +1684,6 @@ C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\System.Web.Http.dll
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\System.Web.Http.Cors.dll
 C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
-C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\mvc.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\mvc.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\System.Web.Cors.dll
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
 C:\Users\Mireille\Desktop\web\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\System.Web.Http.dll
@@ -2159,3 +2153,34 @@ C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Id
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\obj\Debug\netcoreapp3.1\mvc.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Mireille\Desktop\nemesys-mvc\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\mvc.StaticWebAssets.xml
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V3.dll
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ExternalLogin.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ForgotPassword.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\ExternalLogins.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ResetPassword.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Serilog.dll
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Serilog.AspNetCore.dll
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Serilog.Extensions.Hosting.dll
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Serilog.Extensions.Logging.dll
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Serilog.Formatting.Compact.dll
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Serilog.Settings.Configuration.dll
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Serilog.Sinks.Console.dll
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Serilog.Sinks.Debug.dll
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\mvc.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Dell\Documents\B.Sc IT (Hons.) Computing and Business\Year Two\Semester 2\CIS2055\Assignment\mvc\obj\Debug\netcoreapp3.1\mvc.MvcApplicationPartsAssemblyInfo.cache

@@ -18,7 +18,6 @@ namespace mvc.Models
 
         public Investigation GetInvestigationById(int investigationId)
         {
-
             return _appDbContext.Investigations.Include(i => i.Report).FirstOrDefault(i => i.InvestigationId == investigationId);
         }
 

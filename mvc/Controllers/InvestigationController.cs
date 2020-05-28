@@ -1,5 +1,4 @@
-﻿
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -11,6 +10,8 @@ using System.Net;
 using System.Net.Mail;
 using System.Collections.Generic;
 using System;
+using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace mvc.Controllers
 {
@@ -19,22 +20,34 @@ namespace mvc.Controllers
         private readonly IInvestigationRepository _investigationRepository;
         private readonly IReportRepository _reportRepository;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ILogger<InvestigationController> _logger;
 
-        public InvestigationController(IInvestigationRepository investigationRepository, IReportRepository reportRepository, UserManager<ApplicationUser> userManager)
+        public InvestigationController(IInvestigationRepository investigationRepository, IReportRepository reportRepository, UserManager<ApplicationUser> userManager, ILogger<InvestigationController> logger)
         {
             _userManager = userManager;
             _investigationRepository = investigationRepository;
             _reportRepository = reportRepository;
+            _logger = logger;
         }
 
         [Authorize(Roles = "Investigator")]
         [HttpGet]
         public IActionResult Index()
         {
+            _logger.LogInformation("Investigator Index page launched");
             ViewBag.Title = "All Investigations";
+
             var model = new InvestigationListViewModel();
-            model.Investigations = _investigationRepository.GetAllInvestigations();
-            model.TotalInvestigations = model.Investigations.Count();
+            try
+            {
+                model.Investigations = _investigationRepository.GetAllInvestigations();
+                model.TotalInvestigations = model.Investigations.Count();
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, "Error when retrieving investigations");
+            }
+
             return View(model);
         }
 
@@ -46,8 +59,17 @@ namespace mvc.Controllers
             //clean search input ...
             ViewBag.Title = "Results for " + search;
 
-            model.Investigations = _investigationRepository.GetAllInvestigations().Where(x => x.InvDescription.Contains(search, System.StringComparison.OrdinalIgnoreCase));        
-            model.TotalInvestigations = model.Investigations.Count();
+            if (search != null)
+            {
+                //getting reports which contain string being searched
+                model.Investigations = _investigationRepository.GetAllInvestigations().Where(x => x.InvDescription.Contains(search, System.StringComparison.OrdinalIgnoreCase));
+                model.TotalInvestigations = model.Investigations.Count();
+            }
+            else //blank search provided
+            {
+                model.TotalInvestigations = 0;
+                _logger.LogWarning("Blank Search inputted");
+            }
 
             return View("Views/Investigation/Index.cshtml", model);
         }
@@ -56,14 +78,25 @@ namespace mvc.Controllers
         [HttpGet]
         public async Task<IActionResult> UserIndex()
         {
-            var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            ApplicationUser idenUser = await _userManager.FindByIdAsync(currentUser);
+            _logger.LogInformation("Users' Investigations Index Screen accessed");
+
+            //obtaining current user
+            ApplicationUser idenUser = await _userManager.GetUserAsync(User);
 
             ViewBag.Title = "My Investigations";
 
             var model = new InvestigationListViewModel();
-            model.Investigations = _investigationRepository.GetUserInvestigations(idenUser).OrderByDescending(i => i.DateOfAction);
-            model.TotalInvestigations = model.Investigations.Count();
+            
+            try
+            {
+                //passing Investigations for user and count of reports to InvestigationListViewModel in InvestigationModel.cs
+                model.Investigations = _investigationRepository.GetUserInvestigations(idenUser).OrderByDescending(i => i.DateOfAction);
+                model.TotalInvestigations = model.Investigations.Count();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Issue when retrieving reports for user {user}", idenUser.UserName);
+            }
             return View("Views/Investigation/Index.cshtml", model);
         }
 
@@ -84,28 +117,40 @@ namespace mvc.Controllers
 
             if (ModelState.IsValid)
             {
-                Investigation i = new Investigation()
+                try
                 {
-                    DateOfAction = investigation.DateOfAction,
-                    InvestigatorEmail = await _userManager.GetEmailAsync(user),
-                    InvestigatorPhone = await _userManager.GetPhoneNumberAsync(user),
-                    User = user,
-                    InvDescription = investigation.InvDescription,
-                    ReportId = id                    
-                };
+                    //new investifation
+                    Investigation i = new Investigation()
+                    {
+                        DateOfAction = investigation.DateOfAction,
+                        InvestigatorEmail = await _userManager.GetEmailAsync(user),
+                        InvestigatorPhone = await _userManager.GetPhoneNumberAsync(user),
+                        User = user,
+                        InvDescription = investigation.InvDescription,
+                        ReportId = id
+                    };
 
-                var report = _reportRepository.GetReportById(id);
-                report.ReportStatus = investigation.ReportStatus;
+                    //getting report which investigation is being carried upon
+                    var report = _reportRepository.GetReportById(id);
+                    //editing report's Report Status
+                    report.ReportStatus = investigation.ReportStatus;
+                    _reportRepository.EditReportById(id, report);
 
-                _reportRepository.EditReportById(id, report);
-
-                _investigationRepository.CreateInvestigation(i);
+                    //creating investigation in db, instantiated above
+                    _investigationRepository.CreateInvestigation(i);
+                    _logger.LogInformation("Investigation created");
+                }
+                catch(Exception ex)
+                {
+                    _logger.LogError(ex, "Issue when creating Investigation");
+                }
 
                 return RedirectToAction("Index");
             }
 
             else
             {
+                _logger.LogWarning("Invalid Model State for creating Investigation");
                 return this.View(investigation);
             }
 
@@ -115,17 +160,29 @@ namespace mvc.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
-            var Investigation = _investigationRepository.GetInvestigationById(id);
+            try
+            {
+                // id of report is equal to id of investigation
+                var Investigation = _investigationRepository.GetInvestigationByReportId(id);
 
-            if (Investigation == null)
-            {
-                var model = new NewInvestigationViewModel();
-                model.ReportId = id;
-                return View("Views/Investigation/NoInvestigation.cshtml", model);
+                if (Investigation == null)
+                {
+                    // no investigation carried out yet for particular report, passing report id to give option to investigator 
+                    // to create investigation on the respective report
+                    var model = new NewInvestigationViewModel();
+                    model.ReportId = id;
+                    return View("Views/Investigation/NoInvestigation.cshtml", model);
+                }
+                else
+                {
+                    _logger.LogInformation("Investigation viewed for report {id}", id);
+                    return View(Investigation);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return View(Investigation);
+                _logger.LogError(ex, "Error when obtaining details for a report's investigation!");
+                return View("Views/Shared/Error.cshtml");
             }
                 
         }
@@ -134,19 +191,38 @@ namespace mvc.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            var inv = _investigationRepository.GetInvestigationByReportId(id);
-            var rep = _reportRepository.GetReportById(id);
+            try
+            {
+                var inv = _investigationRepository.GetInvestigationByReportId(id);
+                var rep = _reportRepository.GetReportById(id);
 
-            var Investigation = new EditInvestigationViewModel();
-            Investigation.DateOfAction = inv.DateOfAction;
-            Investigation.InvDescription = inv.InvDescription;
-            Investigation.ReportStatus = rep.ReportStatus;
-            Investigation.SelectedInvestigator = inv.User;
-            Investigation.Investigators = await _userManager.GetUsersInRoleAsync("Investigator"); ;
+                //obtaining current user
+                var currentUser = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                ApplicationUser idenUser = await _userManager.FindByIdAsync(currentUser);
 
-            
+                if (inv.User == idenUser) //if logged in user is carrying out investigation
+                {
+                    var Investigation = new EditInvestigationViewModel();
+                    Investigation.DateOfAction = inv.DateOfAction;
+                    Investigation.InvDescription = inv.InvDescription;
+                    Investigation.ReportStatus = rep.ReportStatus;
+                    Investigation.SelectedInvestigator = inv.User;
+                    Investigation.Investigators = await _userManager.GetUsersInRoleAsync("Investigator");
 
-            return View(Investigation);
+                    return View(Investigation);
+                }
+                else //investigation is not being carried out by logged in user
+                {
+                    _logger.LogWarning("Unauthorized to edit investigation");
+                    return LocalRedirect("/Identity/Account/AccessDenied");
+                }
+
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, "Error when retrieving investigation to edit");
+                return View("Views/Shared/Error.cshtml");
+            }
         }
 
 
@@ -169,7 +245,7 @@ namespace mvc.Controllers
                     User = investigation.SelectedInvestigator
                 };
 
-                Console.WriteLine("Changed investigator to " + investigation.SelectedInvestigator.UserName);
+                //Console.WriteLine("Changed investigator to " + investigation.SelectedInvestigator.UserName);
 
                 var report = _reportRepository.GetReportById(id);
                 report.ReportStatus = investigation.ReportStatus;
@@ -204,16 +280,14 @@ namespace mvc.Controllers
                         try
                         {
                             client.Send(message);
+                            _logger.LogInformation("Email sent to new investigator");
                         }
-                        catch (SmtpException ex)
+                        catch (SmtpException smtp_ex)
                         {
-                            //throw error
+                            _logger.LogError(smtp_ex, "Error when sending email to investigator");
                         }
 
-                    }
-
-
-
+                    }                    
                     return RedirectToAction("Index");
                 }
 
@@ -227,18 +301,19 @@ namespace mvc.Controllers
 
        
 
-        [Authorize(Roles = "Investigator")]
-        [HttpGet]
-        public IActionResult Users(ApplicationUser u)
-        {
-            ViewBag.Title = "All Investigations";
-            var model = new InvestigationListViewModel();
-            model.Investigations = _investigationRepository.GetAllInvestigations();
-            model.TotalInvestigations = model.Investigations.Count();
-            return View(model);
-            //get list of users
+        //[Authorize(Roles = "Investigator")]
+        //[HttpGet]
+        //public IActionResult Users(ApplicationUser u)
+        //{
+        //    //get list of users
+        //    ViewBag.Title = "All Investigations";
+        //    var model = new InvestigationListViewModel();
+        //    model.Investigations = _investigationRepository.GetAllInvestigations();
+        //    model.TotalInvestigations = model.Investigations.Count();
+        //    return View(model);
+            
 
-        }
+        //}
 
 
     }

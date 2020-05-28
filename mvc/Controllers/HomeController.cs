@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using mvc.Models;
+using Serilog;
 
 namespace mvc.Controllers
 {
@@ -20,6 +21,7 @@ namespace mvc.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogInformation("Home Screen accessed");
             return View();
         }
 
@@ -31,6 +33,7 @@ namespace mvc.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            _logger.LogError("Error page outputted. Check logs above to understand why the error page was shown.");
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

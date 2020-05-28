@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mireille\\Desktop\\nemesys-mvc\\mvc\\mvc.csproj": {}
+    "C:\\Users\\Dell\\Documents\\B.Sc IT (Hons.) Computing and Business\\Year Two\\Semester 2\\CIS2055\\Assignment\\mvc\\mvc.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mireille\\Desktop\\nemesys-mvc\\mvc\\mvc.csproj": {
+    "C:\\Users\\Dell\\Documents\\B.Sc IT (Hons.) Computing and Business\\Year Two\\Semester 2\\CIS2055\\Assignment\\mvc\\mvc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mireille\\Desktop\\nemesys-mvc\\mvc\\mvc.csproj",
+        "projectUniqueName": "C:\\Users\\Dell\\Documents\\B.Sc IT (Hons.) Computing and Business\\Year Two\\Semester 2\\CIS2055\\Assignment\\mvc\\mvc.csproj",
         "projectName": "mvc",
-        "projectPath": "C:\\Users\\Mireille\\Desktop\\nemesys-mvc\\mvc\\mvc.csproj",
-        "packagesPath": "C:\\Users\\Mireille\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mireille\\Desktop\\nemesys-mvc\\mvc\\obj\\",
+        "projectPath": "C:\\Users\\Dell\\Documents\\B.Sc IT (Hons.) Computing and Business\\Year Two\\Semester 2\\CIS2055\\Assignment\\mvc\\mvc.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dell\\Documents\\B.Sc IT (Hons.) Computing and Business\\Year Two\\Semester 2\\CIS2055\\Assignment\\mvc\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Mireille\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,6 +86,18 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.0-preview1-19509-03, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[4.1.0, )"
             }
           },
           "imports": [
