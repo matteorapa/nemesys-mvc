@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Serilog;
+using Microsoft.Extensions.Configuration;
 
 namespace mvc.Models
 {
@@ -42,7 +43,7 @@ namespace mvc.Models
             }
         }
 
-        public void InjectUsers(UserManager<ApplicationUser> userManager)
+        public void InjectUsers(UserManager<ApplicationUser> userManager, IConfiguration config)
         {
             try
             {
@@ -58,7 +59,8 @@ namespace mvc.Models
                     };
 
                     //Add to store
-                    IdentityResult result = userManager.CreateAsync(admin, "3c4Z8e7^9W_?pfhQpK").Result;
+                    //getting password from appsettings
+                    IdentityResult result = userManager.CreateAsync(admin, config.GetValue<string>("AdminPass")).Result;
                     if (result.Succeeded)
                     {
                         //Add to role
@@ -77,7 +79,8 @@ namespace mvc.Models
                     };
 
                     //Add to store
-                    result = userManager.CreateAsync(inv, "VxGEwxGJ9x!qA#+3@c").Result;
+                    //getting password from appsettings
+                    result = userManager.CreateAsync(inv, config.GetValue<string>("InvestigatorPass")).Result;
                     if (result.Succeeded)
                     {
                         //Add to role
