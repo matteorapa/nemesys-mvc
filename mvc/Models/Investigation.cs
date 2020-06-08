@@ -19,7 +19,5 @@ namespace mvc.Models
         public int ReportId { get; set; } //FK Property
         public Report Report { get; set; } //Reference Property
 
-        //One-to-Many relationship with User - EF Core Conventions
-        //public User User { get; set; } //Reference Property
     }
 }

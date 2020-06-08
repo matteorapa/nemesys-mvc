@@ -7,16 +7,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Serilog;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Mvc;
 
 namespace mvc.Models
 {
     public class InitialDistributor
     {
         private readonly ILogger<InitialDistributor> _logger;
+        private readonly IConfiguration _config;
 
-        public InitialDistributor(ILogger<InitialDistributor> logger)
+        public InitialDistributor(ILogger<InitialDistributor> logger, IConfiguration configuration)
         {
             _logger = logger;
+            _config = configuration;
         }
 
         public void InjectRoles(RoleManager<IdentityRole> roleManager)
@@ -43,8 +46,9 @@ namespace mvc.Models
             }
         }
 
-        public void InjectUsers(UserManager<ApplicationUser> userManager, IConfiguration config)
+        public void InjectUsers(UserManager<ApplicationUser> userManager)
         {
+
             try
             {
                 if (!userManager.Users.Any())
@@ -60,7 +64,8 @@ namespace mvc.Models
 
                     //Add to store
                     //getting password from appsettings
-                    IdentityResult result = userManager.CreateAsync(admin, config.GetValue<string>("AdminPass")).Result;
+
+                    IdentityResult result = userManager.CreateAsync(admin, _config.GetSection("Credentials")["AdminPass"]).Result;
                     if (result.Succeeded)
                     {
                         //Add to role
@@ -80,7 +85,7 @@ namespace mvc.Models
 
                     //Add to store
                     //getting password from appsettings
-                    result = userManager.CreateAsync(inv, config.GetValue<string>("InvestigatorPass")).Result;
+                    result = userManager.CreateAsync(inv, _config.GetSection("Credentials")["InvestigatorPass"]).Result;
                     if (result.Succeeded)
                     {
                         //Add to role

@@ -38,7 +38,6 @@ namespace mvc
                 var host = CreateHostBuilder(args).Build();
                 Microsoft.Extensions.Logging.ILogger <InitialDistributor> logger = host.Services.GetService<ILogger<InitialDistributor>>();
 
-
                 using (var scope = host.Services.CreateScope())
                 {
                     var services = scope.ServiceProvider;
@@ -49,8 +48,11 @@ namespace mvc
                         var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                         var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
 
+                        IConfiguration configuration = services.GetRequiredService<IConfiguration>();
+
+
                         //injecting the initials roles, users and reports in the system, if none are present
-                        InitialDistributor iDist = new InitialDistributor(logger);
+                        InitialDistributor iDist = new InitialDistributor(logger, configuration);
                         iDist.InjectRoles(roleManager);
                         iDist.InjectUsers(userManager);
                         iDist.InjectData(userManager, context);
