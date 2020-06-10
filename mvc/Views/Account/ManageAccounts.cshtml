@@ -1,49 +1,52 @@
 ﻿@model ManageViewModel
-
+<div class="user-row">
+    <h2>Manage Accounts</h2><hr />
     <form asp-controller="Account" asp-action="Search" method="get" role="form" enctype="multipart/form-data">
-        <input class="form-control" type="search"  name="search" asp-controller="Account" asp-action="Search" placeholder="Search for reporter">
+        <input class="form-control" type="search" name="search" asp-controller="Account" asp-action="Search" placeholder="Search for user">
     </form>
-<h3>Investigators</h3>
+
+</div>
+<br />
+<h4>Investigators</h4>
 <hr>
 @foreach (var account in Model.Investigators)
 {
-<div class="user-row">
+    <div class="user-row">
 
-    <div>
-        <span><strong>@account.UserName</strong></span>
-        <small>@account.Email</small>
+        <div>
+            <span><strong>@account.UserName</strong></span>
+            <small>@account.Email</small>
+        </div>
+
+        <form asp-controller="Account" asp-action="Demote" asp-route-id="@account.Id" id="demote" method="post">
+            <a class="btn btn-outline-danger" asp-controller="Account" asp-action="Demote" asp-route-id="@account.Id">Demote to Reporter</a>
+        </form>
+        <!--- <a asp-controller="Account" asp-action="Demote" asp-route-id="@account.Id" method="post" class="btn btn-outline-danger">Demote to Reporter</a> -->
     </div>
-
-    <form asp-controller="Account" asp-action="Demote" asp-route-id="@account.Id" id="demote" method="post">
-        <a class="btn btn-outline-danger" asp-controller="Account" asp-action="Demote" asp-route-id="@account.Id">Demote to Reporter</a>
-    </form>
-    <!--- <a asp-controller="Account" asp-action="Demote" asp-route-id="@account.Id" method="post" class="btn btn-outline-danger">Demote to Reporter</a> -->
-</div>
 
 }
 <br>
-<h3>Reporters</h3>
+<h4>Reporters</h4>
 
 <hr>
 @foreach (var account in Model.Reporters)
 {
-<div class="user-row">
+    <div class="user-row">
 
-    <div>
-        <span><strong>@account.UserName</strong></span>
-        <small>@account.Email</small>
+        <div>
+            <span><strong>@account.UserName</strong></span>
+            <small>@account.Email</small>
+        </div>
+
+        <form asp-controller="Account" asp-action="Promote" asp-route-id="@account.Id" id="promote" method="post">
+            <a class="btn btn-outline-success" asp-controller="Account" asp-action="Promote" asp-route-id="@account.Id">Promote to Investigator</a>
+        </form>
+
+        <!---<form asp-controller="Account" asp-action="Promote" asp-route-id="@account.Id" id="promote" method="post">
+            <a href="javascript:{}" class="btn btn-outline-success" onclick="document.getElementById('promote').submit();">Promote to Investigator</a>
+        </form>-->
+        <!---<a asp- asp-controller="Account" asp-action="Promote" asp-route-id="@account.Id" method="put" class="btn btn-outline-success">Promote to Investigator</a>-->
     </div>
-
-    <form asp-controller="Account" asp-action="Promote" asp-route-id="@account.Id" id="promote" method="post">
-        <a class="btn btn-outline-success" asp-controller="Account" asp-action="Promote" asp-route-id="@account.Id">Promote to Investigator</a>
-    </form>
-
-    <!---<form asp-controller="Account" asp-action="Promote" asp-route-id="@account.Id" id="promote" method="post">
-        <a href="javascript:{}" class="btn btn-outline-success" onclick="document.getElementById('promote').submit();">Promote to Investigator</a>
-    </form>-->
-
-    <!---<a asp- asp-controller="Account" asp-action="Promote" asp-route-id="@account.Id" method="put" class="btn btn-outline-success">Promote to Investigator</a>-->
-</div>
 
 }
 
