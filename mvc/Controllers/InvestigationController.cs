@@ -301,20 +301,5 @@ namespace mvc.Controllers
 
        
 
-        //[Authorize(Roles = "Investigator")]
-        //[HttpGet]
-        //public IActionResult Users(ApplicationUser u)
-        //{
-        //    //get list of users
-        //    ViewBag.Title = "All Investigations";
-        //    var model = new InvestigationListViewModel();
-        //    model.Investigations = _investigationRepository.GetAllInvestigations();
-        //    model.TotalInvestigations = model.Investigations.Count();
-        //    return View(model);
-            
-
-        //}
-
-
     }
 }
